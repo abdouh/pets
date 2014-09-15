@@ -1,0 +1,72 @@
+
+/*Time for the CSS*/
+
+.slider{
+	width: 100% !important; /*Same as width of the large image*/
+	float:left;
+	/*Instead of height we will use padding*/
+	padding:52% 0 0 0 !important; /*That helps bring the labels down*/
+	margin:0 !important;
+
+}
+
+
+/*Last thing remaining is to add transitions*/
+.slider>img{
+	width:100% !important;
+	position: absolute;
+	left: 0; top: 0;
+/*	transition: all 0.5s;*/
+}
+
+.slider input[name='slide_switch'] {
+	display: none;
+}
+
+.slider label {
+	/*Lets add some spacing for the thumbnails*/
+	height:auto !important;
+	width:18% !important; 
+	margin:0 0 0 2.5% !important;
+	
+	float: right;
+	cursor: pointer;
+	transition: all 0.5s;
+	
+	/*Default style = low opacity*/
+	opacity: 0.6;
+	
+	
+}
+
+.slider label img{
+	width:100% !important;
+	display: inline-block;
+	
+	
+}
+
+#id5{margin:0 !important;} 
+
+/*Time to add the click effects*/
+.slider input[name='slide_switch']:checked+label {
+	border-color: #666;
+	opacity:1;
+}
+/*Clicking any thumbnail now should change its opacity(style)*/
+/*Time to work on the main images*/
+.slider input[name='slide_switch'] ~ img {
+	opacity: 0;
+	transform: scale(1.1);
+}
+/*That hides all main images at a 110% size
+On click the images will be displayed at normal size to complete the effect
+*/
+.slider input[name='slide_switch']:checked+label+img {
+	width:100% !important; 
+	opacity: 1;
+	transform: scale(1);
+}
+/*Clicking on any thumbnail now should activate the image related to it*/
+
+/*We */
