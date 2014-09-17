@@ -63,14 +63,13 @@ Class Template {
 
             //types of codes
             $types = array(
-                'style' => '<link href="filename" rel="stylesheet" type="text/css"/>',
-                'plugin' => '<script type="text/javascript" src="filename"></script>',
-                'script' => '<script src="filename" type="text/javascript"></script>',
+                'style' => '<link href=":filename" rel="stylesheet" type="text/css"/>',
+                'js' => '<script type="text/javascript" src=":filename"></script>',
             );
 
             $output = array();
             foreach ($data as $link) {
-                $output[] = str_replace('filename', $$type . $link, $types[$type]);
+                $output[] = str_replace(':filename', $$type . $link, $types[$type]);
             }
             return join("\n\t\t", $output) . "\n";
         }

@@ -6,9 +6,9 @@ error_reporting(E_ALL & ~E_NOTICE);
 /* * * define the site path ** */
 $site_path = realpath(dirname(__FILE__));
 define('__SITE_PATH', $site_path);
-define('ROOT_URL', 'http://localhost/re7anna');
-define('TEMPLATE_URL', 'http://localhost/re7anna/views/');
-define('LOGS_URL', $site_path . '/system_logs/');
+define('READ_ONLY', 'http://localhost/pets');
+define('TEMPLATE_URL', 'http://localhost/pets/views');
+define('LOGS_URL', $site_path . '/system_logs');
 
 /* * * include the init.php file ** */
 include 'includes/init.php';
