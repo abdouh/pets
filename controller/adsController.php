@@ -10,8 +10,19 @@ Class adsController Extends baseController {
 
     public function file_upload() {
         session_start();
-        if ($_POST) {
-            echo 'no file';
+        $ds = DIRECTORY_SEPARATOR;  //1
+
+        $storeFolder = '../files';   //2
+
+        if (!empty($_FILES)) {
+
+            $tempFile = $_FILES['file']['tmp_name'];          //3             
+
+            $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;  //4
+
+            $targetFile = $targetPath . $_FILES['file']['name'];  //5
+
+            move_uploaded_file($tempFile, $targetFile); //6
         }
     }
 

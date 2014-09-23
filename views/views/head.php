@@ -10,6 +10,7 @@
 
         <link rel="stylesheet" href="<?= TEMPLATE_URL; ?>/css/costa.css" />
         <link rel="stylesheet" href="<?= TEMPLATE_URL; ?>/css/menu.css" />
+        <link rel="stylesheet" href="<?= TEMPLATE_URL; ?>/css/dropzone.css" />
 
 
 
@@ -22,7 +23,7 @@
         <script src="<?= TEMPLATE_URL; ?>/js/menu.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/accounts.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/responsive.js"></script>
-        <script src="<?= TEMPLATE_URL; ?>/js/dropzone.js"></script>
+        <script src="<?= TEMPLATE_URL; ?>/js/dropzone.min.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/index.js"></script>
 
 

@@ -548,23 +548,20 @@
 
 
 
-
-                <!--ad image code start-->
-                <div class=" small-12 medium-12  large-12 columns" style=" margin-top:26px;">
-
-                    <div id="dropbox">
-                        <span class="message">Drop images here to upload. <br /><i>(they will only be visible to you)</i></span>
-                    </div>
-
-                </div>
-                <!--ad image code end-->
-
             </form>
-            
-            <form action="/pets/ads/file_upload" class="dropzone" id="my-dropzone"></form>
+            <!--ad image code start-->
+            <div class=" small-12 medium-12  large-12 columns" style=" margin-top:26px;">
+
+                <div id="dropbox">
+                    <form action="/pets/ads/file_upload"  class="dropzone"></form>
+                </div>
+
+            </div>
+            <!--ad image code end-->
+
+
         </div>
         <!--main content end-->
-
 
         <!--ads section start-->
         <div class="ads" style="  float:left; display:inline-block; left:0;">
