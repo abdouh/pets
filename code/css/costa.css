@@ -1,0 +1,235 @@
+@font-face {
+    font-family: "JF Flat Regular";
+    src: url('../font/JF-Flat-regular.eot');
+    src: url('../font/JF-Flat-regular.eot?#iefix') format('embedded-opentype'),
+    url('../font/JF-Flat-regular.svg#JF Flat Regular') format('svg'),
+    url('../font/JF-Flat-regular.woff') format('woff'),
+    url('../font/JF-Flat-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body.welcome_body{
+	background-image:url(../img/2.jpg) !important ;
+	background-position:right;
+	
+}
+
+
+
+.welcome_row{max-width: 62.5em; }
+
+
+  body{
+	  width:100% !important;
+
+	  
+	  /*ie old versions*/
+	  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+	  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+	  /*ie old versions*/
+	 
+	  /*perfect full page back ground*/
+	  /*-webkit-background-size: cover;*/
+      /*-moz-background-size: cover;*/
+      /*-o-background-size: cover;*/
+      /*background-size: cover;*/
+	  /*perfect full page back ground*/
+  }
+  
+  
+  
+  .header{
+	  background: url(../img/transblue.png);
+	  padding-top:16px;
+	  padding-bottom:16px;
+	  
+  }
+  
+  .ads , .menu_section , .content{
+	  float:right;
+	  padding: 0 16px !important;
+	 /* border:1px dashed red;*/
+  }
+  
+  
+  .ad_info_element{
+	  border-bottom:1px solid #ccc;
+	  color:#666;
+	  padding:6px 0;
+  }
+  
+  .ad_info_element:hover{
+	  background:#f8f9f9;
+  }
+
+  
+
+
+.wait_us{
+	background:url(../img/transblue.png);
+	height:40px;
+	color:#fff;
+	line-height:40px;
+	text-align:center;
+}
+
+
+.social_media_icon_container{
+	display:inline-block;
+	width:20%;
+	float:left;
+}
+
+
+
+
+.social_media_icon_container a{
+	width:40px;
+	height:40px;
+	float:left;
+	display:inline-block;
+}
+
+
+
+
+a#google    {background: url(../img/g+.svg) no-repeat right;}
+a#instagram {background: url(../img/in.svg) no-repeat right;}
+a#youtube   {background: url(../img/yt.svg) no-repeat right;}
+a#twitter   {background: url(../img/tw.svg) no-repeat right;}
+a#facebook  {background: url(../img/fb.svg) no-repeat right;}
+
+
+.social_home{
+	height:39px;
+	margin:0 0 1% 1%;
+	width:99%;
+}
+
+.social_home .social_media_icon_container , 
+.social_home .social_media_icon_container a ,
+.social_home  span{
+	float:right !important;
+	line-height:38px;
+	color:#fff;
+}
+
+.social_home .social_media_icon_container{width:40px;}
+.social_home  span{ padding:0 6px;}
+
+welcome_page_list{
+	border:1px solid #fff;
+	overflow:hidden;
+	display:block;
+	max-height:140px;
+
+}
+
+.ad_title_view{
+	padding:2%;
+	background: url(../img/transblack.png);
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	bottom:20px;
+}
+
+
+.ad_title_view .article{ border:1px dashed #000; top:0 !important; right:0 !important; z-index:999;}
+
+
+.ad_title_view {color:white;}
+.ads_view li{ position:relative;   overflow: hidden !important;}
+.ads_view li img{width:100%;}
+
+
+
+.price{
+
+	width:auto;
+	height:auto;
+	padding:12px;
+	position:absolute;
+	left:0;
+	top:60px;
+	background:url(../img/transblue.png);
+	z-index:10;
+}
+
+.price_number{
+	width:100% !important;
+	text-align:center !important;
+	font-size:2rem ;
+	color:#fff;
+	padding-bottom:16px;
+	float:right;
+}
+
+.price_currency{
+	width:100% !important;
+	text-align:center !important;
+	font-size:1.1rem ;
+	color:#fff;
+	float:right;
+	
+}
+
+/*placeholder rtl direction*/
+::-webkit-input-placeholder { /* WebKit browsers */
+    direction: rtl;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    direction: rtl;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ but I'm not sure about working */
+    direction: rtl;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    direction: rtl;
+}
+
+
+
+
+
+/*light box style start*/
+.lighbox_container{
+	background:url(../img/transblack.png);
+	width:100%;
+	height:100%;
+	position:fixed;
+	z-index:100;
+	top:0;
+	right:0;
+	display:none;
+}
+
+.lighbox{
+	background:#fff;
+	position:relative;
+	z-index:101;
+	top:15%;
+	padding:46px;
+	
+	-webkit-box-shadow: 0px 5px 10px 0px rgba(50, 50, 50, 0.6);
+	-moz-box-shadow:    0px 5px 10px 0px rgba(50, 50, 50, 0.6);
+	box-shadow:         0px 5px 10px 0px rgba(50, 50, 50, 0.6);
+}
+
+.CloseLightBox{
+	left:20px !important;
+	top:20px;
+	position: absolute;
+	font-size:2 em;
+	padding:6px;
+	font-weight:bold;
+	cursor:pointer;
+}
+	
+/*light box style end*/
+
+
+
+.login , .signup , .forgetPass{display:none;}

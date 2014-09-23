@@ -57,9 +57,8 @@ Class Template {
 
         function get_codes($data, $type = 'style') {
             //paths to the views
-            $style = TEMPLATE_URL . 'css/';
-            $plugin = TEMPLATE_URL . 'plugins/';
-            $script = TEMPLATE_URL . 'scripts/';
+            $style = TEMPLATE_URL . '/css/';
+            $js = TEMPLATE_URL . '/js/';
 
             //types of codes
             $types = array(

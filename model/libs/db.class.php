@@ -8,41 +8,20 @@ class db {
      */
     static $tables = array(
         //
-        'customer' => '`foc_system`.`customer`',
-        'daily_inventory_levels' => '`foc_system`.`daily_inventory_levels`',
-        'discounts' => '`foc_system`.`discounts`',
-        'discount_reasons' => '`foc_system`.`discount_reasons`',
-        'employees' => '`foc_system`.`employees`',
-        'invenory_level' => '`foc_system`.`invenory_level`',
-        'invoices_state' => '`foc_system`.`invoices_state`',
-        'invoices_transmission' => '`foc_system`.`invoices_transmission`',
-        'invoice_transmissions_details' => '`foc_system`.`invoice_transmissions_details`',
-        'invoice_types' => '`foc_system`.`invoice_types`',
-        'markets' => '`foc_system`.`markets`',
-        'messages_type' => '`foc_system`.`messages_type`',
-        'notification_center' => '`foc_system`.`notification_center`',
-        'notification_details' => '`foc_system`.`notification_details`',
-        'notification_messages' => '`foc_system`.`notification_messages`',
-        'notification_recivers' => '`foc_system`.`notification_recivers`',
-        'notification_type' => '`foc_system`.`notification_type`',
-        'owners' => '`foc_system`.`owners`',
-        'products' => '`foc_system`.`products`',
-        'products_desc' => '`foc_system`.`products_desc`',
-        'products_type' => '`foc_system`.`products_type`',
-        'product_price_tracing' => '`foc_system`.`product_price_tracing`',
-        'purchasing_details' => '`foc_system`.`purchasing_details`',
-        'purchasing_products_invoices' => '`foc_system`.`purchasing_products_invoices`',
-        'repayments' => '`foc_system`.`repayments`',
-        'sales_invoices' => '`foc_system`.`sales_invoices`',
-        'sales_invoice_details' => '`foc_system`.`sales_invoice_details`',
-        'system_users' => '`foc_system`.`system_users`',
-        'traders' => '`foc_system`.`traders`',
+        'ads' => '`pets`.`ads`',
+        'cities' => '`pets`.`cities`',
+        'countries' => '`pets`.`countries`',
+        'pets' => '`pets`.`pets`',
+        'pets_categories' => '`pets`.`pets_categories`',
+        'pets_variations' => '`pets`.`pets_variations`',
+        'users' => '`pets`.`users`',
+        'login_attempts' => '`pets`.`login_attempts`',
     );
 
     /**
      * @var array of database information
      */
-    private $db_info = array("host" => "localhost", "dbname" => "foc_system", "username" => "root", "password" => "123");
+    private $db_info = array("host" => "localhost", "dbname" => "pets", "username" => "root", "password" => "123");
 
     /**
      * @var object of mysqli 

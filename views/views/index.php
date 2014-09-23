@@ -10,25 +10,25 @@
 
             <h3 class="text-center">مرحبا بك</h3>
 
-            <form class="signup">
-
+            <form id="register_form" class="signup">
+                <div id="register_errors" style="color:red;"></div>
                 <label> اسم المستخدم
-                    <input type="text" >
+                    <input type="text" name="reg_username">
                 </label>
 
                 <label> البريد الاليكترونى
-                    <input type="text" >
+                    <input type="text" name="reg_email" >
                 </label>
 
                 <label> كلمة المرور
-                    <input type="password" >
+                    <input type="password" name="reg_password">
                 </label>
 
                 <label> اعادة كلمة المرور
-                    <input type="password" >
+                    <input type="password" name="reg_confirm_pass">
                 </label>
 
-                <input type="submit" class="button expand" value="انشاء عضوية جديدة">
+                <input type="submit" onClick="register();return false;" class="button expand" value="انشاء عضوية جديدة">
 
                 <a href="javascript:void(0);" class="GoToLogin">لدى عضوية , تسجيل الدخول</a>
 
@@ -36,14 +36,15 @@
             </form>
 
 
-            <form class="forgetPass">
-
+            <form id="forgot_form" class="forgetPass">
                 <p style="color:#09c;">برجاء ادخال البريد الاليكترونى وسيتم ارسال رسالة لتتمكن من استعادة كلمة المرور</p>
+                
+                <div id="forgot_errors" style="color:red;"></div>
                 <label> البريد الاليكترونى
-                    <input type="text" >
+                    <input type="text" name="forgot_email">
                 </label>
 
-                <input type="submit" class="button expand" value="استعادة كلمة المرور">
+                <input type="submit" onClick="forgot_pass();return false;" class="button expand" value="استعادة كلمة المرور">
 
                 <a href="javascript:void(0);" class="GoToLogin"> تسجيل الدخول</a>
 
@@ -52,18 +53,25 @@
 
 
 
-            <form class="login">
+            <form id="login_form" class="login">
+                <div id="login_errors" style="color:red;"></div>
 
                 <label> البريد الاليكترونى
-                    <input type="text" >
+                    <input type="text" name="email">
                 </label>
 
                 <label> كلمة المرور
-                    <input type="password" >
+                    <input type="password" name="password">
                 </label>
+                <div id="captcha_display" style="display:none;float:right;">
+                    <a href="#" onclick="document.getElementById('captcha').src = '/pets/index/captcha?' + Math.random(); return false">كود أخر</a>
+                    <img id="captcha" src="/pets/index/captcha" alt="CAPTCHA Image" />
+                    <label style="width:100px;"> أدخل الكود
+                        <input type="text" name="captcha_code" width="50" maxlength="6">
+                    </label>
+                </div>
 
-
-                <input type="submit" class="button expand" value="تسجيل الدخول">
+                <input type="submit" onClick="login();return false;" class="button expand" value="تسجيل الدخول">
 
                 <a href="javascript:void(0);" class="GoForgetPass">نسيت كلمة المرور</a>
                 <br>
@@ -533,10 +541,12 @@
                     <div class="text"> <a href="">اتصل بنا</a></div>
                 </li>
 
-                <li>
-                    <div class="icon account"></div>
-                    <div class="text"> تسجيل</div>
-                </li>
+                <? if (Login::get_instance()->check_login() != 'valid') { ?>
+                    <li>
+                        <div class="icon account"></div>
+                        <div class="text"> تسجيل</div>
+                    </li>
+                <? } ?>
 
                 <li>
                     <div class="icon search"></div>
