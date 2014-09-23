@@ -38,7 +38,7 @@ class db {
      * @return void
      */
     public function __construct() {
-        $this->dbh = new mysqli('localhost', 'root', '123', 'foc_system');
+        $this->dbh = new mysqli($this->db_info['host'], $this->db_info['username'], $this->db_info['password'], $this->db_info['dbname']);
         $this->dbh->query("SET NAMES utf8");
     }
 
