@@ -187,7 +187,7 @@
         <!--menu section start-->  
         <div class="menu_section">
 
-            <a href="#" class="button success expand" style="padding:0; margin-top:0; line-height:38px;">إضافة إعلان جديد +</a>
+            <a href="/pets/ads" class="button success expand" style="padding:0; margin-top:0; line-height:38px;">إضافة إعلان جديد +</a>
 
 
             <!--menu start-->

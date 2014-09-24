@@ -438,10 +438,12 @@
                         <label>نوع الاعلان
                             <select>
                                 <option value="">اختار النوع</option>
-                                <option value="بنى سويف">بنى سويف</option>
-                                <option value="المنيا">المنيا</option>
-                                <option value="اسيوط">اسيوط</option>
-                                <option value="سوهاج">سوهاج</option>
+                                <?
+                                $types = Lists::ads_types();
+                                foreach ($types as $type) {
+                                    ?> 
+                                    <option value="<?= $type['value']; ?>"><?= $type['text']; ?></option>
+                                <? } ?>
                             </select>
                         </label>
 
@@ -474,7 +476,7 @@
                     <div class="small-12 columns right">
 
                         <label>اسم الاعلان هنا
-                            <input type="text" placeholder="" />
+                            <input type="text" name="title" placeholder="" />
                         </label>
 
                     </div>
@@ -558,7 +560,28 @@
 
             </div>
             <!--ad image code end-->
-
+            <script>
+                dropZone.on("success", function(file, serverFileName) {
+                    fileList[serverFileName] = {"serverFileName" : serverFileName, "fileName" : file.name };
+                });
+                dropzone.on("removedfile", function(file) {
+                    alert('here');
+                    var server_file = $(file.previewTemplate).children('.server_file').text();
+                    alert(server_file);
+                    // Do a post request and pass this path and use server-side language to delete the file
+                    $.post("/pets/ads/del", { file_to_be_deleted: server_file } );
+                });
+                
+                
+                function delete_file(){
+                    $.ajax({
+                        url: "/pets/ads/del",
+                        type: "POST",
+                        data: { "fileList" : JSON.stringify(fileList) }
+                    });
+                }
+                
+            </script>
 
         </div>
         <!--main content end-->
@@ -577,3 +600,4 @@
     </div>
 </body>
 </html>
+
