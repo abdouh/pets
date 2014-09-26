@@ -6,10 +6,10 @@ Class indexController Extends baseController {
         session_start();
         //Login::get_instance()->logout();
         
-        $d = new DOMDocument();
+       // $d = new DOMDocument();
         
-       $d->loadHTMLFile('../egypt.php');
-       echo $d->getElementsByTagName('optgroup');
+       //$d->loadHTMLFile('../egypt.php');
+       //echo $d->getElementsByTagName('optgroup');
         
         $settings = array();
         if ($_GET) {
