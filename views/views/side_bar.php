@@ -1,474 +1,583 @@
-<!-- BEGIN SIDEBAR -->
-<div class="page-sidebar nav-collapse collapse">
-    <!-- BEGIN SIDEBAR MENU -->        
-    <ul class="page-sidebar-menu">
-        <li>
-            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-            <div class="sidebar-toggler hidden-phone"></div>
-            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-        </li>
-        <li>
-            <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-            <form class="sidebar-search">
-                <div class="input-box">
-                    <a href="javascript:;" class="remove"></a>
-                    <input type="text" placeholder="Search..." />
-                    <input type="button" class="submit" value=" " />
-                </div>
-            </form>
-            <!-- END RESPONSIVE QUICK SEARCH FORM -->
-        </li>
-        <li class="start ">
-            <a href="index.html">
-                <i class="icon-home"></i> 
-                <span class="title">Dashboard</span>
-            </a>
-        </li>
-        <li >
-            <a href="javascript:;">
-                <i class="icon-cogs"></i> 
-                <span class="title">Layouts</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li >
-                    <a href="layout_language_bar.html">
-                        <span class="badge badge-roundless badge-important">new</span>Language Switch Bar</a>
-                </li>
-                <li >
-                    <a href="layout_horizontal_sidebar_menu.html">
-                        Horizontal & Sidebar Menu</a>
-                </li>
-                <li >
-                    <a href="layout_horizontal_menu1.html">
-                        Horizontal Menu 1</a>
-                </li>
-                <li >
-                    <a href="layout_horizontal_menu2.html">
-                        Horizontal Menu 2</a>
-                </li>
-                <li >
-                    <a href="layout_promo.html">
-                        Promo Page</a>
-                </li>
-                <li >
-                    <a href="layout_email.html">
-                        Email Templates</a>
-                </li>
-                <li >
-                    <a href="layout_ajax.html">
-                        Content Loading via Ajax</a>
-                </li>
-                <li >
-                    <a href="layout_sidebar_closed.html">
-                        Sidebar Closed Page</a>
-                </li>
-                <li >
-                    <a href="layout_blank_page.html">
-                        Blank Page</a>
-                </li>
-                <li >
-                    <a href="layout_boxed_page.html">
-                        Boxed Page</a>
-                </li>
-                <li >
-                    <a href="layout_boxed_not_responsive.html">
-                        Non-Responsive Boxed Layout</a>
-                </li>
-            </ul>
-        </li>
-        <!-- BEGIN FRONT DEMO -->
-        <li class="tooltips" data-placement="left" data-original-title="Frontend&nbsp;Theme&nbsp;For&nbsp;Metronic&nbsp;Admin">
-            <a href="http://keenthemes.com/preview/index.php?theme=metronic_frontend_rtl" target="_blank">
-                <i class="icon-gift"></i> 
-                <span class="title">Frontend Theme</span>
-            </a>
-        </li>
-        <!-- END FRONT DEMO -->
-        <li >
-            <a href="javascript:;">
-                <i class="icon-bookmark-empty"></i> 
-                <span class="title">UI Features</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li >
-                    <a href="ui_general.html">
-                        General</a>
-                </li>
-                <li >
-                    <a href="ui_buttons.html">
-                        Buttons</a>
-                </li>
-                <li >
-                    <a href="ui_modals.html">
-                        Enhanced Modals</a>
-                </li>
-                <li >
-                    <a href="ui_tabs_accordions.html">
-                        Tabs & Accordions</a>
-                </li>
-                <li >
-                    <a href="ui_jqueryui.html">
-                        jQuery UI Components</a>
-                </li>
-                <li >
-                    <a href="ui_sliders.html">
-                        Sliders</a>
-                </li>
-                <li >
-                    <a href="ui_tiles.html">
-                        Tiles</a>
-                </li>
-                <li >
-                    <a href="ui_typography.html">
-                        Typography</a>
-                </li>
-                <li >
-                    <a href="ui_tree.html">
-                        Tree View</a>
-                </li>
-                <li >
-                    <a href="ui_nestable.html">
-                        Nestable List</a>
-                </li>
-            </ul>
-        </li>
-        <li >
-            <a href="javascript:;">
-                <i class="icon-table"></i> 
-                <span class="title">Form Stuff</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li >
-                    <a href="form_layout.html">
-                        Form Layouts</a>
-                </li>
-                <li >
-                    <a href="form_samples.html">
-                        Advance Form Samples</a>
-                </li>
-                <li >
-                    <a href="form_component.html">
-                        Form Components</a>
-                </li>
-                <li >
-                    <a href="form_editable.html">
-                        <span class="badge badge-roundless badge-warning">new</span>Form X-editable</a>
-                </li>
-                <li >
-                    <a href="form_wizard.html">
-                        Form Wizard</a>
-                </li>
-                <li >
-                    <a href="form_validation.html">
-                        Form Validation</a>
-                </li>
-                <li >
-                    <a href="form_image_crop.html">
-                        <span class="badge badge-roundless badge-important">new</span>Image Cropping</a>
-                </li>
-                <li >
-                    <a href="form_fileupload.html">
-                        Multiple File Upload</a>
-                </li>
-                <li >
-                    <a href="form_dropzone.html">
-                        Dropzone File Upload</a>
-                </li>
-            </ul>
-        </li>
-        <li >
-            <a href="javascript:;">
-                <i class="icon-briefcase"></i> 
-                <span class="title">Pages</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li >
-                    <a href="page_timeline.html">
-                        <i class="icon-time"></i>
-                        <span class="badge badge-info">4</span>Timeline</a>
-                </li>
-                <li >
-                    <a href="page_coming_soon.html">
-                        <i class="icon-cogs"></i>
-                        Coming Soon</a>
-                </li>
-                <li >
-                    <a href="page_blog.html">
-                        <i class="icon-comments"></i>
-                        Blog</a>
-                </li>
-                <li >
-                    <a href="page_blog_item.html">
-                        <i class="icon-font"></i>
-                        Blog Post</a>
-                </li>
-                <li >
-                    <a href="page_news.html">
-                        <i class="icon-coffee"></i>
-                        <span class="badge badge-success">9</span>News</a>
-                </li>
-                <li >
-                    <a href="page_news_item.html">
-                        <i class="icon-bell"></i>
-                        News View</a>
-                </li>
-                <li >
-                    <a href="page_about.html">
-                        <i class="icon-group"></i>
-                        About Us</a>
-                </li>
-                <li >
-                    <a href="page_contact.html">
-                        <i class="icon-envelope-alt"></i>
-                        Contact Us</a>
-                </li>
-                <li >
-                    <a href="page_calendar.html">
-                        <i class="icon-calendar"></i>
-                        <span class="badge badge-important">14</span>Calendar</a>
-                </li>
-            </ul>
-        </li>
-        <li >
-            <a href="javascript:;">
-                <i class="icon-gift"></i> 
-                <span class="title">Extra</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li >
-                    <a href="extra_profile.html">
-                        User Profile</a>
-                </li>
-                <li >
-                    <a href="extra_lock.html">
-                        Lock Screen</a>
-                </li>
-                <li >
-                    <a href="extra_faq.html">
-                        FAQ</a>
-                </li>
-                <li >
-                    <a href="inbox.html">
-                        <span class="badge badge-important">4</span>Inbox</a>
-                </li>
-                <li >
-                    <a href="extra_search.html">
-                        Search Results</a>
-                </li>
-                <li >
-                    <a href="extra_invoice.html">
-                        Invoice</a>
-                </li>
-                <li >
-                    <a href="extra_pricing_table.html">
-                        Pricing Tables</a>
-                </li>
-                <li >
-                    <a href="extra_image_manager.html">
-                        Image Manager</a>
-                </li>
-                <li >
-                    <a href="extra_404_option1.html">
-                        404 Page Option 1</a>
-                </li>
-                <li >
-                    <a href="extra_404_option2.html">
-                        404 Page Option 2</a>
-                </li>
-                <li >
-                    <a href="extra_404_option3.html">
-                        404 Page Option 3</a>
-                </li>
-                <li >
-                    <a href="extra_500_option1.html">
-                        500 Page Option 1</a>
-                </li>
-                <li >
-                    <a href="extra_500_option2.html">
-                        500 Page Option 2</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a class="active" href="javascript:;">
-                <i class="icon-sitemap"></i> 
-                <span class="title">3 Level Menu</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li>
-                    <a href="javascript:;">
-                        Item 1
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li><a href="#">Sample Link 1</a></li>
-                        <li><a href="#">Sample Link 2</a></li>
-                        <li><a href="#">Sample Link 3</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        Item 1
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li><a href="#">Sample Link 1</a></li>
-                        <li><a href="#">Sample Link 1</a></li>
-                        <li><a href="#">Sample Link 1</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        Item 3
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;">
-                <i class="icon-folder-open"></i> 
-                <span class="title">4 Level Menu</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li>
-                    <a href="javascript:;">
-                        <i class="icon-cogs"></i> 
-                        Item 1
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="javascript:;">
-                                <i class="icon-user"></i>
-                                Sample Link 1
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li><a href="#"><i class="icon-remove"></i> Sample Link 1</a></li>
-                                <li><a href="#"><i class="icon-pencil"></i> Sample Link 1</a></li>
-                                <li><a href="#"><i class="icon-edit"></i> Sample Link 1</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
-                        <li><a href="#"><i class="icon-external-link"></i>  Sample Link 2</a></li>
-                        <li><a href="#"><i class="icon-bell"></i>  Sample Link 3</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <i class="icon-globe"></i> 
-                        Item 2
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
-                        <li><a href="#"><i class="icon-external-link"></i>  Sample Link 1</a></li>
-                        <li><a href="#"><i class="icon-bell"></i>  Sample Link 1</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="icon-folder-open"></i>
-                        Item 3
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li >
-            <a href="javascript:;">
-                <i class="icon-user"></i> 
-                <span class="title">Login Options</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li >
-                    <a href="login.html">
-                        Login Form 1</a>
-                </li>
-                <li >
-                    <a href="login_soft.html">
-                        Login Form 2</a>
-                </li>
-            </ul>
-        </li>
-        <li class="active ">
-            <a href="javascript:;">
-                <i class="icon-th"></i> 
-                <span class="title">Data Tables</span>
-                <span class="selected"></span>
-                <span class="arrow open"></span>
-            </a>
-            <ul class="sub-menu">
-                <li >
-                    <a href="table_basic.html">
-                        Basic Tables</a>
-                </li>
-                <li >
-                    <a href="table_responsive.html">
-                        Responsive Tables</a>
-                </li>
-                <li >
-                    <a href="table_managed.html">
-                        Managed Tables</a>
-                </li>
-                <li class="active">
-                    <a href="table_editable.html">
-                        Editable Tables</a>
-                </li>
-                <li >
-                    <a href="table_advanced.html">
-                        Advanced Tables</a>
-                </li>
-            </ul>
-        </li>
-        <li >
-            <a href="javascript:;">
-                <i class="icon-file-text"></i> 
-                <span class="title">Portlets</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li >
-                    <a href="portlet_general.html">
-                        General Portlets</a>
-                </li>
-                <li >
-                    <a href="portlet_draggable.html">
-                        Draggable Portlets</a>
-                </li>
-            </ul>
-        </li>
-        <li >
-            <a href="javascript:;">
-                <i class="icon-map-marker"></i> 
-                <span class="title">Maps</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li >
-                    <a href="maps_google.html">
-                        Google Maps</a>
-                </li>
-                <li >
-                    <a href="maps_vector.html">
-                        Vector Maps</a>
-                </li>
-            </ul>
-        </li>
-        <li class="last ">
-            <a href="charts.html">
-                <i class="icon-bar-chart"></i> 
-                <span class="title">Visual Charts</span>
-            </a>
-        </li>
-    </ul>
-    <!-- END SIDEBAR MENU -->
+
+<!--accounts lightbox start-->
+<div class="lighbox_container accounts">
+
+    <div class="lighbox  small-10 small-offset-1 meduim-8 meduim-offset-2 large-6 large-offset-3 columns">
+
+        <a class="CloseLightBox">X</a>
+
+        <h3 class="text-center">مرحبا بك</h3>
+
+        <form id="register_form" class="signup">
+            <div id="register_errors" style="color:red;"></div>
+            <label> اسم المستخدم
+                <input type="text" name="reg_username">
+            </label>
+
+            <label> البريد الاليكترونى
+                <input type="text" name="reg_email" >
+            </label>
+
+            <label> كلمة المرور
+                <input type="password" name="reg_password">
+            </label>
+
+            <label> اعادة كلمة المرور
+                <input type="password" name="reg_confirm_pass">
+            </label>
+
+            <input type="submit" onClick="register();return false;" class="button expand" value="انشاء عضوية جديدة">
+
+            <a href="javascript:void(0);" class="GoToLogin">لدى عضوية , تسجيل الدخول</a>
+
+
+        </form>
+
+
+        <form id="forgot_form" class="forgetPass">
+            <p style="color:#09c;">برجاء ادخال البريد الاليكترونى وسيتم ارسال رسالة لتتمكن من استعادة كلمة المرور</p>
+
+            <div id="forgot_errors" style="color:red;"></div>
+            <label> البريد الاليكترونى
+                <input type="text" name="forgot_email">
+            </label>
+
+            <input type="submit" onClick="forgot_pass();return false;" class="button expand" value="استعادة كلمة المرور">
+
+            <a href="javascript:void(0);" class="GoToLogin"> تسجيل الدخول</a>
+
+        </form>
+
+
+
+
+        <form id="login_form" class="login">
+            <div id="login_errors" style="color:red;"></div>
+
+            <label> البريد الاليكترونى
+                <input type="text" name="email">
+            </label>
+
+            <label> كلمة المرور
+                <input type="password" name="password">
+            </label>
+            <div id="captcha_display" style="display:none;float:right;">
+                <a href="#" onclick="document.getElementById('captcha').src = '/pets/index/captcha?' + Math.random(); return false">كود أخر</a>
+                <img id="captcha" src="/pets/index/captcha" alt="CAPTCHA Image" />
+                <label style="width:100px;"> أدخل الكود
+                    <input type="text" name="captcha_code" width="50" maxlength="6">
+                </label>
+            </div>
+
+            <input type="submit" onClick="login();return false;" class="button expand" value="تسجيل الدخول">
+
+            <a href="javascript:void(0);" class="GoForgetPass">نسيت كلمة المرور</a>
+            <br>
+            <a href="javascript:void(0);" class="GoToSignup">ليس لدى عضوية , انشاء عضوية جديدة </a>
+
+        </form>
+
+
+    </div>
+
+
 </div>
-<!-- END SIDEBAR -->
+<!--accounts lightbox end-->
+
+<!--search lightbox start-->
+<div class="lighbox_container searching">
+
+    <div class="lighbox  small-10 small-offset-1 meduim-8 meduim-offset-2 large-6 large-offset-3 columns">
+
+        <a class="CloseLightBox">X</a>
+
+        <h3 class="text-center">البحث</h3>
+
+        <form>
+
+
+            <div class="large-8 small-12 meduim-8 columns">
+                <input type="text" placeholder="ادخل كلمات البحث" style="height:44px;">
+            </div>
+
+            <div class="large-4 small-12 meduim-4 columns">
+                <a href="#" class="button expand" style="margin-top:0;">بحث</a>
+            </div>
+
+            <div class=" small-12 columns" style="padding:0;">
+
+                <div class="small-12 columns right">
+                    <h5 style="color:#09c; border-bottom:1px solid #60e0f5; padding-bottom:6px; margin-bottom:6px;">فلترة البحث</h5>
+                </div>
+
+                <div class="small-12 meduim-6 large-4 columns">
+
+
+                    <label>الدولة
+                        <select>
+                            <option value="">اختار الدولة</option>
+                            <option value="مصر">مصر</option>
+                            <option value="لبنان">لبنان</option>
+                            <option value="المفرب">المفرب</option>
+                            <option value="الامارات">الامارات</option>
+                        </select>
+                    </label>
+
+                </div>
+
+                <div class="small-12 meduim-6 large-4 columns">
+
+                    <label>المحافظة
+                        <select>
+                            <option value="">اختار المحافظة</option>
+                            <option value="بنى سويف">بنى سويف</option>
+                            <option value="المنيا">المنيا</option>
+                            <option value="اسيوط">اسيوط</option>
+                            <option value="سوهاج">سوهاج</option>
+                        </select>
+                    </label>
+
+                </div>
+
+                <div class="small-12 meduim-6 large-4 columns">
+
+                    <label>المدينة
+                        <select>
+                            <option value="">اختار المدينة</option>
+                            <option value="بنى سويف">بنى سويف</option>
+                            <option value="المنيا">المنيا</option>
+                            <option value="اسيوط">اسيوط</option>
+                            <option value="سوهاج">سوهاج</option>
+                        </select>
+                    </label>
+
+                </div>
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+<!--search lightbox end-->
+
+<!--menu section start-->  
+<div class="menu_section">
+    <? if (!$no_add_ad) { ?>
+        <a href="/pets/ads" class="button success expand" style="padding:0; margin-top:0; line-height:38px;">إضافة إعلان جديد +</a>
+    <? } ?>
+
+    <!--menu start-->
+    <ul class="main_menu">
+
+        <!--main menu trigger-->
+        <li class="menu_trigger">
+            <div class="icon menu"></div>
+            <div class="text"> القائمة</div>
+        </li>
+
+        <li>
+            <div class="icon dogs"></div>
+            <div class="text"> كلاب</div>
+        </li>
+
+        <!--first level-->
+        <ul class="sub_menu1">
+
+            <li>كلاب للبيع</li>
+
+            <!--second level-->
+            <ul class="sub_menu2">
+
+                <li>سلالات كبيرة</li>
+
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <li>نوع 01</li>
+                    <li>نوع 02</li>
+                    <li>نوع 03</li>
+                    <li>نوع 04</li>
+                    <li>نوع 05</li>
+                    <li>نوع 06</li>
+                    <li>نوع 07</li>
+                    <li>نوع 08</li>
+                    <li>نوع 09</li>
+                    <li>نوع 10</li>
+                </ul>
+
+                <li>سلالات متوسطة</li>
+
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <li>نوع 01</li>
+                    <li>نوع 02</li>
+                    <li>نوع 03</li>
+                    <li>نوع 04</li>
+                    <li>نوع 05</li>
+                    <li>نوع 06</li>
+                    <li>نوع 07</li>
+                    <li>نوع 08</li>
+                    <li>نوع 09</li>
+                    <li>نوع 10</li>
+                </ul>
+
+                <li>سلالات صغيرة</li>
+
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <li>نوع 01</li>
+                    <li>نوع 02</li>
+                    <li>نوع 03</li>
+                    <li>نوع 04</li>
+                    <li>نوع 05</li>
+                    <li>نوع 06</li>
+                    <li>نوع 07</li>
+                    <li>نوع 08</li>
+                    <li>نوع 09</li>
+                    <li>نوع 10</li>
+                </ul>
+
+            </ul>
+
+
+
+            <li>ذكور للزواج</li>
+
+            <!--second level-->
+            <ul class="sub_menu2">
+
+                <li>سلالات كبيرة</li>
+
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <li>نوع 01</li>
+                    <li>نوع 02</li>
+                    <li>نوع 03</li>
+                    <li>نوع 04</li>
+                    <li>نوع 05</li>
+                    <li>نوع 06</li>
+                    <li>نوع 07</li>
+                    <li>نوع 08</li>
+                    <li>نوع 09</li>
+                    <li>نوع 10</li>
+                </ul>
+
+                <li>سلالات متوسطة</li>
+
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <li>نوع 01</li>
+                    <li>نوع 02</li>
+                    <li>نوع 03</li>
+                    <li>نوع 04</li>
+                    <li>نوع 05</li>
+                    <li>نوع 06</li>
+                    <li>نوع 07</li>
+                    <li>نوع 08</li>
+                    <li>نوع 09</li>
+                    <li>نوع 10</li>
+                </ul>
+
+                <li>سلالات صغيرة</li>
+
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <li>نوع 01</li>
+                    <li>نوع 02</li>
+                    <li>نوع 03</li>
+                    <li>نوع 04</li>
+                    <li>نوع 05</li>
+                    <li>نوع 06</li>
+                    <li>نوع 07</li>
+                    <li>نوع 08</li>
+                    <li>نوع 09</li>
+                    <li>نوع 10</li>
+                </ul>
+
+            </ul>
+
+
+
+            <li><a href="">كلاب للتبنى</a></li>
+            <li><a href="">مستلزمات كلاب</a></li>
+
+
+            <li>مقالات</li>
+            <!--second level-->
+            <ul class="sub_menu2">
+
+                <li>تصنيف 01</li>
+                <li>تصنيف 01</li>
+                <li>تصنيف 01</li>
+
+            </ul>
+
+
+            <li><a href="">فيديوهات</a></li>
+            <li><a href=""> صور </a></li>
+
+        </ul>
+
+
+        <li>
+            <div class="icon cats"></div>
+            <div class="text"> قطط</div>
+        </li>
+
+
+        <!--first level-->
+        <ul class="sub_menu1">
+
+            <li>قطط للبيع</li>
+
+            <!--second level-->
+            <ul class="sub_menu2">
+
+                <li>سلالات كبيرة </li>
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <li>نوع 01</li>
+                    <li>نوع 02</li>
+                    <li>نوع 03</li>
+                    <li>نوع 04</li>
+                    <li>نوع 05</li>
+                    <li>نوع 06</li>
+                    <li>نوع 07</li>
+                    <li>نوع 08</li>
+                    <li>نوع 09</li>
+                    <li>نوع 10</li>
+                </ul>
+
+
+                <li>سلالات متوسطة</li>
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <li>نوع 01</li>
+                    <li>نوع 02</li>
+                    <li>نوع 03</li>
+                    <li>نوع 04</li>
+                    <li>نوع 05</li>
+                    <li>نوع 06</li>
+                    <li>نوع 07</li>
+                    <li>نوع 08</li>
+                    <li>نوع 09</li>
+                    <li>نوع 10</li>
+                </ul>
+
+
+                <li>سلالات صغيرة</li>
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <li>نوع 01</li>
+                    <li>نوع 02</li>
+                    <li>نوع 03</li>
+                    <li>نوع 04</li>
+                    <li>نوع 05</li>
+                    <li>نوع 06</li>
+                    <li>نوع 07</li>
+                    <li>نوع 08</li>
+                    <li>نوع 09</li>
+                    <li>نوع 10</li>
+                </ul>
+
+
+            </ul>
+
+
+
+            <li>ذكور للزواج </li>
+
+            <!--second level-->
+            <ul class="sub_menu2">
+
+                <li>سلالات كبيرة
+                    <!--third level-->
+                    <ul class="sub_menu3">
+                        <li>نوع 01</li>
+                        <li>نوع 02</li>
+                        <li>نوع 03</li>
+                        <li>نوع 04</li>
+                        <li>نوع 05</li>
+                        <li>نوع 06</li>
+                        <li>نوع 07</li>
+                        <li>نوع 08</li>
+                        <li>نوع 09</li>
+                        <li>نوع 10</li>
+                    </ul>
+                </li>
+
+                <li>سلالات متوسطة
+                    <!--third level-->
+                    <ul class="sub_menu3">
+                        <li>نوع 01</li>
+                        <li>نوع 02</li>
+                        <li>نوع 03</li>
+                        <li>نوع 04</li>
+                        <li>نوع 05</li>
+                        <li>نوع 06</li>
+                        <li>نوع 07</li>
+                        <li>نوع 08</li>
+                        <li>نوع 09</li>
+                        <li>نوع 10</li>
+                    </ul>
+                </li>
+
+                <li>سلالات صغيرة
+                    <!--third level-->
+                    <ul class="sub_menu3">
+                        <li>نوع 01</li>
+                        <li>نوع 02</li>
+                        <li>نوع 03</li>
+                        <li>نوع 04</li>
+                        <li>نوع 05</li>
+                        <li>نوع 06</li>
+                        <li>نوع 07</li>
+                        <li>نوع 08</li>
+                        <li>نوع 09</li>
+                        <li>نوع 10</li>
+                    </ul>
+                </li>
+
+            </ul>
+
+
+
+
+            <li><a href="">قطط للتبنى</a></li>
+            <li><a href="">مستلزمات قطط</a></li>
+
+            <li>مقالات</li>
+
+            <!--second level-->
+            <ul class="sub_menu2">
+
+                <li> امراض</li>
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <li><a href="">نوع 01</a></li>
+                    <li><a href="">نوع 01</a></li>
+                    <li><a href="">نوع 01</a></li>
+                </ul>
+
+                <li> رعاية بيطرية</li>
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <li><a href="">نوع 01</a></li>
+                    <li><a href="">نوع 01</a></li>
+                    <li><a href="">نوع 01</a></li>
+                </ul>
+
+                <li>عناية بالقطط</li>
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <li><a href="">نوع 01</a></li>
+                    <li><a href="">نوع 01</a></li>
+                    <li><a href="">نوع 01</a></li>
+                </ul>
+
+            </ul>
+
+            <li><a href="">فيديوهات</a></li>
+            <li><a href=""> صور </a></li>
+
+        </ul>
+
+
+        <li>
+            <div class="icon birds"></div>
+            <div class="text">طيور</div>
+        </li>
+
+        <li>
+            <div class="icon fish"></div>
+            <div class="text">اسماك</div>
+        </li>
+
+        <li>
+            <div class="icon turtles"></div>
+            <div class="text">زواحف</div>
+        </li>
+
+        <li>
+            <div class="icon horses"></div>
+            <div class="text">خيول</div>
+        </li>
+
+        <li>
+            <div class="icon vet"></div>
+            <div class="text"> <a href="">العيادات</a></div>
+        </li>
+
+        <li>
+            <div class="icon about"></div>
+            <div class="text"> <a href="">عن الموقع</a></div>
+        </li>
+
+        <li>
+            <div class="icon contact"></div>
+            <div class="text"> <a href="">اتصل بنا</a></div>
+        </li>
+
+        <? if (Login::get_instance()->check_login() != 'valid') { ?>
+            <li>
+                <div class="icon account"></div>
+                <div class="text"> تسجيل</div>
+            </li>
+        <? } ?>
+
+        <li>
+            <div class="icon search"></div>
+            <div class="text">البحث</div>
+        </li>
+
+
+
+    </ul>
+    <!--menu end-->
+
+
+
+    <!--social media start-->
+    <div style="margin-bottom:16px !important; float:right;">
+
+        <div  class="social_home" style="background: #446BC1">
+            <div class="social_media_icon_container" ><a target="_blank" id="facebook"  href="http://www.goo.gl/3dm8Vm"  ></a></div>
+            <span>1234</span>
+            <span  class="mobile_hide">معجب</span>
+        </div>
+
+        <div  class="social_home"  style="background: #EE3532">
+            <div class="social_media_icon_container" ><a target="_blank" id="google"    href="http://www.goo.gl/vE77YD"  ></a></div>
+            <span>12110</span>
+            <span  class="mobile_hide">مشترك</span>
+        </div>
+
+        <div  class="social_home"  style="background:#0FB0DB">
+            <div class="social_media_icon_container" ><a target="_blank" id="twitter"   href="http://www.goo.gl/balJMf"  ></a></div>
+            <span>12110</span>
+            <span  class="mobile_hide">متابع</span>
+        </div>
+
+
+        <div  class="social_home"  style="background:#DB2426">
+            <div class="social_media_icon_container" ><a target="_blank" id="youtube"   href="http://www.goo.gl/nbJpzI"  ></a></div>
+            <span>12110</span>
+            <span  class="mobile_hide">مشترك</span>
+        </div>
+
+        <div class="social_home" style="background:#6D574C;">
+            <div class="social_media_icon_container"><a target="_blank" id="instagram" href="http://www.goo.gl/SIiwfF" ></a></div>
+            <span>12110</span>
+            <span class="mobile_hide">متابع</span>
+        </div>
+
+
+    </div>
+    <!--social media end-->
+
+</div>
+<!--menu section end--> 

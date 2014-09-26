@@ -9,6 +9,7 @@ class db {
     static $tables = array(
         //
         'ads' => '`pets`.`ads`',
+        'ads_img' => '`pets`.`ads_img`',
         'cities' => '`pets`.`cities`',
         'countries' => '`pets`.`countries`',
         'pets' => '`pets`.`pets`',
@@ -130,6 +131,7 @@ class db {
                 throw new Exception("MySQL error {$this->dbh->error} <br> Query:<br> $query", $this->dbh->errno);
             } catch (Exception $exc) {
                 // error handler
+                echo $exc->getMessage();
                 // $this->sendReport($exc);
             }
         }

@@ -25,6 +25,8 @@
         <script src="<?= TEMPLATE_URL; ?>/js/responsive.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/dropzone.min.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/index.js"></script>
+        <script src="<?= TEMPLATE_URL; ?>/js/ads.js"></script>
+        
 
 
 

@@ -206,7 +206,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `email`, `password`, `username`, `fname`, `lname`, `country`, `city`, `is_blocked`, `time_added`, `date_added`) VALUES
 (1, 'hellboyon@gmail.com', '9a57acad6a57183e32968f137dcdb4b2', '', NULL, NULL, NULL, NULL, 0, NULL, NULL),
-(3, 'celicalderon@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'asdasd', NULL, NULL, NULL, NULL, 0, 1411383863, 2091);
 
 --
 -- Constraints for dumped tables

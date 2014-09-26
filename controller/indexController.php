@@ -5,6 +5,23 @@ Class indexController Extends baseController {
     public function index() {
         session_start();
         //Login::get_instance()->logout();
+        
+        $d = new DOMDocument();
+        
+       $d->loadHTMLFile('../egypt.php');
+       echo $d->getElementsByTagName('optgroup');
+        
+        $settings = array();
+        if ($_GET) {
+            if (isset($_GET['pt']) && is_numeric($_GET['pt']))
+                $settings['pet_id'] = intval($_GET['pt']);
+            if (isset($_GET['ty']) && is_numeric($_GET['ty']))
+                $settings['type'] = intval($_GET['ty']);
+            if (isset($_GET['p']) && is_numeric($_GET['p']))
+                $settings['page'] = intval($_GET['p']);
+        }
+
+        $this->registry->template->ads = ads::load_ads(1, $settings);
         $this->registry->template->title = 'Home | Pets Services';
         $this->registry->template->show('index');
     }
@@ -72,7 +89,8 @@ Class indexController Extends baseController {
 
             if ($pass != $confirm_pass)
                 $errors[] = 'تأكيد كلمة المرور غير صحيح';
-
+            if (empty($username))
+                $errors[] = 'يجب ادخال اسم المستخدم';
             a:
             if (empty($errors)) {
                 Register::get_instance()->new_user(array('email' => $email,
