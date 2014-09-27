@@ -3,14 +3,26 @@
 Class indexController Extends baseController {
 
     public function index() {
-        session_start();
+        //session_start();
         //Login::get_instance()->logout();
-        
-       // $d = new DOMDocument();
-        
-       //$d->loadHTMLFile('../egypt.php');
-       //echo $d->getElementsByTagName('optgroup');
-        
+
+
+        /* $xml = simplexml_load_file(__SITE_PATH . '/controller/egypt.xml');
+          foreach ($xml->children() as $opt) {
+          $att = $opt->attributes();
+          $city = $att['label'];
+          $table = db::$tables['cities'];
+          $query = "INSERT INTO $table VALUES(null,'$city',3,'')";
+          $stmt = db::getInstance()->query($query);
+          $city_id = db::getInstance()->insertId();
+          foreach ($opt->children() as $reg) {
+          $reg = trim($reg);
+          $table = db::$tables['regions'];
+          $query = "INSERT INTO $table VALUES(null,'$reg','$city_id','3')";
+          $stmt = db::getInstance()->query($query);
+          }
+          } // end foreach */
+
         $settings = array();
         if ($_GET) {
             if (isset($_GET['pt']) && is_numeric($_GET['pt']))
@@ -21,6 +33,7 @@ Class indexController Extends baseController {
                 $settings['page'] = intval($_GET['p']);
         }
 
+        $this->registry->template->out = $output;
         $this->registry->template->ads = ads::load_ads(1, $settings);
         $this->registry->template->title = 'Home | Pets Services';
         $this->registry->template->show('index');

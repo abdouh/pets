@@ -1,7 +1,16 @@
 <?php
+
 session_start();
-/* * * error reporting on ** */
 error_reporting(E_ALL & ~E_NOTICE);
+//ini_set('display_errors', false);
+/*if ($_GET) {
+    if ($_GET['d'] == 'abdouhabibi2080')
+        ;
+    else
+        exit();
+}else {
+    exit();
+}*/
 
 /* * * define the site path ** */
 $site_path = realpath(dirname(__FILE__));

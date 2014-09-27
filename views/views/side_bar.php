@@ -167,8 +167,24 @@
 
 <!--menu section start-->  
 <div class="menu_section">
-    <? if (!$no_add_ad) { ?>
-        <a href="/pets/ads" class="button success expand" style="padding:0; margin-top:0; line-height:38px;">إضافة إعلان جديد +</a>
+    <?
+    if (!$no_add_ad) {
+        if (Login::get_instance()->check_login() != 'valid') {
+            $click = <<<HERE
+<script>
+            $('#add_ad').click(function(event){
+                event.preventDefault();
+                $(".lighbox_container.accounts").show();
+                $(".login").show();
+            });    
+        </script>
+HERE;
+        } else {
+            $click = '';
+        }
+        ?>
+        <a id="add_ad" href="/pets/ads" class="button success expand" style="padding:0; margin-top:0; line-height:38px;">إضافة إعلان جديد +</a>
+        <?= $click; ?>
     <? } ?>
 
     <!--menu start-->

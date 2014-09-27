@@ -1,32 +1,82 @@
+$(document).ready(function() {       
+    $('#country').on('change',function(){
+        load_cities($(this).val());
+    });
+    
+    $('#city').on('change',function(){
+        load_regions($(this).val());
+    });
+    
+    $('#category').on('change',function(){
+        load_pets($(this).val());
+    });
+});
+
+
 function process_ad(){
-    $('#errors').html('');
-    if($('input[name="email"]').val() == ''){
-        $('#login_errors').html('قم بادخال البريد الالكترونى');
-        return;
-    }
-    if($('input[name="password"]').val() == ''){
-        $('#login_errors').html('قم بادخال كلمة المرور');
-        return;
-    }
+    $('#ad_errors').html('<img width="25" src="/pets/views/img/cool-cat.gif"/>');
     $.ajax({
-        url: "/pets/index/login", 
+        url: "/pets/ads/processad", 
         type: 'POST', 
-        data: $('#login_form').serialize(), 
+        data: $('#ad_data').serialize(), 
         success: function (data) {
             console.log(data);
-            $('#login_errors').html('');
+            $('#ad_errors').html('');
             var new_data = jQuery.parseJSON(data);
             if(new_data['operation'] == 2){
-                if(new_data['status'] == 'blocked')
-                    $('#captcha_display').show();
-                document.getElementById('captcha').src = '/pets/index/captcha?' + Math.random();
                 $.each(new_data['errors'],function(index, value){
-                    $('#login_errors').append(new_data['errors'][index]+'<br/>');
+                    $('#ad_errors').append(new_data['errors'][index]+'<br/>');
                 });
             }else if(new_data['operation'] == 1){
-                $('#login_errors').html('<span style="color:green;">تم تسجيل الدخول بنجاح</span>');
-                window.location = '/pets/index';
+                $('#ad_errors').html('<span style="color:green;">تم اضافة اعلانك بنجاح</span>');
+                //window.location = '/pets/index';
             }
+        }
+    });
+}
+
+function load_cities(country){
+    $.ajax({
+        url: "/pets/ads/jsload", 
+        type: 'POST', 
+        data: {
+            'type':1,
+            'data':country
+        }, 
+        success: function (data) {
+            console.log(data);
+            $('#city').html(data);
+            $('#region').html('<option>اختار المنطقة</option>');
+        }
+    });
+}
+
+function load_regions(city){
+    $.ajax({
+        url: "/pets/ads/jsload", 
+        type: 'POST', 
+        data: {
+            'type':2,
+            'data':city
+        } , 
+        success: function (data) {
+            console.log(data);
+            $('#region').html(data);
+        }
+    });
+}
+
+function load_pets(cat){
+    $.ajax({
+        url: "/pets/ads/jsload", 
+        type: 'POST', 
+        data: {
+            'type':3,
+            'data':cat
+        } , 
+        success: function (data) {
+            console.log(data);
+            $('#pet').html(data);
         }
     });
 }

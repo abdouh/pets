@@ -2,13 +2,14 @@
 <body>
     <? require_once 'header.php'; ?>
 
+    <?= $out; ?>
     <div class="row" style="margin-top:36px;">
 
         <? require_once 'side_bar.php'; ?>
 
         <!--main content start-->
         <div class="content">
-
+            
             <!--Breadcrumbs start-->
             <div class="row" style="margin:0 0 16px 0;">
                 <ul class="breadcrumbs">
@@ -37,7 +38,7 @@
             <div class="row" style="margin:0 0 16px 0;">
                 <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-3 ads_view">
                     <? foreach ($ads as $index => $array) { ?>
-                        <li><a href="<?= READ_ONLY . '/view/?id=' . $array['id']; ?>">
+                        <li><a href="<?= READ_ONLY . '/ads/view/?id=' . $array['id']; ?>">
                                 <div class="ad_title_view">
                                     <?= $array['title']; ?>
                                 </div>

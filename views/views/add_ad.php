@@ -23,7 +23,9 @@
 
 
             <!--ad info code start-->
-            <form>
+            <form id="ad_data">
+                <div id="ad_errors" style="color:red;">
+                </div>
 
                 <!--نوع الاعلان-->
                 <div class=" small-12  meduim-12  large-4 columns" style="border-left:1px solid #ccc;">
@@ -33,15 +35,10 @@
                     </div>
 
                     <div class="small-12 columns right">
-
-
                         <label>نوع الحيوان الاليف
-                            <select>
+                            <select name="cat" id="category">
                                 <option value="">اختار النوع</option>
-                                <option value="كلاب">كلاب</option>
-                                <option value="قطط">قطط</option>
-                                <option value="اسماك">اسماك</option>
-                                <option value="خيول">خيول</option>
+                                <?= Temp::load_list_options('ads_cats'); ?>
                             </select>
                         </label>
 
@@ -50,14 +47,9 @@
                     <div class="small-12 columns right">
 
                         <label>نوع الاعلان
-                            <select>
+                            <select name="type">
                                 <option value="">اختار النوع</option>
-                                <?
-                                $types = Lists::ads_types();
-                                foreach ($types as $type) {
-                                    ?> 
-                                    <option value="<?= $type['value']; ?>"><?= $type['text']; ?></option>
-                                <? } ?>
+                                <?= Temp::load_list_options('ads_types'); ?>
                             </select>
                         </label>
 
@@ -66,12 +58,8 @@
                     <div class="small-12 columns right">
 
                         <label>تفاصيل
-                            <select>
+                            <select id="pet" name="pet">
                                 <option value="">اختار النوع</option>
-                                <option value="بنى سويف">بنى سويف</option>
-                                <option value="المنيا">المنيا</option>
-                                <option value="اسيوط">اسيوط</option>
-                                <option value="سوهاج">سوهاج</option>
                             </select>
                         </label>
 
@@ -98,8 +86,7 @@
                     <div class="small-12 columns right">
 
                         <label>معلومات الاعلان هنا
-                            <textarea style="height:120px;">
-                            </textarea>
+                            <textarea name="desc" style="height:120px;"></textarea>
                         </label>
 
                     </div>
@@ -118,26 +105,9 @@
 
 
                         <label>الدولة
-                            <select>
+                            <select id="country" name="country">
                                 <option value="">اختار الدولة</option>
-                                <option value="مصر">مصر</option>
-                                <option value="لبنان">لبنان</option>
-                                <option value="المفرب">المفرب</option>
-                                <option value="الامارات">الامارات</option>
-                            </select>
-                        </label>
-
-                    </div>
-
-                    <div class="small-12 columns right">
-
-                        <label>المحافظة
-                            <select>
-                                <option value="">اختار المحافظة</option>
-                                <option value="بنى سويف">بنى سويف</option>
-                                <option value="المنيا">المنيا</option>
-                                <option value="اسيوط">اسيوط</option>
-                                <option value="سوهاج">سوهاج</option>
+                                <?= Temp::load_list_options('ads_countries'); ?>
                             </select>
                         </label>
 
@@ -146,19 +116,25 @@
                     <div class="small-12 columns right">
 
                         <label>المدينة
-                            <select>
+                            <select id="city" name="city">
                                 <option value="">اختار المدينة</option>
-                                <option value="بنى سويف">بنى سويف</option>
-                                <option value="المنيا">المنيا</option>
-                                <option value="اسيوط">اسيوط</option>
-                                <option value="سوهاج">سوهاج</option>
+                            </select>
+                        </label>
+
+                    </div>
+
+                    <div class="small-12 columns right">
+
+                        <label>المنطقة
+                            <select id="region" name="region">
+                                <option value="">اختار المنطقة</option>
                             </select>
                         </label>
 
                     </div>
 
                 </div>  
-
+                <input type="submit" value="أضف اعلانك" onClick="process_ad();return false;">
 
                 <!--ad info code end-->
 
@@ -174,29 +150,6 @@
 
             </div>
             <!--ad image code end-->
-            <script>
-                dropZone.on("success", function(file, serverFileName) {
-                    fileList[serverFileName] = {"serverFileName" : serverFileName, "fileName" : file.name };
-                });
-                dropzone.on("removedfile", function(file) {
-                    alert('here');
-                    var server_file = $(file.previewTemplate).children('.server_file').text();
-                    alert(server_file);
-                    // Do a post request and pass this path and use server-side language to delete the file
-                    $.post("/pets/ads/del", { file_to_be_deleted: server_file } );
-                });
-                
-                
-                function delete_file(){
-                    $.ajax({
-                        url: "/pets/ads/del",
-                        type: "POST",
-                        data: { "fileList" : JSON.stringify(fileList) }
-                    });
-                }
-                
-            </script>
-
         </div>
         <!--main content end-->
 

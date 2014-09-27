@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<home>
+
+
+                                        
+    <optgroup label="أم القيوين">
+        <option value="60248">الآحد</option>
+        <option value="60256">الدار البيضاء</option>
+        <option value="60250">الحديثة</option>
+        <option value="60259">الهوية</option>
+        <option value="60249">الحمرة</option>
+        <option value="60254">الخور</option>
+        <option value="60251">الميدان</option>
+        <option value="60253">الرأس</option>
+        <option value="60245">الرملة</option>
+        <option value="60258">الروضة</option>
+        <option value="60252">الرقة</option>
+        <option value="60244">السلامة</option>
+        <option value="60247">مخيم الدفاع</option>
+        <option value="60257">مسجد المزروئي</option>
+        <option value="60260">المدينة القديمة</option>
+        <option value="60246">المنطقة الصناعية</option>
+    </optgroup>
+                                        
+                                                                                                      
+</home>

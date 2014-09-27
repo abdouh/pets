@@ -11,6 +11,7 @@ class db {
         'ads' => '`pets`.`ads`',
         'ads_img' => '`pets`.`ads_img`',
         'cities' => '`pets`.`cities`',
+        'regions' => '`pets`.`regions`',
         'countries' => '`pets`.`countries`',
         'pets' => '`pets`.`pets`',
         'pets_categories' => '`pets`.`pets_categories`',

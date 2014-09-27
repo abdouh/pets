@@ -46,7 +46,25 @@ return array(
                 'numeric' => 1,
             ),
         ),
+        'region' => array(
+            'validations' => array(
+                'notEmpty' => 1,
+                'numeric' => 1,
+            ),
+        ),
         'pet_id' => array(
+            'validations' => array(
+                'notEmpty' => 1,
+                'numeric' => 1,
+            ),
+        ),
+        'cat_id' => array(
+            'validations' => array(
+                'notEmpty' => 1,
+                'numeric' => 1,
+            ),
+        ),
+        'var_id' => array(
             'validations' => array(
                 'notEmpty' => 1,
                 'numeric' => 1,
@@ -61,7 +79,6 @@ return array(
         'date_added' => array(
             'validations' => array(
                 'notEmpty' => 1,
-                'date' => 1,
             ),
         ),
     ),

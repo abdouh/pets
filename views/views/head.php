@@ -11,14 +11,13 @@
         <link rel="stylesheet" href="<?= TEMPLATE_URL; ?>/css/costa.css" />
         <link rel="stylesheet" href="<?= TEMPLATE_URL; ?>/css/menu.css" />
         <link rel="stylesheet" href="<?= TEMPLATE_URL; ?>/css/dropzone.css" />
-
+        <link rel="stylesheet" href="<?= TEMPLATE_URL; ?>/css/slider_style.css" />
 
 
         <script src="<?= TEMPLATE_URL; ?>/js/vendor/jquery.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/vendor/modernizr.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/foundation/foundation.orbit.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/vendor/foundation.equalizer.js"></script>
-        <script src="<?= TEMPLATE_URL; ?>/js/foundation/foundation.orbit.js"></script>
 
         <script src="<?= TEMPLATE_URL; ?>/js/menu.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/accounts.js"></script>
@@ -26,7 +25,7 @@
         <script src="<?= TEMPLATE_URL; ?>/js/dropzone.min.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/index.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/ads.js"></script>
-        
+
 
 
 

@@ -16,7 +16,7 @@ class ads {
             $query_array[] = "`$setting` = '$value'";
         }
         if (!empty($query_array))
-            $query_end = 'WHERE ' . join(' AND ', $pieces);
+            $query_end = 'WHERE ' . join(' AND ', $query_array);
 
         $table = db::$tables['ads'];
         $query = "SELECT * FROM $table $query_end ORDER BY `time_added` DESC LIMIT $limit";

@@ -48,9 +48,9 @@ HERE;
         
     }
 
-    static function load_list_options($list_name) {
+    static function load_list_options($list_name, $params = array()) {
         if (method_exists('Lists', $list_name))
-            $req_list = forward_static_call_array(array('Lists', $list_name), array());
+            $req_list = forward_static_call_array(array('Lists', $list_name), $params);
         else
             return;
         foreach ($req_list as $option => $data) {
