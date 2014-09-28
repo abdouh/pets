@@ -68,7 +68,7 @@ Class adsController Extends baseController {
                 //$foo->image_ratio_y = true;
                 $foo->Process($targetPath);
                 if ($foo->processed) {
-                    echo $targetFile;
+                    echo $targetName;
                     $foo->Clean();
                 }
             }
@@ -80,10 +80,9 @@ Class adsController Extends baseController {
         $user_data = Register::get_instance()->get_current_user();
         $storeFolder = '..' . $ds . 'views' . $ds . 'temp_img';
         $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
-        $targetPath = str_replace($ds, "\\$ds", $targetPath);
-        $pattern = "/(" . $targetPath . ")(" . $user_data['id'] . ")(.)*(\.jpeg)$/";
-        if (preg_match($pattern, $_POST['path'])) {
-            unlink($_POST['path']);
+        $pattern = "/^(" . $user_data['id'] . "_)(.)*/";
+        if (preg_match($pattern, $_POST['f'])) {
+            unlink($targetPath . $_POST['f'] . '.jpeg');
         }
     }
 
