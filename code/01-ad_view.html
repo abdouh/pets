@@ -8,8 +8,6 @@
     
     <link rel="stylesheet" href="css/costa.css" />
     <link rel="stylesheet" href="css/menu.css" />
-    <link rel="stylesheet" href="css/slider_style.css" />
-    
     
     
     <script src="js/vendor/jquery.js"></script>
@@ -433,58 +431,64 @@
   
   
   <!--ad image code start-->
-  <div class=" small-12 medium-12  large-8 columns  left" style="padding:0 !important;">
-  <div class="slider">
+  <div class=" small-12 medium-12  large-7  columns left" style="padding:0 !important;">
   
   <div class="price">
   <span class="price_number">7000</span>
   <span class="price_currency">جنيه مصرى</span>
   </div>
   
-	<input type="radio" name="slide_switch" id="id1"/>
-    
-    
-	<label for="id1">
-		<img src="./img/2.jpg"/>
-	</label>
-    
-	<img src="./img/2.jpg"/>
+  
+  <script>
+  $(document).ready(function() {
+	  $(".ad_img_thumb").click(function(){
+		  var current = $(this).attr('src');
+		  $(".ad_img_preview").attr("src", current);
+		  
+		  $(this).addClass("current_image");
+		  $(this).siblings().removeClass("current_image");
+
+	   })
+	   
+	/*open photo light box*/
+	$(".ad_img_preview").click(function(){
+	$(".lighbox_container").show();
+	var preview = $(this).attr('src');
+	$(".lighbox_container > div > img").attr("src", preview);
+	})	
 	
-	<!--Lets show the second image by default on page load-->
-	<input type="radio" name="slide_switch" id="id2" checked="checked"/>
-    
-	<label for="id2">
-		<img src="http://thecodeplayer.com/uploads/media/40Ly3VB.jpg"/>
-	</label>
-	<img src="http://thecodeplayer.com/uploads/media/40Ly3VB.jpg"/>
-	
-	<input type="radio" name="slide_switch" id="id3"/>
-	<label for="id3">
-		<img src="http://thecodeplayer.com/uploads/media/00kih8g.jpg" width="100"/>
-	</label>
-    
-	<img src="http://thecodeplayer.com/uploads/media/00kih8g.jpg"/>
-	
-	<input type="radio" name="slide_switch" id="id4"/>
-	<label for="id4">
-		<img src="http://thecodeplayer.com/uploads/media/2rT2vdx.jpg" width="100"/>
-	</label>
-	<img src="http://thecodeplayer.com/uploads/media/2rT2vdx.jpg"/>
-	
-	<input type="radio" name="slide_switch" id="id5"/>
-	<label id="id5" for="id5">
-		<img src="http://thecodeplayer.com/uploads/media/8k3N3EL.jpg" width="100"/>
-	</label>
-	<img src="http://thecodeplayer.com/uploads/media/8k3N3EL.jpg"/>
-</div>
+	/*close light box*/
+	$(".CloseLightBox").click(function(){
+    $(this).parent().parent().hide();
+	})
+
+  });
+  </script>
+  
+  <div class="lighbox_container">
+  <div class="lighbox  small-10 small-offset-1 meduim-10 meduim-offset-1 large-6 large-offset-3 columns">
+  <a class="CloseLightBox">X</a>
+  <img src="">
+  </div>
+  </div>
+  
+  <img class="ad_img_preview" src="img/1.jpg">
+  <img class="ad_img_thumb" src="img/1.jpg" style="width:18%; float:right; margin:2% 0 2% 2.5%;">
+  <img class="ad_img_thumb" src="img/2.jpg" style="width:18%; float:right; margin:2% 0 2% 2.5%;">
+  <img class="ad_img_thumb" src="img/1.jpg" style="width:18%; float:right; margin:2% 0 2% 2.5%;">
+  <img class="ad_img_thumb" src="img/2.jpg" style="width:18%; float:right; margin:2% 0 2% 2.5%;">
+  <img class="ad_img_thumb" src="img/1.jpg" style="width:18%; margin:2% 0 2% 0;">
+      
   </div>
   <!--ad image code end-->
   
   
   <!--ad info code start-->
-  <div class=" small-12  large-4 columns  right" style="padding-right:0 !important;">
+  <div class=" small-12  large-5 columns  right" style="padding-right:0 !important;">
   
   <div class="ad_info_element">
+  <h5>وصف الاعلان</h5>
+  
   <p>
   لوريم إيبسوم هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف
   </p>

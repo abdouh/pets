@@ -3,13 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ad name here | pets services</title>
+    <title>activate ads | pets services</title>
     <link rel="stylesheet" href="css/foundation.css" />
     
     <link rel="stylesheet" href="css/costa.css" />
     <link rel="stylesheet" href="css/menu.css" />
-    <link rel="stylesheet" href="css/slider_style.css" />
-    
     
     
     <script src="js/vendor/jquery.js"></script>
@@ -19,17 +17,8 @@
     
     <script src="js/menu.js"></script>
     <script src="js/responsive.js"></script>
-    <script src="js/dropzone.js"></script>
-    
-        <!-- Including the HTML5 Uploader plugin -->
-        <script src="assets/js/jquery.filedrop.js"></script>
-
-        <!-- The main script file -->
-        <script src="assets/js/script.js"></script>
-
-    
-    
   </head>
+  
   
 
 
@@ -430,6 +419,29 @@
   <!--main content start-->
   <div class="content" style="float:right; padding:0 16px; margin:0;">
   
+  
+  <div class="row">
+  <form>
+  
+  <div class="small-12  meduim-3 large-3 columns">
+  <input type="submit" class="button expand" value="التالى >" style="background:gray; margin-top:0;">
+  </div>
+  
+  <div class="small-12  meduim-3 large-3 columns">
+  <input type="submit" class="button expand" value="تفعيل" style="margin-top:0;">
+  </div>
+  
+  <div class="small-12  meduim-3 large-3 columns">
+  <input type="submit" class="button expand" value="الغاء" style="background:red; margin-top:0;">
+  </div>
+  
+  <div class="small-12  meduim-3 large-3 columns">
+  <input type="submit" class="button expand" value="< السابق" style="background:gray; margin-top:0;">
+  </div>
+  
+  </form>
+  </div>
+  
   <!--Breadcrumbs start-->
   <div class="row" style="margin:0 0 16px 0;">
   <ul class="breadcrumbs">
@@ -441,159 +453,94 @@
   <!--Breadcrumbs end-->
   
   
+  <!--ad image code start-->
+  <div class=" small-12 medium-12  large-7  columns left" style="padding:0 !important;">
+  
+  <div class="price">
+  <span class="price_number">7000</span>
+  <span class="price_currency">جنيه مصرى</span>
+  </div>
+  
+  
+  <script>
+  $(document).ready(function() {
+	  
+	  /*change preview image*/
+	  $(".ad_img_thumb").click(function(){
+		  var current = $(this).attr('src');
+		  $(".ad_img_preview").attr("src", current);
+		  
+		  $(this).addClass("current_image");
+		  $(this).siblings().removeClass("current_image");
+	   })
+	   
+	/*open photo light box*/
+	$(".ad_img_preview").click(function(){
+	$(".lighbox_container").show();
+	var preview = $(this).attr('src');
+	$(".lighbox_container > div > img").attr("src", preview);
+	})	
+	
+	/*close light box*/
+	$(".CloseLightBox").click(function(){
+    $(this).parent().parent().hide();
+	})
+
+  });
+  </script>
+  
+  <div class="lighbox_container">
+  <div class="lighbox  small-10 small-offset-1 meduim-10 meduim-offset-1 large-6 large-offset-3 columns">
+  <a class="CloseLightBox">X</a>
+  <img src="">
+  </div>
+  </div>
+  
+  <img class="ad_img_preview" src="img/1.jpg">
+  <img class="ad_img_thumb" src="img/1.jpg" style="width:18%; float:right; margin:2% 0 2% 2.5%;">
+  <img class="ad_img_thumb" src="img/2.jpg" style="width:18%; float:right; margin:2% 0 2% 2.5%;">
+  <img class="ad_img_thumb" src="img/1.jpg" style="width:18%; float:right; margin:2% 0 2% 2.5%;">
+  <img class="ad_img_thumb" src="img/2.jpg" style="width:18%; float:right; margin:2% 0 2% 2.5%;">
+  <img class="ad_img_thumb" src="img/1.jpg" style="width:18%; margin:2% 0 2% 0;">
+      
+  </div>
+  <!--ad image code end-->
+  
   
   <!--ad info code start-->
-  <form>
+  <div class=" small-12  large-5 columns  right" style="padding-right:0 !important;">
   
-  <!--نوع الاعلان-->
-  <div class=" small-12  meduim-12  large-4 columns" style="border-left:1px solid #ccc;">
+  <div class="ad_info_element">
+  <h5>وصف الاعلان</h5>
   
-  <div class="small-12 columns right">
-  <h5 style="color:#09c; border-bottom:1px solid #60e0f5; padding-bottom:6px; margin-bottom:6px;">نوع الاعلان</h5>
+  <p>
+  لوريم إيبسوم هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف
+  </p>
   </div>
   
-  <div class="small-12 columns right">
-  
-    
-   <label>نوع الحيوان الاليف
-        <select>
-          <option value="">اختار النوع</option>
-          <option value="كلاب">كلاب</option>
-          <option value="قطط">قطط</option>
-          <option value="اسماك">اسماك</option>
-          <option value="خيول">خيول</option>
-   </select>
-   </label>
-  
+  <div class="ad_info_element">
+  <span>للإتصال : </span>
+  <span>01003612060</span>
   </div>
   
-  <div class="small-12 columns right">
-  
-   <label>نوع الاعلان
-        <select>
-          <option value="">اختار النوع</option>
-          <option value="بنى سويف">بنى سويف</option>
-          <option value="المنيا">المنيا</option>
-          <option value="اسيوط">اسيوط</option>
-          <option value="سوهاج">سوهاج</option>
-   </select>
-   </label>
-  
+  <div class="ad_info_element">
+  <span>المكان : </span>
+  <span>مصر </span>
+  <span>,</span>
+  <span>بنى سويف </span>
+  <span>,</span>
+  <span>الحميات </span>
   </div>
   
-  <div class="small-12 columns right">
-  
-   <label>تفاصيل
-        <select>
-          <option value="">اختار النوع</option>
-          <option value="بنى سويف">بنى سويف</option>
-          <option value="المنيا">المنيا</option>
-          <option value="اسيوط">اسيوط</option>
-          <option value="سوهاج">سوهاج</option>
-   </select>
-   </label>
-  
-  </div>
-
+  <div class="ad_info_element">
+  <span>تاريخ الاضافة : </span>
+  <span>20 يناير 2013 </span>
   </div>
   
-  
-  <!--معلومات الاعلان-->
-  <div class=" small-12 meduim-2  large-4 columns" style="border-left:1px solid #ccc;">
-  
-  <div class="small-12 columns right">
-  <h5 style="color:#09c; border-bottom:1px solid #60e0f5; padding-bottom:6px; margin-bottom:6px;">معلومات الاعلان</h5>
   </div>
-  
-  <div class="small-12 columns right">
-  
-  <label>اسم الاعلان هنا
-  <input type="text" placeholder="" />
-  </label>
-  
-  </div>
-  
-  <div class="small-12 columns right">
-
-  <label>معلومات الاعلان هنا
-  <textarea style="height:120px;">
-  </textarea>
-  </label>
-  
-  </div>
-  
-   </div>
-   
-   
-  <!--موقع الاعلان-->
-  <div class=" small-12  meduim-12 large-4 columns">
-  
-  <div class="small-12 columns right">
-  <h5 style="color:#09c; border-bottom:1px solid #60e0f5; padding-bottom:6px; margin-bottom:6px;">موقع الاعلان</h5>
-  </div>
-  
-  <div class="small-12 columns right">
-  
-    
-   <label>الدولة
-        <select>
-          <option value="">اختار الدولة</option>
-          <option value="مصر">مصر</option>
-          <option value="لبنان">لبنان</option>
-          <option value="المفرب">المفرب</option>
-          <option value="الامارات">الامارات</option>
-   </select>
-   </label>
-  
-  </div>
-  
-  <div class="small-12 columns right">
-  
-   <label>المحافظة
-        <select>
-          <option value="">اختار المحافظة</option>
-          <option value="بنى سويف">بنى سويف</option>
-          <option value="المنيا">المنيا</option>
-          <option value="اسيوط">اسيوط</option>
-          <option value="سوهاج">سوهاج</option>
-   </select>
-   </label>
-  
-  </div>
-  
-  <div class="small-12 columns right">
-  
-   <label>المدينة
-        <select>
-          <option value="">اختار المدينة</option>
-          <option value="بنى سويف">بنى سويف</option>
-          <option value="المنيا">المنيا</option>
-          <option value="اسيوط">اسيوط</option>
-          <option value="سوهاج">سوهاج</option>
-   </select>
-   </label>
-  
-  </div>
-  
-  
-  
-
-  </div>  
-  
-  
-    
-  <div class="small-12  meduim-3 large-3 columns right">
-  <input type="submit" class="button expand" value="اضافة الاعلان">
-  </div>
-  
   <!--ad info code end-->
   
-
-
-
   
-
-  </form>
   </div>
   <!--main content end-->
 
