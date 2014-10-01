@@ -225,9 +225,10 @@ welcome_page_list{
 	font-weight:bold;
 	cursor:pointer;
 }
-	
 /*light box style end*/
 
 
 
 .login , .signup , .forgetPass{display:none;}
+.ad_img_thumb{ cursor:pointer;}
+.current_image {border:1px solid #60e0f5;}

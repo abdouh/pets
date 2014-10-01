@@ -5,7 +5,20 @@ Class adsController Extends baseController {
     public function index() {
         session_start();
         if (Login::get_instance()->check_login() == 'valid') {
-            $this->registry->template->title = 'Ads | Add Ad Here';
+            $this->registry->template->title = 'Ads | Add';
+            $this->registry->template->button = 'اضافة الاعلان';
+            $this->registry->template->show('add_ad');
+        } else {
+            header("Location: /pets/");
+        }
+    }
+
+    public function edit() {
+        if ($_GET['id'] && is_numeric($_GET['id'])) {
+            $ad = ads::load_ads(5, array('id' => intval($_GET['id'])));
+            $this->registry->template->ad = $ad[0];
+            $this->registry->template->button = 'تعديل الاعلان';
+            $this->registry->template->title = 'Pets | Edit | ' . $ad[0]['title'];
             $this->registry->template->show('add_ad');
         } else {
             header("Location: /pets/");
@@ -16,11 +29,61 @@ Class adsController Extends baseController {
         if ($_GET['id'] && is_numeric($_GET['id'])) {
             $ad = ads::load_ads(5, array('id' => intval($_GET['id'])));
             print_r($ad);
-            $this->registry->template->ad = $ad;
+            $this->registry->template->activate = 0;
+            $this->registry->template->ad = $ad[0];
             $this->registry->template->title = 'Pets | ' . $ad[0]['title'];
             $this->registry->template->show('view_ad');
         } else {
             header("Location: /pets/");
+        }
+    }
+
+    public function activate() {
+        if (is_numeric($_POST['count']) && is_numeric($_POST['type'])) {
+
+            if ($_POST['type'] == 1)
+                $offset = intval($_POST['count']) + 1;
+            else if ($_POST['type'] == 2)
+                $offset = intval($_POST['count']) - 1;
+
+            if ($offset < 0)
+                $offset = 0;
+
+            $ad = ads::load_ads(5, array('limit' => 1, 'offset' => $offset, 'status' => 0));
+            $counter = 0;
+            while (empty($ad) && $counter <= 7) {
+                $counter++;
+                $offset = $offset - 1;
+                $ad = ads::load_ads(5, array('limit' => 1, 'offset' => $offset, 'status' => 0));
+            }
+        } else {
+            $offset = 0;
+            $ad = ads::load_ads(5, array('limit' => 1, 'status' => 0));
+        }
+
+        print_r($ad);
+        if (empty($ad)) {
+            $this->registry->template->ad = array();
+            $this->registry->template->activate = 0;
+        } else {
+            $this->registry->template->ad = $ad[0];
+            $this->registry->template->activate = 1;
+        }
+        $this->registry->template->offset = $offset;
+        $this->registry->template->title = 'Pets | activate | ' . $ad[0]['title'];
+        $this->registry->template->show('view_ad');
+    }
+
+    public function activate_ad() {
+        if (is_numeric($_POST['ad_id']) && is_numeric($_POST['activate'])) {
+            if (intval($_POST['activate'] == 1))
+                $status = 1;
+            else
+                $status = 2;
+            Operations::get_instance()->init(array(
+                'id' => intval($_POST['ad_id']),
+                'status' => $status
+                    ), 'ads', 'update');
         }
     }
 
@@ -31,15 +94,15 @@ Class adsController Extends baseController {
             switch ($type) {
                 case 1:
                     echo '<option value="">اختار المدينة</option>';
-                    echo Temp::load_list_options('ads_cities', array($data));
+                    echo Temp::load_list_options('ads_cities', 0, array($data));
                     break;
                 case 2:
                     echo '<option value="">اختار المنطقة</option>';
-                    echo Temp::load_list_options('ads_regions', array($data));
+                    echo Temp::load_list_options('ads_regions', 0, array($data));
                     break;
                 case 3:
                     echo '<option value="">اختار النوع</option>';
-                    echo Temp::load_list_options('ads_pets', array($data));
+                    echo Temp::load_list_options('ads_pets', 0, array($data));
                     break;
             }
         }
@@ -88,61 +151,112 @@ Class adsController Extends baseController {
 
     public function processad() {
         if (Login::get_instance()->check_login() == 'valid' && $_POST) {
-            $errors = array();
+            $errors['rt'] = array();
+            $errors['md'] = array();
+            $errors['lt'] = array();
+
             $ad_data = array();
             $user_data = Register::get_instance()->get_current_user();
 
             if (!empty($_POST['type']))
                 $ad_data['type'] = intval($_POST['type']);
             else
-                $errors[] = 'يجب اختيار نوع الاعلان';
+                $errors['rt'][] = 'يجب اختيار نوع الاعلان';
 
             if (!empty($_POST['pet']))
                 $ad_data['pet_id'] = intval($_POST['pet']);
             else
-                $errors[] = 'يجب اختيار نوع الحيوان';
+                $errors['rt'][] = 'يجب اختيار نوع الحيوان';
 
             if (!empty($_POST['title']) && trim($_POST['title']) != '')
                 $ad_data['title'] = addslashes($_POST['title']);
             else
-                $errors[] = 'يجب ادخال عنوان للاعلان';
+                $errors['md'][] = 'يجب ادخال عنوان للاعلان';
 
             if (!empty($_POST['desc']) && trim($_POST['desc']) != '')
                 $ad_data['desc'] = addslashes($_POST['desc']);
             else
-                $errors[] = 'يجب ادخال معلومات الاعلان';
+                $errors['md'][] = 'يجب ادخال معلومات الاعلان';
 
             if (!empty($_POST['country']))
                 $ad_data['country'] = intval($_POST['country']);
             else {
-                $errors[] = 'يجب اختيار الدولة';
+                $errors['lt'][] = 'يجب اختيار الدولة';
                 goto a;
             }
             if (!empty($_POST['city']))
                 $ad_data['city'] = intval($_POST['city']);
             else {
-                $errors[] = 'يجب اختيار المدينة';
+                $errors['lt'][] = 'يجب اختيار المدينة';
                 goto a;
             }
 
             if (!empty($_POST['region']))
                 $ad_data['region'] = intval($_POST['region']);
             else
-                $errors[] = 'يجب اختيار المنطقة';
+                $errors['lt'] = 'يجب اختيار المنطقة';
+
             $ad_data['cat_id'] = intval($_POST['cat']);
             $ad_data['user_id'] = $user_data['id'];
             $ad_data['time_added'] = time();
             $ad_data['date_added'] = TimeTools::get_time_id(date('Y-m-d'));
 
+            if ($_POST['id'] != 'null') {
+                $ad_data['status'] = 0;
+                $op = 'update';
+                if (is_numeric($_POST['id']))
+                    $ad_data['id'] = intval($_POST['id']);
+                else
+                    $errors['rt'][] = 'خطأ فى اضافة الاعلان';
+
+                $img_check = $this->check_img($ad_data['user_id'], $ad_data['id']);
+                $type = 'edit';
+            }else {
+                $op = 'insert';
+                $img_check = $this->check_img($ad_data['user_id'], 'null');
+                $type = 'add';
+            }
+            if ($img_check !== true)
+                $errors['rt'][] = $img_check;
 
             a:
-            if (empty($errors)) {
-                $ad_id = Operations::get_instance()->init($ad_data, 'ads');
+            if (empty($errors['rt']) && empty($errors['md']) && empty($errors['lt'])) {
+                if ($op == 'insert')
+                    $ad_id = Operations::get_instance()->init($ad_data, 'ads');
+                else {
+                    $ad_id = $ad_data['id'];
+                    Operations::get_instance()->init($ad_data, 'ads', 'update');
+                }
+
                 $this->procces_img($ad_data['user_id'], $ad_id);
-                echo json_encode(array('operation' => 1));
+                echo json_encode(array('operation' => 1, 'type' => $type));
             } else {
                 echo json_encode(array('operation' => 2, 'errors' => $errors));
             }
+        }
+    }
+
+    private function check_img($user_id, $ad_id) {
+        $ds = DIRECTORY_SEPARATOR;
+        $storeFolder = '..' . $ds . 'views' . $ds . 'temp_img';
+        $newFolder = '..' . $ds . 'views' . $ds . 'ads_img';
+        $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
+        $newPath = dirname(__FILE__) . $ds . $newFolder . $ds;
+        $images = glob($targetPath . $user_id . "_*.jpeg");
+        if ($ad_id == 'null') {
+            if (empty($images))
+                return true;
+            else
+                return 'يجب وضع صورة واحدة على الأقل';
+        }else {
+            $images2 = glob($newPath . $ad_id . "_*.jpeg");
+            $count = count($images) + count($images2);
+            if ($count == 0)
+                return 'يجب وضع صورة واحدة على الأقل';
+            else if ($count > 5)
+                return 'لا يمكن اختيار أكثر من 5 صور';
+            else
+                return true;
         }
     }
 
@@ -151,7 +265,7 @@ Class adsController Extends baseController {
         //$user_id = 1;
         //$ad_id = 1;
         $storeFolder = '..' . $ds . 'views' . $ds . 'temp_img';
-        $newFolder = '..' . $ds . 'views' . $ds . 'users_img';
+        $newFolder = '..' . $ds . 'views' . $ds . 'ads_img';
         $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
         $newPath = dirname(__FILE__) . $ds . $newFolder . $ds;
         $images = glob($targetPath . $user_id . "_*.jpeg");

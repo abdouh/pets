@@ -9,7 +9,7 @@
 
         <!--main content start-->
         <div class="content">
-            
+
             <!--Breadcrumbs start-->
             <div class="row" style="margin:0 0 16px 0;">
                 <ul class="breadcrumbs">
@@ -37,14 +37,7 @@
             <!--ads grid view start-->
             <div class="row" style="margin:0 0 16px 0;">
                 <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-3 ads_view">
-                    <? foreach ($ads as $index => $array) { ?>
-                        <li><a href="<?= READ_ONLY . '/ads/view/?id=' . $array['id']; ?>">
-                                <div class="ad_title_view">
-                                    <?= $array['title']; ?>
-                                </div>
-                                <img src="<?= TEMPLATE_URL; ?>/users_img/<?= $array['img']; ?>">
-                            </a></li>
-                    <? } ?>
+                    <? echo Temp::ad_container_list($ads); ?>
                 </ul>
             </div>
             <!--ads grid view start-->
@@ -53,11 +46,11 @@
             <div class="row" style="margin:0 0 16px 0; padding:0;">
                 <ul class="pagination">
                     <li class="arrow unavailable"><a href="">&rsaquo;</a></li>
-                    <li class="current"><a href="">1</a></li>
+                    <li><a href="">1</a></li>
                     <li><a href="">2</a></li>
                     <li><a href="">3</a></li>
                     <li><a href="">4</a></li>
-                    <li><a href="">5</a></li>
+                    <li class="current"><a href="">5</a></li>
                     <li><a href="">6</a></li>
                     <li><a href="">7</a></li>
                     <li><a href="">8</a></li>
@@ -65,7 +58,7 @@
                     <li class="arrow"><a href="">&lsaquo;</a></li>
                 </ul>
             </div>
-            <!--paginatios start-->
+            <!--paginatios end-->
 
         </div>
         <!--main content end-->

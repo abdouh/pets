@@ -32,8 +32,9 @@ Class indexController Extends baseController {
             if (isset($_GET['p']) && is_numeric($_GET['p']))
                 $settings['page'] = intval($_GET['p']);
         }
+        $settings['status'] = 1;
 
-        $this->registry->template->out = $output;
+        $this->registry->template->pagination = ads::pagination();
         $this->registry->template->ads = ads::load_ads(1, $settings);
         $this->registry->template->title = 'Home | Pets Services';
         $this->registry->template->show('index');
@@ -64,6 +65,8 @@ Class indexController Extends baseController {
                 $errors[] = 'بيانات الدخول التى تم ادخالها غير صحيحة';
             else if ($status == 'blocked')
                 $errors[] = 'الكود الذى تم ادخاله غير صحيح';
+            else if ($status == 'deactivated')
+                $errors[] = 'لقد تم تعطيل هذا الحساب';
 
             a:
             if (empty($errors)) {
@@ -134,6 +137,57 @@ Class indexController Extends baseController {
                 echo json_encode(array('operation' => 1));
             } else {
                 echo json_encode(array('operation' => 2, 'errors' => $errors));
+            }
+        }
+    }
+
+    public function petsCp() {
+        $this->registry->template->pagination = ads::pagination();
+
+        $ads = ads::load_ads(0, array(), 1);
+        $this->registry->template->total_ads = $ads['count'];
+        $this->registry->template->ads = $ads['ads'];
+
+        $users = Register::get_instance()->load_users();
+        $this->registry->template->total_users = $users['count'];
+        $this->registry->template->users = $users['users'];
+
+        $this->registry->template->title = 'Home | Pets CP';
+        $this->registry->template->show('cp');
+    }
+
+    public function load_more() {
+        if ($_POST) {
+            if ($_POST['type'] == 'users' && is_numeric($_POST['value'])) {
+                $page = intval($_POST['value']) + 1;
+                $users = ads::load_ads(0, array('page' => $page), 1);
+                echo empty($users['users']) ? '' : Temp::users_container_rows($users['users']);
+            } else if ($_POST['type'] == 'ads' && is_numeric($_POST['value'])) {
+                $page = intval($_POST['value']) + 1;
+                $ads = ads::load_ads(0, array('page' => $page), 1);
+                echo empty($ads['ads']) ? '' : Temp::ad_container_rows($ads['ads']);
+            }
+        }
+    }
+
+    public function handle() {
+        if (is_array($_POST['users']) && is_numeric($_GET['t']) && ($_GET['ty'] == 'users')) {
+            if ($_GET['t'] == 1)
+                $status = 1;
+            else
+                $status = 2;
+
+            foreach ($_POST['users']as $id) {
+                Operations::get_instance()->init(array('id' => intval($id), 'status' => $status), 'users', 'update');
+            }
+        } else if (is_array($_POST['ads']) && is_numeric($_GET['t']) && ($_GET['ty'] == 'ads')) {
+            if ($_GET['t'] == 1)
+                $status = 1;
+            else
+                $status = 2;
+
+            foreach ($_POST['ads']as $id) {
+                Operations::get_instance()->init(array('id' => intval($id), 'status' => $status), 'ads', 'update');
             }
         }
     }

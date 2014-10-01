@@ -17,6 +17,7 @@ class db {
         'pets_categories' => '`pets`.`pets_categories`',
         'pets_variations' => '`pets`.`pets_variations`',
         'users' => '`pets`.`users`',
+        'users_img' => '`pets`.`users_img`',
         'login_attempts' => '`pets`.`login_attempts`',
     );
 

@@ -1,3 +1,85 @@
+$(document).ready(function(){
+    $('body').on('change', 'input[name="all"]', function (){
+        var check = $(this).attr('check');
+        var current = $(this).attr('checked');
+        alert($(this).attr('checked'));
+        if(asd)
+            $('input[name="'+check+'[]"]').attr('checked',false);
+        else
+            $('input[name="'+check+'[]"]').attr('checked',true);
+    });
+    
+    $('body').on('click', '#users_button', function (){
+        $('#users_more').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+        load_more('users');
+    });
+    
+    $('body').on('click', '#ads_button', function (){
+        $('#ads_more').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+        load_more('ads');
+    });
+    
+    $('body').on('click', '#activate_users', function (){
+        $('#errors').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+        handle_groups('users', 1);
+    });
+    
+    $('body').on('click', '#deactivate_users', function (){
+        $('#errors').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+        handle_groups('users', 2);
+    });
+    
+    $('body').on('click', '#activate_ads', function (){
+        $('#errors').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+        handle_groups('ads', 1);
+    });
+    $('body').on('click', '#deactivate_ads', function (){
+        $('#errors').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+        handle_groups('ads', 2);
+    });
+});
+
+
+function handle_groups(type,val){
+    var form = $('#'+type+'_form').serialize();
+    
+    $.ajax({
+        url: "/pets/index/handle/?t="+val+"&ty="+type, 
+        type: 'POST', 
+        data: form, 
+        success: function (data) {
+            console.log(data);  
+            $('#errors').html('تمت العملية بنجاح');
+            window.location = '/pets/index/petscp/';
+        }
+    });
+}
+
+function load_more(type){
+    var page = $('input[name="'+type+'_page"]').val();
+    $.ajax({
+        url: "/pets/index/load_more", 
+        type: 'POST', 
+        data: {
+            'type':type, 
+            'value':page
+        }, 
+        success: function (data) {
+            console.log(data);
+            $('#'+type+'_body').append(data);
+            var new_page = parseInt(page) + 1;
+            var total = $('input[name="'+type+'_total"]').val();
+            if((new_page * 18) < total){
+                $('input[name="'+type+'_page"]').val(new_page);
+                $('#'+type+'_more').html('<input id="'+type+'_button" type="submit" value="المزيد">');
+            }else{
+                $('#'+type+'_more').html('');
+            }
+        }
+    });
+}
+
+
 function login(){
     $('#login_errors').html('');
     if($('input[name="email"]').val() == ''){
@@ -47,7 +129,7 @@ function register(){
                 });
             }else if(new_data['operation'] == 1){
                 $('#register_errors').html('<span style="color:green;">تم تسجيل عضويتك بنجاح</span>');
-            window.location = '/pets/index';
+                window.location = '/pets/index';
             }
         }
     });

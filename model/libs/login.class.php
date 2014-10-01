@@ -47,6 +47,9 @@ class Login {
         else if (($this->user_data['is_blocked'] == 1) && !$block_bypass)
             return 'blocked';
 
+        else if (($this->user_data['password'] == $password) && ($this->user_data['status'] != 1))
+            return 'deactivated';
+
         else if ($this->user_data['password'] == $password)
             return 'valid';
 

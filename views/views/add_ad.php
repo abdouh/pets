@@ -24,12 +24,11 @@
 
             <!--ad info code start-->
             <form id="ad_data">
-                <div id="ad_errors" style="color:red;">
-                </div>
-
+                <input type="hidden" name="id" value="<?= isset($ad['id']) ? $ad['id'] : 'null'; ?>">
                 <!--نوع الاعلان-->
                 <div class=" small-12  meduim-12  large-4 columns" style="border-left:1px solid #ccc;">
-
+                    <div id="rt_errors" style="color:#D20909;">
+                    </div>
                     <div class="small-12 columns right">
                         <h5 style="color:#09c; border-bottom:1px solid #60e0f5; padding-bottom:6px; margin-bottom:6px;">نوع الاعلان</h5>
                     </div>
@@ -38,7 +37,7 @@
                         <label>نوع الحيوان الاليف
                             <select name="cat" id="category">
                                 <option value="">اختار النوع</option>
-                                <?= Temp::load_list_options('ads_cats'); ?>
+                                <?= Temp::load_list_options('ads_cats', $ad['cat_id']); ?>
                             </select>
                         </label>
 
@@ -49,7 +48,7 @@
                         <label>نوع الاعلان
                             <select name="type">
                                 <option value="">اختار النوع</option>
-                                <?= Temp::load_list_options('ads_types'); ?>
+                                <?= Temp::load_list_options('ads_types', $ad['type']); ?>
                             </select>
                         </label>
 
@@ -60,6 +59,10 @@
                         <label>تفاصيل
                             <select id="pet" name="pet">
                                 <option value="">اختار النوع</option>
+                                <?
+                                if (is_array($ad) && !empty($ad))
+                                    echo Temp::load_list_options('ads_pets', $ad['pet_id'], array($ad['cat_id']));
+                                ?>
                             </select>
                         </label>
 
@@ -70,7 +73,8 @@
 
                 <!--معلومات الاعلان-->
                 <div class=" small-12 meduim-2  large-4 columns" style="border-left:1px solid #ccc;">
-
+                    <div id="md_errors" style="color:#D20909;">
+                    </div>
                     <div class="small-12 columns right">
                         <h5 style="color:#09c; border-bottom:1px solid #60e0f5; padding-bottom:6px; margin-bottom:6px;">معلومات الاعلان</h5>
                     </div>
@@ -78,7 +82,7 @@
                     <div class="small-12 columns right">
 
                         <label>اسم الاعلان هنا
-                            <input type="text" name="title" placeholder="" />
+                            <input type="text" name="title" value="<?= $ad['title']; ?>" placeholder="" />
                         </label>
 
                     </div>
@@ -86,7 +90,7 @@
                     <div class="small-12 columns right">
 
                         <label>معلومات الاعلان هنا
-                            <textarea name="desc" style="height:120px;"></textarea>
+                            <textarea name="desc" style="height:120px;"><?= $ad['desc']; ?></textarea>
                         </label>
 
                     </div>
@@ -96,7 +100,8 @@
 
                 <!--موقع الاعلان-->
                 <div class=" small-12  meduim-12 large-4 columns">
-
+                    <div id="lt_errors" style="color:#D20909;">
+                    </div>
                     <div class="small-12 columns right">
                         <h5 style="color:#09c; border-bottom:1px solid #60e0f5; padding-bottom:6px; margin-bottom:6px;">موقع الاعلان</h5>
                     </div>
@@ -107,7 +112,7 @@
                         <label>الدولة
                             <select id="country" name="country">
                                 <option value="">اختار الدولة</option>
-                                <?= Temp::load_list_options('ads_countries'); ?>
+                                <?= Temp::load_list_options('ads_countries', $ad['country']); ?>
                             </select>
                         </label>
 
@@ -118,6 +123,10 @@
                         <label>المدينة
                             <select id="city" name="city">
                                 <option value="">اختار المدينة</option>
+                                <?
+                                if (is_array($ad) && !empty($ad))
+                                    echo Temp::load_list_options('ads_cities', $ad['city'], array($ad['country']));
+                                ?>
                             </select>
                         </label>
 
@@ -128,13 +137,19 @@
                         <label>المنطقة
                             <select id="region" name="region">
                                 <option value="">اختار المنطقة</option>
+                                <?
+                                if (is_array($ad) && !empty($ad))
+                                    echo Temp::load_list_options('ads_regions', $ad['region'], array($ad['city']));
+                                ?>
                             </select>
                         </label>
 
                     </div>
 
-                </div>  
-                <input type="submit" value="أضف اعلانك" onClick="process_ad();return false;">
+                </div>
+                <div class="small-12  meduim-3 large-3 columns right">
+                    <input type="submit" class="button expand" value="<?= $button; ?>" onClick="process_ad();return false;">
+                </div>
 
                 <!--ad info code end-->
 

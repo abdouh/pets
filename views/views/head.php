@@ -18,11 +18,15 @@
         <script src="<?= TEMPLATE_URL; ?>/js/vendor/modernizr.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/foundation/foundation.orbit.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/vendor/foundation.equalizer.js"></script>
+        <script src="<?= TEMPLATE_URL; ?>/js/dropzone.min.js"></script>
+        <script src="<?= TEMPLATE_URL; ?>/js/jquery.validate.min.js"></script>
+        <script src="<?= TEMPLATE_URL; ?>/js/jquery.validate.js"></script>
+        <script src="<?= TEMPLATE_URL; ?>/js/jquery.validate.additional.js"></script>
 
         <script src="<?= TEMPLATE_URL; ?>/js/menu.js"></script>
-        <script src="<?= TEMPLATE_URL; ?>/js/accounts.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/responsive.js"></script>
-        <script src="<?= TEMPLATE_URL; ?>/js/dropzone.min.js"></script>
+        <script src="<?= TEMPLATE_URL; ?>/js/accounts.js"></script>
+        <script src="<?= TEMPLATE_URL; ?>/js/users.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/index.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/ads.js"></script>
 

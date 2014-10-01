@@ -12,6 +12,12 @@ return array(
                 'numeric' => 1,
             ),
         ),
+        'status' => array(
+            'validations' => array(
+                'notEmpty' => 1,
+                'numeric' => 1,
+            ),
+        ),
         'desc' => array(
             'validations' => array(
                 'notEmpty' => 1,

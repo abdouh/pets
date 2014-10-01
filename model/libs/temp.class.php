@@ -24,6 +24,64 @@ HERE;
         return $output;
     }
 
+    static function users_container_rows($users) {
+        $output = '';
+
+        $status[1] = 'مفعل';
+        $status[2] = 'معطل';
+        foreach ($users as $user) {
+            $output .= <<<HERE
+    <tr>
+      <td><input type="checkbox" name="users[]" value="{$user['id']}"></td>
+      <td>{$user['id']}</td>
+      <td>{$user['email']}</td>
+      <td>{$status[$user['status']]}</td>
+    </tr>
+HERE;
+        }
+        return $output;
+    }
+
+    static function ad_container_rows($ads) {
+        $output = '';
+        $status[0] = 'غير مفعل';
+        $status[1] = 'مفعل';
+        $status[2] = 'معطل';
+        foreach ($ads as $ad) {
+            $output .= <<<HERE
+    <tr>
+      <td><input type="checkbox" name="ads[]" value="{$ad['id']}"></td>
+      <td>{$ad['id']}</td>
+      <td>{$ad['title']}</td>
+      <td>{$status[$ad['status']]}</td>
+    </tr>
+HERE;
+        }
+        return $output;
+    }
+
+    static function ad_container_list($ads) {
+        $output = '';
+        foreach ($ads as $ad) {
+            $output .= self::ad_container($ad);
+        }
+        return $output;
+    }
+
+    static function ad_container($ad) {
+        $template = TEMPLATE_URL;
+        $view = READ_ONLY . '/ads/view?id';
+        $output = <<<HERE
+        <li><a href="$view={$ad['id']}">
+                                    <div class="ad_title_view">
+                                        {$ad['title']}
+                                    </div>
+                                    <img src="$template/ads_img/{$ad['img']}">
+                                </a></li>
+HERE;
+        return $output;
+    }
+
     static function generate_errors($array, $msg = null) {
         
     }
@@ -48,13 +106,16 @@ HERE;
         
     }
 
-    static function load_list_options($list_name, $params = array()) {
+    static function load_list_options($list_name, $selected = 0, $params = array()) {
         if (method_exists('Lists', $list_name))
             $req_list = forward_static_call_array(array('Lists', $list_name), $params);
         else
             return;
         foreach ($req_list as $option => $data) {
-            $output.= "<option value='{$data['value']}'>{$data['text']}</option>\n";
+            $select_this = '';
+            if ($data['value'] == $selected)
+                $select_this = 'selected';
+            $output.= "<option value='{$data['value']}' $select_this>{$data['text']}</option>\n";
         }
         return $output;
     }

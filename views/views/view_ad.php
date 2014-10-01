@@ -5,9 +5,40 @@
         <?
         require_once 'side_bar.php';
         ?>  
+
         <!--main content start-->
         <div class="content" style="float:right; padding:0 16px; margin:0;">
+            <? if ($activate) { ?>
+                <div class="row">
+                    <form action="" method="post">
 
+                        <div class="small-12  meduim-3 large-3 columns">
+                            <input type="hidden" name="type" value="1">
+                            <input type="hidden" name="count" value="<?= $offset; ?>">
+                            <input type="submit" class="button expand" value="التالى >" style="background:gray; margin-top:0;">
+                        </div>
+                    </form>
+
+                    <div class="small-12  meduim-3 large-3 columns">
+                        <input id="activate" type="submit" class="button expand" value="تفعيل" style="margin-top:0;">
+                    </div>
+
+                    <input type="hidden" name="id" value="<?= $ad['id']; ?>">
+                    <div class="small-12  meduim-3 large-3 columns">
+                        <input id="deactivate" type="submit" class="button expand" value="الغاء" style="background:red; margin-top:0;">
+                    </div>
+                    <form action="" method="post">
+
+                        <div class="small-12  meduim-3 large-3 columns">
+                            <input type="hidden" name="type" value="2">
+                            <input type="hidden" name="count" value="<?= $offset; ?>">
+                            <input type="submit" class="button expand" value="< السابق" style="background:gray; margin-top:0;">
+                        </div>
+
+                    </form>
+                </div>
+            <? } ?>
+            <div id="errors" style="color:green;"></div>
             <!--Breadcrumbs start-->
             <div class="row" style="margin:0 0 16px 0;">
                 <ul class="breadcrumbs">
@@ -18,68 +49,98 @@
             </div>
             <!--Breadcrumbs end-->
 
-
-            <!--ad image code start-->
-            <div class=" small-12 medium-12  large-8 columns  left" style="padding:0 !important;">
-                <div class="slider">
+            <? if (!empty($ad)) { ?>
+                <!--ad image code start-->
+                <div class=" small-12 medium-12  large-7  columns left" style="padding:0 !important;">
 
                     <div class="price">
                         <span class="price_number">7000</span>
                         <span class="price_currency">جنيه مصرى</span>
                     </div>
 
-                    <input type="radio" name="slide_switch" id="id1" checked="checked"/>
 
-                    <label for="id1">
-                        <img src="<?= TEMPLATE_URL; ?>/img/2.jpg"/>
-                    </label>
+                    <script>
+                        $(document).ready(function() {
+                            $(".ad_img_thumb").click(function(){
+                                var current = $(this).attr('src');
+                                $(".ad_img_preview").attr("src", current);
+                    		  
+                                $(this).addClass("current_image");
+                                $(this).siblings().removeClass("current_image");
 
-                    <img src="<?= TEMPLATE_URL; ?>/img/2.jpg"/>
+                            })
+                    	   
+                            /*open photo light box*/
+                            $(".ad_img_preview").click(function(){
+                                $(".lighbox_container").show();
+                                var preview = $(this).attr('src');
+                                $(".lighbox_container > div > img").attr("src", preview);
+                            })	
+                    	
+                            /*close light box*/
+                            $(".CloseLightBox").click(function(){
+                                $(this).parent().parent().hide();
+                            })
 
-                    <input type="radio" name="slide_switch" id="id2"/>
+                        });
+                    </script>
 
-                    <label for="id2">
-                        <img src="<?= TEMPLATE_URL; ?>/img/2.jpg"/>
-                    </label>
+                    <div class="lighbox_container">
+                        <div class="lighbox  small-10 small-offset-1 meduim-10 meduim-offset-1 large-6 large-offset-3 columns">
+                            <a class="CloseLightBox">X</a>
+                            <img src="">
+                        </div>
+                    </div>
 
-                    <img src="<?= TEMPLATE_URL; ?>/img/2.jpg"/>
+                    <img class="ad_img_preview" src="<?= TEMPLATE_URL; ?>/ads_img/<?= $ad['img'][0]; ?>">
+                    <? foreach ($ad['img'] as $img) { ?>
+                        <img class="ad_img_thumb" src="<?= TEMPLATE_URL; ?>/ads_img/<?= $img; ?>" style="width:18%; float:right; margin:2% 0 2% 0;">
+                    <? } ?>
+                </div>
+                <!--ad image code end-->
+
+
+                <!--ad info code start-->
+                <div class=" small-12  large-5 columns  right" style="padding-right:0 !important;">
+
+                    <div class="ad_info_element">
+                        <h5>وصف الاعلان</h5>
+
+                        <p>
+                            <?= $ad['desc']; ?>
+                        </p>
+                    </div>
+
+                    <div class="ad_info_element">
+                        <span>للإتصال : </span>
+                        <span>01003612060</span>
+                    </div>
+
+                    <div class="ad_info_element">
+                        <span>المكان : </span>
+                        <span><?= ads::get_country_name($ad['country']); ?></span>
+                        <span>, </span>
+                        <span><?= ads::get_city_name($ad['city']); ?></span>
+                        <span>, </span>
+                        <span><?= ads::get_region_name($ad['region']); ?></span>
+                    </div>
+
+                    <div class="ad_info_element">
+                        <span> <?= date('Y M d', $ad['time_added']); ?> : </span>
+                        <span>تاريخ الاضافة</span>
+
+                    </div>
 
                 </div>
-            </div>
-            <!--ad image code end-->
+                <!--ad info code end-->
+            <? } else { ?>
+                <div class=" small-12  large-5 columns  right" style="padding-right:0 !important;">
 
-
-            <!--ad info code start-->
-            <div class=" small-12  large-4 columns  right" style="padding-right:0 !important;">
-
-                <div class="ad_info_element">
-                    <p>
-                        <?= $ad[0]['desc']; ?>
-                    </p>
+                    <div class="ad_info_element">
+                        <h5>لا يوجد اعلان للتفعيل</h5>
+                    </div>
                 </div>
-
-                <div class="ad_info_element">
-                    <span>للإتصال : </span>
-                    <span>01003612060</span>
-                </div>
-
-                <div class="ad_info_element">
-                    <span>المكان : </span>
-                    <span>مصر </span>
-                    <span>,</span>
-                    <span>بنى سويف </span>
-                    <span>,</span>
-                    <span>الحميات </span>
-                </div>
-
-                <div class="ad_info_element">
-                    <span>تاريخ الاضافة : </span>
-                    <span>20 يناير 2013 </span>
-                </div>
-
-            </div>
-            <!--ad info code end-->
-
+            <? } ?>
 
         </div>
         <!--main content end-->
