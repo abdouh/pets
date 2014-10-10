@@ -538,7 +538,7 @@ HERE;
         <? if (Login::get_instance()->check_login() == 'valid') { ?>
             <li>
                 <div class="icon account"></div>
-                <div class="text"><a href="/pets/index/logout">خروج</a></div>
+                <div class="text"><a href="/pets/index/logout">تسجيل خروج</a></div>
             </li>
         <? } else { ?>
             <li>
