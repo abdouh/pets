@@ -3,12 +3,12 @@
 session_start();
 error_reporting(E_ALL & ~E_NOTICE);
 //ini_set('display_errors', false);
-/*if ($_GET) {
-    if ($_GET['d'] == 'abdouhabibi2080')
-        ;
-    else
-        exit();
-}else {
+
+/*if ($_SESSION['d'] == 'abdouhabibi2080') {
+    
+} else if ($_GET['d'] == 'abdouhabibi2080') {
+    $_SESSION['d'] = 'abdouhabibi2080';
+} else {
     exit();
 }*/
 
@@ -18,6 +18,7 @@ define('__SITE_PATH', $site_path);
 define('READ_ONLY', 'http://localhost/pets');
 define('TEMPLATE_URL', 'http://localhost/pets/views');
 define('LOGS_URL', $site_path . '/system_logs');
+define('WEB', 1);
 
 /* * * include the init.php file ** */
 include 'includes/init.php';

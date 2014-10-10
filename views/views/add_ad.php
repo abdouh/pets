@@ -1,6 +1,9 @@
-<? require_once 'head.php'; ?>
+<? if (!defined('WEB'))
+    exit();
+?>
+    <? require_once 'head.php'; ?>
 <body>
-    <? require_once 'header.php'; ?>
+<? require_once 'header.php'; ?>
 
     <div class="row" style="margin-top:36px;">
         <?
@@ -37,7 +40,7 @@
                         <label>نوع الحيوان الاليف
                             <select name="cat" id="category">
                                 <option value="">اختار النوع</option>
-                                <?= Temp::load_list_options('ads_cats', $ad['cat_id']); ?>
+<?= Temp::load_list_options('ads_cats', $ad['cat_id']); ?>
                             </select>
                         </label>
 
@@ -48,7 +51,7 @@
                         <label>نوع الاعلان
                             <select name="type">
                                 <option value="">اختار النوع</option>
-                                <?= Temp::load_list_options('ads_types', $ad['type']); ?>
+<?= Temp::load_list_options('ads_types', $ad['type']); ?>
                             </select>
                         </label>
 
@@ -112,7 +115,7 @@
                         <label>الدولة
                             <select id="country" name="country">
                                 <option value="">اختار الدولة</option>
-                                <?= Temp::load_list_options('ads_countries', $ad['country']); ?>
+<?= Temp::load_list_options('ads_countries', $ad['country']); ?>
                             </select>
                         </label>
 
@@ -148,7 +151,7 @@
 
                 </div>
                 <div class="small-12  meduim-3 large-3 columns right">
-                    <input type="submit" class="button expand" value="<?= $button; ?>" onClick="process_ad();return false;">
+                    <input type="submit" class="button expand" value="<?= $button; ?>" >
                 </div>
 
                 <!--ad info code end-->

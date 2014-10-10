@@ -39,7 +39,7 @@ class Operations {
 
     function grab_settings() {
         //file exists check should be implemented here
-        $this->settings = include '/settings/' . $this->table_name . '.php';
+        $this->settings = include 'settings/' . $this->table_name . '.php';
         $this->key = $this->settings['key'];
     }
 

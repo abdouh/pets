@@ -9,14 +9,22 @@ class ads {
         $offset = isset($settings['offset']) ? $settings['offset'] : ($page - 1) * $elements_per_page;
         $limit = "$offset,$elements_per_page";
 
-        $settings_pars = array('page', 'limit', 'offset');
-
+        $settings_pars = array('page', 'limit', 'offset', 'words');
+        if ($settings['limit'] == 'no')
+            $limit = '';
 
         $query_array = array();
         $query_end = '';
         foreach ($settings as $setting => $value) {
+
+            if ($setting == 'words') {
+                $query_array[] = "((CONVERT(`title` USING utf8) LIKE  '%$value%') OR 
+                    (CONVERT(`desc` USING utf8) LIKE  '%$value%'))";
+            }
+
             if (in_array($setting, $settings_pars))
                 continue;
+
             $query_array[] = "`$setting` = '$value'";
         }
         if (!empty($query_array))
@@ -28,7 +36,10 @@ class ads {
         $result = db::getInstance()->fetchAll($stmt);
         $count = $result[0]['count'];
 
-        $query = "SELECT * FROM $table $query_end ORDER BY `time_added` DESC LIMIT $limit";
+        if (!empty($limit))
+            $limit = 'LIMIT ' . $limit;
+
+        $query = "SELECT * FROM $table $query_end ORDER BY `time_added` DESC $limit";
         $stmt = db::getInstance()->query($query);
         $result = db::getInstance()->fetchAll($stmt);
 
@@ -63,8 +74,15 @@ class ads {
         return $imgs;
     }
 
-    static function pagination() {
-        return http_build_query($_GET);
+    static function pagination($total) {
+        $pages = array();
+        if (isset($_GET['p']) && is_numeric($_GET['p']))
+            $page = intval($_GET['p']);
+        else
+            $page = 1;
+        if ($page > $total)
+            $page = 1;
+        return Temp::pagination_list($page, $_GET, $total);
     }
 
     static function get_country_name($country_id) {

@@ -14,12 +14,20 @@ Class adsController Extends baseController {
     }
 
     public function edit() {
-        if ($_GET['id'] && is_numeric($_GET['id'])) {
-            $ad = ads::load_ads(5, array('id' => intval($_GET['id'])));
-            $this->registry->template->ad = $ad[0];
-            $this->registry->template->button = 'تعديل الاعلان';
-            $this->registry->template->title = 'Pets | Edit | ' . $ad[0]['title'];
-            $this->registry->template->show('add_ad');
+        if (Login::get_instance()->check_login() == 'valid') {
+            if ($_GET['id'] && is_numeric($_GET['id'])) {
+                $ad = ads::load_ads(5, array('id' => intval($_GET['id'])));
+                $user_data = Register::get_instance()->get_current_user();
+                if (($user_data['id'] != $ad[0]['user_id']) && $user_data['status'] != 10) {
+                    header("Location: /pets/");
+                }
+                $this->registry->template->ad = $ad[0];
+                $this->registry->template->button = 'تعديل الاعلان';
+                $this->registry->template->title = 'Pets | Edit | ' . $ad[0]['title'];
+                $this->registry->template->show('add_ad');
+            } else {
+                header("Location: /pets/ads");
+            }
         } else {
             header("Location: /pets/");
         }
@@ -28,9 +36,10 @@ Class adsController Extends baseController {
     public function view() {
         if ($_GET['id'] && is_numeric($_GET['id'])) {
             $ad = ads::load_ads(5, array('id' => intval($_GET['id'])));
-            print_r($ad);
             $this->registry->template->activate = 0;
             $this->registry->template->ad = $ad[0];
+            $user = Register::get_instance()->get_user(array('id' => $ad[0]['user_id']));
+            $this->registry->template->phone = $user[0]['phone'];
             $this->registry->template->title = 'Pets | ' . $ad[0]['title'];
             $this->registry->template->show('view_ad');
         } else {
@@ -39,51 +48,65 @@ Class adsController Extends baseController {
     }
 
     public function activate() {
-        if (is_numeric($_POST['count']) && is_numeric($_POST['type'])) {
-
-            if ($_POST['type'] == 1)
-                $offset = intval($_POST['count']) + 1;
-            else if ($_POST['type'] == 2)
-                $offset = intval($_POST['count']) - 1;
-
-            if ($offset < 0)
-                $offset = 0;
-
-            $ad = ads::load_ads(5, array('limit' => 1, 'offset' => $offset, 'status' => 0));
-            $counter = 0;
-            while (empty($ad) && $counter <= 7) {
-                $counter++;
-                $offset = $offset - 1;
-                $ad = ads::load_ads(5, array('limit' => 1, 'offset' => $offset, 'status' => 0));
+        if (Login::get_instance()->check_login() == 'valid') {
+            $user_data = Register::get_instance()->get_current_user();
+            if ($user_data['status'] != 10) {
+                header("Location: /pets/");
+                exit();
             }
-        } else {
-            $offset = 0;
-            $ad = ads::load_ads(5, array('limit' => 1, 'status' => 0));
-        }
 
-        print_r($ad);
-        if (empty($ad)) {
-            $this->registry->template->ad = array();
-            $this->registry->template->activate = 0;
+            if (is_numeric($_POST['count']) && is_numeric($_POST['type'])) {
+                if ($_POST['type'] == 1)
+                    $offset = intval($_POST['count']) + 1;
+                else if ($_POST['type'] == 2)
+                    $offset = intval($_POST['count']) - 1;
+
+                if ($offset < 0)
+                    $offset = 0;
+
+                $ad = ads::load_ads(5, array('limit' => 1, 'offset' => $offset, 'status' => 0));
+                $counter = 0;
+                while (empty($ad) && $counter <= 7) {
+                    $counter++;
+                    $offset = $offset - 1;
+                    $ad = ads::load_ads(5, array('limit' => 1, 'offset' => $offset, 'status' => 0));
+                }
+            } else {
+                $offset = 0;
+                $ad = ads::load_ads(5, array('limit' => 1, 'status' => 0));
+            }
+
+            if (empty($ad)) {
+                $this->registry->template->ad = array();
+                $this->registry->template->activate = 0;
+            } else {
+                $this->registry->template->ad = $ad[0];
+                $this->registry->template->activate = 1;
+            }
+            $this->registry->template->offset = $offset;
+            $this->registry->template->title = 'Pets | activate | ' . $ad[0]['title'];
+            $this->registry->template->show('view_ad');
         } else {
-            $this->registry->template->ad = $ad[0];
-            $this->registry->template->activate = 1;
+            header("Location: /pets/");
         }
-        $this->registry->template->offset = $offset;
-        $this->registry->template->title = 'Pets | activate | ' . $ad[0]['title'];
-        $this->registry->template->show('view_ad');
     }
 
     public function activate_ad() {
-        if (is_numeric($_POST['ad_id']) && is_numeric($_POST['activate'])) {
-            if (intval($_POST['activate'] == 1))
-                $status = 1;
-            else
-                $status = 2;
-            Operations::get_instance()->init(array(
-                'id' => intval($_POST['ad_id']),
-                'status' => $status
-                    ), 'ads', 'update');
+        if (Login::get_instance()->check_login() == 'valid') {
+            $user_data = Register::get_instance()->get_current_user();
+            if ($user_data['status'] != 10) {
+                exit();
+            }
+            if (is_numeric($_POST['ad_id']) && is_numeric($_POST['activate'])) {
+                if (intval($_POST['activate'] == 1))
+                    $status = 1;
+                else
+                    $status = 2;
+                Operations::get_instance()->init(array(
+                    'id' => intval($_POST['ad_id']),
+                    'status' => $status
+                        ), 'ads', 'update');
+            }
         }
     }
 
@@ -139,13 +162,15 @@ Class adsController Extends baseController {
     }
 
     public function del() {
-        $ds = DIRECTORY_SEPARATOR;
-        $user_data = Register::get_instance()->get_current_user();
-        $storeFolder = '..' . $ds . 'views' . $ds . 'temp_img';
-        $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
-        $pattern = "/^(" . $user_data['id'] . "_)(.)*/";
-        if (preg_match($pattern, $_POST['f'])) {
-            unlink($targetPath . $_POST['f'] . '.jpeg');
+        if (Login::get_instance()->check_login() == 'valid') {
+            $ds = DIRECTORY_SEPARATOR;
+            $user_data = Register::get_instance()->get_current_user();
+            $storeFolder = '..' . $ds . 'views' . $ds . 'temp_img';
+            $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
+            $pattern = "/^(" . $user_data['id'] . "_)(.)*/";
+            if (preg_match($pattern, $_POST['f'])) {
+                unlink($targetPath . $_POST['f'] . '.jpeg');
+            }
         }
     }
 
@@ -201,6 +226,7 @@ Class adsController Extends baseController {
             $ad_data['time_added'] = time();
             $ad_data['date_added'] = TimeTools::get_time_id(date('Y-m-d'));
 
+            a:
             if ($_POST['id'] != 'null') {
                 $ad_data['status'] = 0;
                 $op = 'update';
@@ -216,10 +242,10 @@ Class adsController Extends baseController {
                 $img_check = $this->check_img($ad_data['user_id'], 'null');
                 $type = 'add';
             }
-            if ($img_check !== true)
+            if (($img_check !== true) && empty($errors['rt']))
                 $errors['rt'][] = $img_check;
 
-            a:
+
             if (empty($errors['rt']) && empty($errors['md']) && empty($errors['lt'])) {
                 if ($op == 'insert')
                     $ad_id = Operations::get_instance()->init($ad_data, 'ads');
@@ -237,46 +263,48 @@ Class adsController Extends baseController {
     }
 
     private function check_img($user_id, $ad_id) {
-        $ds = DIRECTORY_SEPARATOR;
-        $storeFolder = '..' . $ds . 'views' . $ds . 'temp_img';
-        $newFolder = '..' . $ds . 'views' . $ds . 'ads_img';
-        $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
-        $newPath = dirname(__FILE__) . $ds . $newFolder . $ds;
-        $images = glob($targetPath . $user_id . "_*.jpeg");
-        if ($ad_id == 'null') {
-            if (empty($images))
-                return true;
-            else
-                return 'يجب وضع صورة واحدة على الأقل';
-        }else {
-            $images2 = glob($newPath . $ad_id . "_*.jpeg");
-            $count = count($images) + count($images2);
-            if ($count == 0)
-                return 'يجب وضع صورة واحدة على الأقل';
-            else if ($count > 5)
-                return 'لا يمكن اختيار أكثر من 5 صور';
-            else
-                return true;
+        if (Login::get_instance()->check_login() == 'valid') {
+            $ds = DIRECTORY_SEPARATOR;
+            $storeFolder = '..' . $ds . 'views' . $ds . 'temp_img';
+            $newFolder = '..' . $ds . 'views' . $ds . 'ads_img';
+            $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
+            $newPath = dirname(__FILE__) . $ds . $newFolder . $ds;
+            $images = glob($targetPath . $user_id . "_*.jpeg");
+            if ($ad_id == 'null') {
+                if (!empty($images))
+                    return true;
+                else
+                    return 'يجب وضع صورة واحدة على الأقل';
+            }else {
+                $images2 = glob($newPath . $ad_id . "_*.jpeg");
+                $count = count($images) + count($images2);
+                if ($count == 0)
+                    return 'يجب وضع صورة واحدة على الأقل';
+                else if ($count > 5)
+                    return 'لا يمكن اختيار أكثر من 5 صور';
+                else
+                    return true;
+            }
         }
     }
 
     private function procces_img($user_id, $ad_id) { //
-        $ds = DIRECTORY_SEPARATOR;
-        //$user_id = 1;
-        //$ad_id = 1;
-        $storeFolder = '..' . $ds . 'views' . $ds . 'temp_img';
-        $newFolder = '..' . $ds . 'views' . $ds . 'ads_img';
-        $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
-        $newPath = dirname(__FILE__) . $ds . $newFolder . $ds;
-        $images = glob($targetPath . $user_id . "_*.jpeg");
-        foreach ($images as $img) {
-            $new_name = $ad_id . '_' . md5(rand(1, 5000000000)) . '.jpeg';
-            while (file_exists($newPath . $new_name)) {
+        if (Login::get_instance()->check_login() == 'valid') {
+            $ds = DIRECTORY_SEPARATOR;
+            $storeFolder = '..' . $ds . 'views' . $ds . 'temp_img';
+            $newFolder = '..' . $ds . 'views' . $ds . 'ads_img';
+            $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
+            $newPath = dirname(__FILE__) . $ds . $newFolder . $ds;
+            $images = glob($targetPath . $user_id . "_*.jpeg");
+            foreach ($images as $img) {
                 $new_name = $ad_id . '_' . md5(rand(1, 5000000000)) . '.jpeg';
+                while (file_exists($newPath . $new_name)) {
+                    $new_name = $ad_id . '_' . md5(rand(1, 5000000000)) . '.jpeg';
+                }
+                rename($img, $newPath . $new_name);
+                Operations::get_instance()->init(array('ad_id' => $ad_id, 'img_name' => $new_name,
+                    'time_added' => time(), 'date_added' => TimeTools::get_time_id(date('Y-m-d'))), 'ads_img');
             }
-            rename($img, $newPath . $new_name);
-            Operations::get_instance()->init(array('ad_id' => $ad_id, 'img_name' => $new_name,
-                'time_added' => time(), 'date_added' => TimeTools::get_time_id(date('Y-m-d'))), 'ads_img');
         }
     }
 

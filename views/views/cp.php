@@ -19,14 +19,14 @@
                 </dl>
 
                 <div class="tabs-content" style="padding:0 !important;">
-                    <div id="errors" style="color:green;"></div>
+                    <div id="errors" style="color:#D20909;"></div>
                     <div class="content active" id="panel1" style="width:100% !important;">
 
 
 
                         <div class="small-12 columns right" style="padding:0 !important;">
-                            <input type="text" placeholder="ادخل البريد او رقم العضوية" style="width:80%; float:right;">
-                            <input type="submit" class="button" value="بحث" style=" height:37px; margin-top:0; width:19%; float:right;">
+                            <input id="users_search_box" type="text" placeholder="ادخل البريد او رقم العضوية" style="width:80%; float:right;">
+                            <input id="search_users" type="submit" class="button" value="بحث" style=" height:37px; margin-top:0; width:19%; float:right;">
                         </div>
 
                         <div class="small-12 columns right" style="padding:0 !important;">
@@ -44,7 +44,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="users_body">
-                                    <?= empty($users) ? '' : Temp::users_container_rows($users); ?>
+                                    <?= empty($users) ? '<tr><td colspan="4">لا يوجد عضويات</td></tr>' : Temp::users_container_rows($users); ?>
                                 </tbody>
                             </table>
                         </form>                  
@@ -61,8 +61,8 @@
                     <div class="content" id="panel2" style="width:100% !important;">
 
                         <div class="small-12 columns right" style="padding:0 !important;">
-                            <input type="text" placeholder="ادخل البريد او رقم العضوية" style="width:80%; float:right;">
-                            <input type="submit" class="button" value="بحث" style=" height:37px; margin-top:0; width:19%; float:right;">
+                            <input id="ads_search_box" type="text" placeholder="ادخل اسم أو رقم الاعلان" style="width:80%; float:right;">
+                            <input id="search_ads" type="submit" class="button" value="بحث" style=" height:37px; margin-top:0; width:19%; float:right;">
                         </div>
 
                         <div class="small-12 columns right" style="padding:0 !important;">
@@ -74,14 +74,14 @@
                                 <thead>
                                     <tr>
                                         <th width="40"><input type="checkbox" check="ads" name="all"></th>
-                                        <th width="100">رقم العضوية</th>
-                                        <th width="">البريد الاليكترونى</th>
+                                        <th width="100">رقم الاعلان</th>
+                                        <th width="">العنوان</th>
                                         <th width="">الحالة</th>
                                     </tr>
                                 </thead>
                                 <tbody id="ads_body">
 
-                                    <?= empty($ads) ? '' : Temp::ad_container_rows($ads); ?>
+                                    <?= empty($ads) ? '<tr><td colspan="4">لا يوجد اعلانات للعرض</td></tr>' : Temp::ad_container_rows($ads); ?>
                                 </tbody>
                             </table>
                         </form>

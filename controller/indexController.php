@@ -31,11 +31,21 @@ Class indexController Extends baseController {
                 $settings['type'] = intval($_GET['ty']);
             if (isset($_GET['p']) && is_numeric($_GET['p']))
                 $settings['page'] = intval($_GET['p']);
+            if (isset($_GET['search_country']) && is_numeric($_GET['search_country']))
+                $settings['country'] = intval($_GET['search_country']);
+            if (isset($_GET['search_city']) && is_numeric($_GET['search_city']))
+                $settings['city'] = intval($_GET['search_city']);
+            if (isset($_GET['search_region']) && is_numeric($_GET['search_region']))
+                $settings['region'] = intval($_GET['search_region']);
+            if (isset($_GET['words']) && !empty($_GET['words']))
+                $settings['words'] = addslashes($_GET['words']);
         }
         $settings['status'] = 1;
 
-        $this->registry->template->pagination = ads::pagination();
-        $this->registry->template->ads = ads::load_ads(1, $settings);
+        $ads = ads::load_ads(1, $settings, 1);
+        $this->registry->template->ads = $ads['ads'];
+        if ($ads['count'] > 18)
+            $this->registry->template->pagination = ads::pagination(ceil($ads['count'] / 18));
         $this->registry->template->title = 'Home | Pets Services';
         $this->registry->template->show('index');
     }
@@ -66,7 +76,7 @@ Class indexController Extends baseController {
             else if ($status == 'blocked')
                 $errors[] = 'الكود الذى تم ادخاله غير صحيح';
             else if ($status == 'deactivated')
-                $errors[] = 'لقد تم تعطيل هذا الحساب';
+                $errors[] = 'لقد تم تعطيل هذا الحساب برجاء التواصل مع الدعم';
 
             a:
             if (empty($errors)) {
@@ -133,7 +143,7 @@ Class indexController Extends baseController {
             }
             a:
             if (empty($errors)) {
-                //Register::get_instance()->forgot_pass($email);
+                Register::get_instance()->forgot_pass($email);
                 echo json_encode(array('operation' => 1));
             } else {
                 echo json_encode(array('operation' => 2, 'errors' => $errors));
@@ -142,59 +152,114 @@ Class indexController Extends baseController {
     }
 
     public function petsCp() {
-        $this->registry->template->pagination = ads::pagination();
+        if (Login::get_instance()->check_login() == 'valid') {
+            $user_data = Register::get_instance()->get_current_user();
+            if ($user_data['status'] != 10) {
+                header("Location: /pets/");
+                exit();
+            }
+            $ads = ads::load_ads(0, array(), 1);
+            $this->registry->template->total_ads = $ads['count'];
+            $this->registry->template->ads = $ads['ads'];
 
-        $ads = ads::load_ads(0, array(), 1);
-        $this->registry->template->total_ads = $ads['count'];
-        $this->registry->template->ads = $ads['ads'];
+            $users = Register::get_instance()->load_users();
+            $this->registry->template->total_users = $users['count'];
+            $this->registry->template->users = $users['users'];
 
-        $users = Register::get_instance()->load_users();
-        $this->registry->template->total_users = $users['count'];
-        $this->registry->template->users = $users['users'];
-
-        $this->registry->template->title = 'Home | Pets CP';
-        $this->registry->template->show('cp');
+            $this->registry->template->title = 'Home | Pets CP';
+            $this->registry->template->show('cp');
+        } else {
+            header("Location: /pets/");
+        }
     }
 
     public function load_more() {
-        if ($_POST) {
-            if ($_POST['type'] == 'users' && is_numeric($_POST['value'])) {
-                $page = intval($_POST['value']) + 1;
-                $users = ads::load_ads(0, array('page' => $page), 1);
-                echo empty($users['users']) ? '' : Temp::users_container_rows($users['users']);
-            } else if ($_POST['type'] == 'ads' && is_numeric($_POST['value'])) {
-                $page = intval($_POST['value']) + 1;
-                $ads = ads::load_ads(0, array('page' => $page), 1);
-                echo empty($ads['ads']) ? '' : Temp::ad_container_rows($ads['ads']);
+        if (Login::get_instance()->check_login() == 'valid') {
+            $user_data = Register::get_instance()->get_current_user();
+            if ($user_data['status'] != 10) {
+                exit();
+            }
+            if ($_POST) {
+                if ($_POST['type'] == 'users' && is_numeric($_POST['value'])) {
+                    $page = intval($_POST['value']) + 1;
+                    $users = ads::load_ads(0, array('page' => $page), 1);
+                    echo empty($users['users']) ? '' : Temp::users_container_rows($users['users']);
+                } else if ($_POST['type'] == 'ads' && is_numeric($_POST['value'])) {
+                    $page = intval($_POST['value']) + 1;
+                    $ads = ads::load_ads(0, array('page' => $page), 1);
+                    echo empty($ads['ads']) ? '' : Temp::ad_container_rows($ads['ads']);
+                }
+            }
+        }
+    }
+
+    public function search_cp() {
+        if (Login::get_instance()->check_login() == 'valid') {
+            $user_data = Register::get_instance()->get_current_user();
+            if ($user_data['status'] != 10) {
+                exit();
+            }
+            if ($_POST) {
+                if ($_POST['type'] == 'users') {
+                    if (is_numeric($_POST['value']))
+                        $settings['id'] = intval($_POST['value']);
+                    else if (Validation::email($_POST['value']))
+                        $settings['email'] = addslashes($_POST['value']);
+                    else {
+                        echo '';
+                        exit();
+                    }
+                    $users = Register::get_instance()->get_user($settings);
+                    echo empty($users) ? '' : Temp::users_container_rows($users);
+                } else if ($_POST['type'] == 'ads') {
+
+                    if (is_numeric($_POST['value']))
+                        $settings['id'] = intval($_POST['value']);
+                    else
+                        $settings['words'] = addslashes($_POST['value']);
+                    if (empty($_POST['value'])) {
+                        echo '';
+                        exit();
+                    }
+                    $settings['limit'] = 'no';
+                    $ads = ads::load_ads(0, $settings);
+                    echo empty($ads) ? '' : Temp::ad_container_rows($ads);
+                }
             }
         }
     }
 
     public function handle() {
-        if (is_array($_POST['users']) && is_numeric($_GET['t']) && ($_GET['ty'] == 'users')) {
-            if ($_GET['t'] == 1)
-                $status = 1;
-            else
-                $status = 2;
-
-            foreach ($_POST['users']as $id) {
-                Operations::get_instance()->init(array('id' => intval($id), 'status' => $status), 'users', 'update');
+        if (Login::get_instance()->check_login() == 'valid') {
+            $user_data = Register::get_instance()->get_current_user();
+            if ($user_data['status'] != 10) {
+                exit();
             }
-        } else if (is_array($_POST['ads']) && is_numeric($_GET['t']) && ($_GET['ty'] == 'ads')) {
-            if ($_GET['t'] == 1)
-                $status = 1;
-            else
-                $status = 2;
+            if (is_array($_POST['users']) && is_numeric($_GET['t']) && ($_GET['ty'] == 'users')) {
+                if ($_GET['t'] == 1)
+                    $status = 1;
+                else
+                    $status = 2;
 
-            foreach ($_POST['ads']as $id) {
-                Operations::get_instance()->init(array('id' => intval($id), 'status' => $status), 'ads', 'update');
+                foreach ($_POST['users']as $id) {
+                    Operations::get_instance()->init(array('id' => intval($id), 'status' => $status), 'users', 'update');
+                }
+            } else if (is_array($_POST['ads']) && is_numeric($_GET['t']) && ($_GET['ty'] == 'ads')) {
+                if ($_GET['t'] == 1)
+                    $status = 1;
+                else
+                    $status = 2;
+
+                foreach ($_POST['ads']as $id) {
+                    Operations::get_instance()->init(array('id' => intval($id), 'status' => $status), 'ads', 'update');
+                }
             }
         }
     }
 
     public function logout() {
         Login::get_instance()->logout();
+        header("Location: /pets/");
     }
 
 }
-

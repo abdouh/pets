@@ -27,6 +27,18 @@ class Register {
         return $result[0];
     }
 
+    function get_user($settings = array()) {
+        $table = db::$tables['users'];
+
+        foreach ($settings as $setting => $value)
+            $query_end = "`$setting` = '$value'";
+
+        $query = "SELECT * FROM $table WHERE $query_end LIMIT 1";
+        $stmt = db::getInstance()->query($query);
+        $result = db::getInstance()->fetchAll($stmt);
+        return $result;
+    }
+
     function new_user($data) {
         $data['time_added'] = time();
         $data['date_added'] = TimeTools::get_time_id(date('Y-m-d'));
@@ -62,12 +74,12 @@ class Register {
         $limit = "$offset,$elements_per_page";
 
         $table = db::$tables['users'];
-        $query = "SELECT count(*) as `count` FROM $table";
+        $query = "SELECT count(*) as `count` FROM $table WHERE `status` != '10'";
         $stmt = db::getInstance()->query($query);
         $result = db::getInstance()->fetchAll($stmt);
         $count = $result[0]['count'];
 
-        $query = "SELECT * FROM $table LIMIT $limit";
+        $query = "SELECT * FROM $table WHERE `status` != '10' LIMIT $limit";
         $stmt = db::getInstance()->query($query);
         $result = db::getInstance()->fetchAll($stmt);
 

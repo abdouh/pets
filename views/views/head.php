@@ -1,3 +1,7 @@
+<?
+if (!defined('WEB'))
+    exit();
+?>
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
@@ -29,7 +33,8 @@
         <script src="<?= TEMPLATE_URL; ?>/js/users.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/index.js"></script>
         <script src="<?= TEMPLATE_URL; ?>/js/ads.js"></script>
-
+        <script src="<?= TEMPLATE_URL; ?>/js/clinics.js"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
 
 

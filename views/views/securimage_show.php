@@ -1,3 +1,8 @@
+<?
+
+if (!defined('WEB'))
+    exit();
+?>
 <?php
 
 /**
@@ -43,16 +48,13 @@
  * @package Securimage
  *
  */
-
 // Remove the "//" from the following line for debugging problems
 // error_reporting(E_ALL); ini_set('display_errors', 1);
-
 //require_once dirname(__FILE__) . '/securimage.php';
 
 $img = new Securimage();
 
 // You can customize the image by making changes below, some examples are included - remove the "//" to uncomment
-
 //$img->ttf_file        = './Quiff.ttf';
 //$img->captcha_type    = Securimage::SI_CAPTCHA_MATHEMATIC; // show a simple math problem instead of text
 //$img->case_sensitive  = true;                              // true to use case sensitve codes - not recommended
@@ -67,11 +69,10 @@ $img = new Securimage();
 //$img->signature_color = new Securimage_Color(rand(0, 64),
 //                                             rand(64, 128),
 //                                             rand(128, 255));  // random signature color
-
 // see securimage.php for more options that can be set
-
 // set namespace if supplied to script via HTTP GET
-if (!empty($_GET['namespace'])) $img->setNamespace($_GET['namespace']);
+if (!empty($_GET['namespace']))
+    $img->setNamespace($_GET['namespace']);
 
 
 $img->show();  // outputs the image and content headers to the browser

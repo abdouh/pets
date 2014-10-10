@@ -1,3 +1,7 @@
+<?
+if (!defined('WEB'))
+    exit();
+?>
 <? require_once 'head.php'; ?>
 <body>
     <? require_once 'header.php'; ?>
@@ -53,10 +57,10 @@
                 <!--ad image code start-->
                 <div class=" small-12 medium-12  large-7  columns left" style="padding:0 !important;">
 
-                    <div class="price">
+                   <!-- <div class="price">
                         <span class="price_number">7000</span>
                         <span class="price_currency">جنيه مصرى</span>
-                    </div>
+                    </div>-->
 
 
                     <script>
@@ -64,19 +68,19 @@
                             $(".ad_img_thumb").click(function(){
                                 var current = $(this).attr('src');
                                 $(".ad_img_preview").attr("src", current);
-                    		  
+                                    		  
                                 $(this).addClass("current_image");
                                 $(this).siblings().removeClass("current_image");
 
                             })
-                    	   
+                                    	   
                             /*open photo light box*/
                             $(".ad_img_preview").click(function(){
-                                $(".lighbox_container").show();
+                                $(".lighbox_container.adss").show();
                                 var preview = $(this).attr('src');
-                                $(".lighbox_container > div > img").attr("src", preview);
+                                $(".lighbox_container.adss > div > img").attr("src", preview);
                             })	
-                    	
+                                    	
                             /*close light box*/
                             $(".CloseLightBox").click(function(){
                                 $(this).parent().parent().hide();
@@ -85,7 +89,7 @@
                         });
                     </script>
 
-                    <div class="lighbox_container">
+                    <div class="lighbox_container adss">
                         <div class="lighbox  small-10 small-offset-1 meduim-10 meduim-offset-1 large-6 large-offset-3 columns">
                             <a class="CloseLightBox">X</a>
                             <img src="">
@@ -113,7 +117,7 @@
 
                     <div class="ad_info_element">
                         <span>للإتصال : </span>
-                        <span>01003612060</span>
+                        <span>+<?= $phone; ?></span>
                     </div>
 
                     <div class="ad_info_element">

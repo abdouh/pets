@@ -1,3 +1,7 @@
+<?
+if (!defined('WEB'))
+    exit();
+?>
 
 <!--accounts lightbox start-->
 <div class="lighbox_container accounts">
@@ -26,7 +30,8 @@
                 <input type="password" name="reg_confirm_pass">
             </label>
 
-            <input type="submit" onClick="register();return false;" class="button expand" value="انشاء عضوية جديدة">
+            <input type="submit" onClick="register();
+                    return false;" class="button expand" value="انشاء عضوية جديدة">
 
             <a href="javascript:void(0);" class="GoToLogin">لدى عضوية , تسجيل الدخول</a>
 
@@ -42,7 +47,8 @@
                 <input type="text" name="forgot_email">
             </label>
 
-            <input type="submit" onClick="forgot_pass();return false;" class="button expand" value="استعادة كلمة المرور">
+            <input type="submit" onClick="forgot_pass();
+                    return false;" class="button expand" value="استعادة كلمة المرور">
 
             <a href="javascript:void(0);" class="GoToLogin"> تسجيل الدخول</a>
 
@@ -62,14 +68,16 @@
                 <input type="password" name="password">
             </label>
             <div id="captcha_display" style="display:none;float:right;">
-                <a href="#" onclick="document.getElementById('captcha').src = '/pets/index/captcha?' + Math.random(); return false">كود أخر</a>
+                <a href="#" onclick="document.getElementById('captcha').src = '/pets/index/captcha?' + Math.random();
+                        return false">كود أخر</a>
                 <img id="captcha" src="/pets/index/captcha" alt="CAPTCHA Image" />
                 <label style="width:100px;"> أدخل الكود
                     <input type="text" name="captcha_code" width="50" maxlength="6">
                 </label>
             </div>
 
-            <input type="submit" onClick="login();return false;" class="button expand" value="تسجيل الدخول">
+            <input type="submit" onClick="login();
+                    return false;" class="button expand" value="تسجيل الدخول">
 
             <a href="javascript:void(0);" class="GoForgetPass">نسيت كلمة المرور</a>
             <br>
@@ -93,15 +101,15 @@
 
         <h3 class="text-center">البحث</h3>
 
-        <form>
+        <form id="search" method="get" action="/pets/">
 
 
             <div class="large-8 small-12 meduim-8 columns">
-                <input type="text" placeholder="ادخل كلمات البحث" style="height:44px;">
+                <input type="text" name="words" placeholder="ادخل كلمات البحث" style="height:44px;">
             </div>
 
             <div class="large-4 small-12 meduim-4 columns">
-                <a href="#" class="button expand" style="margin-top:0;">بحث</a>
+                <a href="#" onClick="$('#search').submit();" class="button expand" style="margin-top:0;">بحث</a>
             </div>
 
             <div class=" small-12 columns" style="padding:0;">
@@ -114,26 +122,9 @@
 
 
                     <label>الدولة
-                        <select>
+                        <select id="search_country" name="search_country">
                             <option value="">اختار الدولة</option>
-                            <option value="مصر">مصر</option>
-                            <option value="لبنان">لبنان</option>
-                            <option value="المفرب">المفرب</option>
-                            <option value="الامارات">الامارات</option>
-                        </select>
-                    </label>
-
-                </div>
-
-                <div class="small-12 meduim-6 large-4 columns">
-
-                    <label>المحافظة
-                        <select>
-                            <option value="">اختار المحافظة</option>
-                            <option value="بنى سويف">بنى سويف</option>
-                            <option value="المنيا">المنيا</option>
-                            <option value="اسيوط">اسيوط</option>
-                            <option value="سوهاج">سوهاج</option>
+                            <?= Temp::load_list_options('ads_countries'); ?>
                         </select>
                     </label>
 
@@ -142,12 +133,18 @@
                 <div class="small-12 meduim-6 large-4 columns">
 
                     <label>المدينة
-                        <select>
+                        <select id="search_city" name="search_city">
                             <option value="">اختار المدينة</option>
-                            <option value="بنى سويف">بنى سويف</option>
-                            <option value="المنيا">المنيا</option>
-                            <option value="اسيوط">اسيوط</option>
-                            <option value="سوهاج">سوهاج</option>
+                        </select>
+                    </label>
+
+                </div>
+
+                <div class="small-12 meduim-6 large-4 columns">
+
+                    <label>المنطقة
+                        <select id="search_region" name="search_region">
+                            <option value="">اختار المنطقة</option>
                         </select>
                     </label>
 
@@ -538,9 +535,14 @@ HERE;
             <div class="text"> <a href="">اتصل بنا</a></div>
         </li>
 
-        <? if (Login::get_instance()->check_login() != 'valid') { ?>
+        <? if (Login::get_instance()->check_login() == 'valid') { ?>
             <li>
                 <div class="icon account"></div>
+                <div class="text"><a href="/pets/index/logout">خروج</a></div>
+            </li>
+        <? } else { ?>
+            <li>
+                <div id="account" class="icon account"></div>
                 <div class="text"> تسجيل</div>
             </li>
         <? } ?>

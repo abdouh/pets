@@ -24,11 +24,58 @@ HERE;
         return $output;
     }
 
+    static function pagination_list($page, $query, $total, $pages = 5) {
+        $output = '';
+        $list = '';
+
+        if ($page > $pages)
+            $page_pos = ceil($page / $pages);
+        else
+            $page_pos = 1;
+
+        
+        $start = ($page_pos * $pages) - $pages + 1;
+
+
+        for ($i = $start; $i <= ($page_pos * $pages); $i++) {
+            if ($i > $total)
+                break;
+
+            $query['p'] = $i;
+            $q = http_build_query($query);
+            $current = '';
+            if ($page == $i)
+                $current = ' class="current"';
+            $list .= <<<HERE
+<li$current><a href="/pets/?$q">$i</a></li>\n                
+HERE;
+        }
+
+        $query['p'] = $page - 1;
+        $q = http_build_query($query);
+        $prev_arrow = '<li class="arrow"><a href="/pets/?' . $q . '">&rsaquo;</a></li>';
+        $query['p'] = $page + 1;
+        $q = http_build_query($query);
+        $next_arrow = '<li class="arrow"><a href="/pets/?' . $q . '">&lsaquo;</a></li>';
+
+        if ($total == $page)
+            $next_arrow = '';
+        if ($page == 1)
+            $prev_arrow = '';
+
+        $output .= '<ul class="pagination">';
+        $output .=$prev_arrow;
+        $output .= $list;
+        $output .=$next_arrow;
+        $output .= '<ul class="pagination">';
+        return $output;
+    }
+
     static function users_container_rows($users) {
         $output = '';
 
-        $status[1] = 'مفعل';
-        $status[2] = 'معطل';
+        $status[1] = '<span style="color:green;">مفعل</span>';
+        $status[2] = '<span style="color:#D20909;">معطل</span>';
         foreach ($users as $user) {
             $output .= <<<HERE
     <tr>
@@ -45,8 +92,8 @@ HERE;
     static function ad_container_rows($ads) {
         $output = '';
         $status[0] = 'غير مفعل';
-        $status[1] = 'مفعل';
-        $status[2] = 'معطل';
+        $status[1] = '<span style="color:green;">مفعل</span>';
+        $status[2] = '<span style="color:#D20909;">معطل</span>';
         foreach ($ads as $ad) {
             $output .= <<<HERE
     <tr>

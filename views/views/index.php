@@ -1,11 +1,15 @@
-<? require_once 'head.php'; ?>
+<?
+if (!defined('WEB'))
+    exit();
+?>
+    <? require_once 'head.php'; ?>
 <body>
     <? require_once 'header.php'; ?>
 
-    <?= $out; ?>
+<?= $out; ?>
     <div class="row" style="margin-top:36px;">
 
-        <? require_once 'side_bar.php'; ?>
+<? require_once 'side_bar.php'; ?>
 
         <!--main content start-->
         <div class="content">
@@ -37,26 +41,14 @@
             <!--ads grid view start-->
             <div class="row" style="margin:0 0 16px 0;">
                 <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-3 ads_view">
-                    <? echo Temp::ad_container_list($ads); ?>
+<? echo empty($ads) ? 'لا توجد اعلانات للعرض' : Temp::ad_container_list($ads); ?>
                 </ul>
             </div>
             <!--ads grid view start-->
 
             <!--paginatios start-->
             <div class="row" style="margin:0 0 16px 0; padding:0;">
-                <ul class="pagination">
-                    <li class="arrow unavailable"><a href="">&rsaquo;</a></li>
-                    <li><a href="">1</a></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">4</a></li>
-                    <li class="current"><a href="">5</a></li>
-                    <li><a href="">6</a></li>
-                    <li><a href="">7</a></li>
-                    <li><a href="">8</a></li>
-
-                    <li class="arrow"><a href="">&lsaquo;</a></li>
-                </ul>
+<?= empty($ads) ? '' : $pagination; ?>
             </div>
             <!--paginatios end-->
 

@@ -13,7 +13,7 @@ $(document).ready(function(){
             },
             phone: {
                 digits: true,
-                minlength: 9
+                minlength: 10
             },
             old_pass: {
                 required: true

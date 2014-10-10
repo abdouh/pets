@@ -3,48 +3,56 @@
 Class userController Extends baseController {
 
     public function index() {
-        $user_data = Register::get_instance()->get_current_user(1);
-        $this->registry->template->user_info = $user_data;
-        $this->registry->template->title = 'User | Info';
+        if (Login::get_instance()->check_login() == 'valid') {
+            $user_data = Register::get_instance()->get_current_user(1);
+            $this->registry->template->user_info = $user_data;
+            $this->registry->template->title = 'User | Info';
 
-        $this->registry->template->ads1 = ads::load_ads(1, array(
-                    'user_id' => $user_data['id'],
-                    'status' => 1
-                ));
-        $this->registry->template->ads2 = ads::load_ads(1, array(
-                    'user_id' => $user_data['id'],
-                    'status' => 0
-                ));
-        $this->registry->template->ads3 = ads::load_ads(1, array(
-                    'user_id' => $user_data['id'],
-                    'status' => 3
-                ));
-        $this->registry->template->ads4 = ads::load_ads(1, array(
-                    'user_id' => $user_data['id'],
-                    'status' => 2
-                ));
+            $this->registry->template->ads1 = ads::load_ads(1, array(
+                        'user_id' => $user_data['id'],
+                        'status' => 1
+            ));
+            $this->registry->template->ads2 = ads::load_ads(1, array(
+                        'user_id' => $user_data['id'],
+                        'status' => 0
+            ));
+            $this->registry->template->ads3 = ads::load_ads(1, array(
+                        'user_id' => $user_data['id'],
+                        'status' => 3
+            ));
+            $this->registry->template->ads4 = ads::load_ads(1, array(
+                        'user_id' => $user_data['id'],
+                        'status' => 2
+            ));
 
-        $this->registry->template->show('user_info');
+            $this->registry->template->show('user_info');
+        } else {
+            header("Location: /pets/");
+        }
     }
 
     public function get_ads() {
-        if (is_numeric($_POST['status'])) {
-            $user_data = Register::get_instance()->get_current_user();
-            $ads = ads::load_ads(1, array(
-                        'user_id' => $user_data['id'],
-                        'status' => intval($_POST['status'])
-                    ));
-            if (!empty($ads))
-                echo Temp::ad_container_list($ads);
-            else
-                echo 'لا توجد اعلانات للعرض';
+        if (Login::get_instance()->check_login() == 'valid') {
+            if (is_numeric($_POST['status'])) {
+                $user_data = Register::get_instance()->get_current_user();
+                $ads = ads::load_ads(1, array(
+                            'user_id' => $user_data['id'],
+                            'status' => intval($_POST['status'])
+                ));
+                if (!empty($ads))
+                    echo Temp::ad_container_list($ads);
+                else
+                    echo 'لا توجد اعلانات للعرض';
+            }
         }
     }
 
     public function edit() {
-        $this->registry->template->user_info = Register::get_instance()->get_current_user(1);
-        $this->registry->template->title = 'User | Edit';
-        $this->registry->template->show('user_edit');
+        if (Login::get_instance()->check_login() == 'valid') {
+            $this->registry->template->user_info = Register::get_instance()->get_current_user(1);
+            $this->registry->template->title = 'User | Edit';
+            $this->registry->template->show('user_edit');
+        }
     }
 
     public function update() {
@@ -56,7 +64,7 @@ Class userController Extends baseController {
                 $user_info['id'] = $user_data['id'];
                 $user_info['username'] = addslashes($_POST['username']);
                 $user_info['email'] = addslashes($_POST['email']);
-                $user_info['phone'] = intval($_POST['phone']);
+                $user_info['phone'] = $_POST['phone'];
                 if (!empty($_POST['new_pass']))
                     $user_info['password'] = md5($_POST['new_pass']);
 
@@ -74,6 +82,8 @@ Class userController Extends baseController {
                 if (empty($errors)) {
                     Operations::get_instance()->init($user_info, 'users', 'update');
                     $this->img_upload();
+                    if (isset($user_info['password']))
+                        $_SESSION['user_info']['password'] = $user_info['password'];
                     echo json_encode(array('operation' => 1));
                 } else {
                     echo json_encode(array('operation' => 2, 'errors' => $errors));
@@ -119,19 +129,16 @@ Class userController Extends baseController {
     }
 
     public function del() {
-        $ds = DIRECTORY_SEPARATOR;
-        $user_data = Register::get_instance()->get_current_user();
-        $storeFolder = '..' . $ds . 'views' . $ds . 'users_img';
-        $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
-        $images = glob($targetPath . $user_data['id'] . "_*.jpeg");
-        foreach ($images as $image) {
-            unlink($image);
+        if (Login::get_instance()->check_login() == 'valid') {
+            $ds = DIRECTORY_SEPARATOR;
+            $user_data = Register::get_instance()->get_current_user();
+            $storeFolder = '..' . $ds . 'views' . $ds . 'users_img';
+            $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
+            $images = glob($targetPath . $user_data['id'] . "_*.jpeg");
+            foreach ($images as $image) {
+                unlink($image);
+            }
         }
     }
 
-    public function logout() {
-        Login::get_instance()->logout();
-    }
-
 }
-

@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	
     /*open accounts light box*/
-    $(".account").parent("li").click(function(){
+    $("#account").parent("li").click(function(){
         $(".lighbox_container.accounts").show();
         $(".login").show();
     })

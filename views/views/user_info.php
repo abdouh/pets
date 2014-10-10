@@ -1,3 +1,7 @@
+<?
+if (!defined('WEB'))
+    exit();
+?>
 <? require_once 'head.php'; ?>
 <body>
     <? require_once 'header.php'; ?>
