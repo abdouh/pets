@@ -62,133 +62,6 @@ Class clinicsController Extends baseController {
         }
     }
 
-    public function activate() {
-        if (Login::get_instance()->check_login() == 'valid') {
-            $user_data = Register::get_instance()->get_current_user();
-            if ($user_data['status'] != 10) {
-                header("Location: /pets/");
-                exit();
-            }
-
-            if (is_numeric($_POST['count']) && is_numeric($_POST['type'])) {
-                if ($_POST['type'] == 1)
-                    $offset = intval($_POST['count']) + 1;
-                else if ($_POST['type'] == 2)
-                    $offset = intval($_POST['count']) - 1;
-
-                if ($offset < 0)
-                    $offset = 0;
-
-                $ad = ads::load_ads(5, array('limit' => 1, 'offset' => $offset, 'status' => 0));
-                $counter = 0;
-                while (empty($ad) && $counter <= 7) {
-                    $counter++;
-                    $offset = $offset - 1;
-                    $ad = ads::load_ads(5, array('limit' => 1, 'offset' => $offset, 'status' => 0));
-                }
-            } else {
-                $offset = 0;
-                $ad = ads::load_ads(5, array('limit' => 1, 'status' => 0));
-            }
-
-            if (empty($ad)) {
-                $this->registry->template->ad = array();
-                $this->registry->template->activate = 0;
-            } else {
-                $this->registry->template->ad = $ad[0];
-                $this->registry->template->activate = 1;
-            }
-            $this->registry->template->offset = $offset;
-            $this->registry->template->title = 'Pets | activate | ' . $ad[0]['title'];
-            $this->registry->template->show('view_ad');
-        } else {
-            header("Location: /pets/");
-        }
-    }
-
-    public function activate_ad() {
-        if (Login::get_instance()->check_login() == 'valid') {
-            $user_data = Register::get_instance()->get_current_user();
-            if ($user_data['status'] != 10) {
-                exit();
-            }
-            if (is_numeric($_POST['ad_id']) && is_numeric($_POST['activate'])) {
-                if (intval($_POST['activate'] == 1))
-                    $status = 1;
-                else
-                    $status = 2;
-                Operations::get_instance()->init(array(
-                    'id' => intval($_POST['ad_id']),
-                    'status' => $status
-                        ), 'ads', 'update');
-            }
-        }
-    }
-
-    public function jsload() {
-        if (Login::get_instance()->check_login() == 'valid' && $_POST) {
-            $type = intval($_POST['type']);
-            $data = intval($_POST['data']);
-            switch ($type) {
-                case 1:
-                    echo '<option value="">اختار المدينة</option>';
-                    echo Temp::load_list_options('ads_cities', 0, array($data));
-                    break;
-                case 2:
-                    echo '<option value="">اختار المنطقة</option>';
-                    echo Temp::load_list_options('ads_regions', 0, array($data));
-                    break;
-                case 3:
-                    echo '<option value="">اختار النوع</option>';
-                    echo Temp::load_list_options('ads_pets', 0, array($data));
-                    break;
-            }
-        }
-    }
-
-    public function file_upload() {
-        session_start();
-        if (Login::get_instance()->check_login() == 'valid') {
-            $foo = new Upload($_FILES['file']);
-            if ($foo->uploaded) {
-                $ds = DIRECTORY_SEPARATOR;
-                $user_data = Register::get_instance()->get_current_user();
-                $storeFolder = '..' . $ds . 'views' . $ds . 'temp_img';
-                $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
-                $targetName = $user_data['id'] . '_' . md5(rand(1, 5000000000));
-                while (file_exists($targetName)) {
-                    $targetName = $user_data['id'] . '_' . md5(rand(1, 5000000000));
-                }
-                $targetFile = $targetPath . $targetName . '.jpeg';
-                $foo->file_new_name_body = $targetName;
-                $foo->image_resize = true;
-                $foo->image_convert = 'jpeg';
-                $foo->image_x = 1024;
-                $foo->image_y = 768;
-                $foo->image_ratio_crop = true;
-                //$foo->image_ratio_y = true;
-                $foo->Process($targetPath);
-                if ($foo->processed) {
-                    echo $targetName;
-                    $foo->Clean();
-                }
-            }
-        }
-    }
-
-    public function del() {
-        if (Login::get_instance()->check_login() == 'valid') {
-            $ds = DIRECTORY_SEPARATOR;
-            $user_data = Register::get_instance()->get_current_user();
-            $storeFolder = '..' . $ds . 'views' . $ds . 'temp_img';
-            $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
-            $pattern = "/^(" . $user_data['id'] . "_)(.)*/";
-            if (preg_match($pattern, $_POST['f'])) {
-                unlink($targetPath . $_POST['f'] . '.jpeg');
-            }
-        }
-    }
-
     public function processad() {
         if (Login::get_instance()->check_login() == 'valid' && $_POST) {
             $errors['rt'] = array();
@@ -277,48 +150,51 @@ Class clinicsController Extends baseController {
         }
     }
 
-    private function check_img($user_id, $ad_id) {
+    private function img_upload() {
         if (Login::get_instance()->check_login() == 'valid') {
-            $ds = DIRECTORY_SEPARATOR;
-            $storeFolder = '..' . $ds . 'views' . $ds . 'temp_img';
-            $newFolder = '..' . $ds . 'views' . $ds . 'ads_img';
-            $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
-            $newPath = dirname(__FILE__) . $ds . $newFolder . $ds;
-            $images = glob($targetPath . $user_id . "_*.jpeg");
-            if ($ad_id == 'null') {
-                if (!empty($images))
-                    return true;
-                else
-                    return 'يجب وضع صورة واحدة على الأقل';
-            }else {
-                $images2 = glob($newPath . $ad_id . "_*.jpeg");
-                $count = count($images) + count($images2);
-                if ($count == 0)
-                    return 'يجب وضع صورة واحدة على الأقل';
-                else if ($count > 5)
-                    return 'لا يمكن اختيار أكثر من 5 صور';
-                else
-                    return true;
+            $foo = new Upload($_FILES['clinic_img']);
+            if ($foo->uploaded) {
+                $this->del();
+                $ds = DIRECTORY_SEPARATOR;
+                $user_data = Register::get_instance()->get_current_user();
+                $storeFolder = '..' . $ds . 'views' . $ds . 'clinics_img';
+                $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
+                $targetName = $user_data['id'] . '_' . md5(rand(1, 5000000000));
+                while (file_exists($targetName)) {
+                    $targetName = $user_data['id'] . '_' . md5(rand(1, 5000000000));
+                }
+                $targetFile = $targetPath . $targetName . '.jpeg';
+                $foo->file_new_name_body = $targetName;
+                $foo->image_resize = true;
+                $foo->image_convert = 'jpeg';
+                $foo->image_x = 1000;
+                $foo->image_y = 1000;
+                $foo->image_ratio_crop = false;
+                //$foo->image_ratio_y = true;
+                $foo->Process($targetPath);
+                if ($foo->processed) {
+                    $foo->Clean();
+                    Operations::get_instance()->init(
+                            array(
+                        'img_name' => $targetName . '.jpeg',
+                        'user_id' => $user_data['id'],
+                        'time_added' => time(),
+                        'date_added' => TimeTools::get_time_id(date('Y-m-d')),
+                            ), 'users_img', 'update');
+                }
             }
         }
     }
 
-    private function procces_img($user_id, $ad_id) { //
+    public function del() {
         if (Login::get_instance()->check_login() == 'valid') {
             $ds = DIRECTORY_SEPARATOR;
-            $storeFolder = '..' . $ds . 'views' . $ds . 'temp_img';
-            $newFolder = '..' . $ds . 'views' . $ds . 'ads_img';
+            $user_data = Register::get_instance()->get_current_user();
+            $storeFolder = '..' . $ds . 'views' . $ds . 'users_img';
             $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
-            $newPath = dirname(__FILE__) . $ds . $newFolder . $ds;
-            $images = glob($targetPath . $user_id . "_*.jpeg");
-            foreach ($images as $img) {
-                $new_name = $ad_id . '_' . md5(rand(1, 5000000000)) . '.jpeg';
-                while (file_exists($newPath . $new_name)) {
-                    $new_name = $ad_id . '_' . md5(rand(1, 5000000000)) . '.jpeg';
-                }
-                rename($img, $newPath . $new_name);
-                Operations::get_instance()->init(array('ad_id' => $ad_id, 'img_name' => $new_name,
-                    'time_added' => time(), 'date_added' => TimeTools::get_time_id(date('Y-m-d'))), 'ads_img');
+            $images = glob($targetPath . $user_data['id'] . "_*.jpeg");
+            foreach ($images as $image) {
+                unlink($image);
             }
         }
     }

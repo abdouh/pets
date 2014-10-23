@@ -82,7 +82,7 @@ if (!defined('WEB'))
                 });
                 var geocoder;
                 var map;
-                var address = "<?= $clinic['country']; ?>, <?= $clinic['city']; ?>, <?= $clinic['address']; ?>";
+                var address = "عبدالسلام عارف , بنى سويف<?= $clinic['address']; ?>, <?= $clinic['city']; ?>, <?= $clinic['country']; ?>";
                     function initialize() {
                         geocoder = new google.maps.Geocoder();
                         var latlng = new google.maps.LatLng(30.04446, 31.235676);

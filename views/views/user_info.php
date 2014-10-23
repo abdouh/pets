@@ -22,6 +22,7 @@ if (!defined('WEB'))
                 </div>
 
                 <div style="padding:26px; z-index:1000px; display:inline-block;">
+                    <h5 style=" color:#fff !important;">رقم العضوية  <?= $user_info['id']; ?></h5>
                     <h5 style=" color:#fff !important;"><? if (!empty($user_info['username'])) echo $user_info['username']; ?></h5>
                     <h5 style=" color:#fff !important;"><?= $user_info['email']; ?></h5>
                     <h5 style=" color:#fff !important;"><? if ($user_info['phone']) echo $user_info['phone']; ?></h5>
@@ -38,7 +39,6 @@ if (!defined('WEB'))
                 <dl class="tabs" data-tab style=" display:inline-block; margin:16px 0 !important; ">
                     <dd class="active"><a href="#panel1">الحالية</a></dd>
                     <dd><a href="#panel2">انتظار</a></dd>
-                    <dd><a href="#panel3">المنتهية</a></dd>
                     <dd><a href="#panel4">المرفوضة</a></dd>
                 </dl>
 
@@ -57,14 +57,6 @@ if (!defined('WEB'))
 
                         <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-3 ads_view" style="padding:0;">
                             <? echo empty($ads2) ? 'لا يوجد اعلانات للعرض' : Temp::ad_container_list($ads2); ?>
-                        </ul>
-
-                    </div>
-
-                    <div class="content" id="panel3" style="width:100% !important;">
-
-                        <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-3 ads_view" style="padding:0;">
-                            <? echo empty($ads3) ? 'لا يوجد اعلانات للعرض' : Temp::ad_container_list($ads3); ?>
                         </ul>
 
                     </div>
