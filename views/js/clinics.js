@@ -1,5 +1,5 @@
-$(document).ready(function() {       
-    $("#clinic_form").validate({
+$(document).ready(function () {
+    $("#clinic_data").validate({
         rules: {
             doc_name: {
                 required: true,
@@ -9,25 +9,27 @@ $(document).ready(function() {
                 required: true,
                 digits: true,
                 minlength: 10
-                
+
             },
             phone2: {
                 minlength: 10,
                 digits: true
-                
+
             },
             phone3: {
                 minlength: 10,
                 digits: true
-                
+
             },
             name: {
                 required: true,
                 minlength: 3
             },
             desc: {
-                required: true,
-                minlength: 10
+                required: true
+            },
+            clinic_img: {
+                accept: "image/jpg,image/jpeg,image/png"
             },
             address: {
                 required: true,
@@ -55,25 +57,27 @@ $(document).ready(function() {
                 required: 'يجب ادخال رقم الهاتف',
                 digits: 'يجب أن يكون رقم',
                 minlength: 'يجب ادخال رقم هاتف صحيح'
-                
+
             },
             phone2: {
                 digits: 'يجب أن يكون رقم',
                 minlength: 'يجب ادخال رقم هاتف صحيح'
-                
+
             },
             phone3: {
                 digits: 'يجب أن يكون رقم',
                 minlength: 'يجب ادخال رقم هاتف صحيح'
-                
+
             },
             name: {
                 required: 'يجب ادخال اسم العيادة',
                 minlength: 'لا يقل عن 3 أحرف'
             },
             desc: {
-                required: 'يجب كتابة معلومات العيادة',
-                minlength: 'لا يقل عن 10 أحرف'
+                required: 'يجب كتابة مواعيد عمل العيادة'
+            },
+            clinic_img: {
+                accept: 'يجب اختيار صورة (JPG , JPEG , PNG)'
             },
             address: {
                 required: 'يجب ادخال عنوان العيادة',
@@ -92,40 +96,43 @@ $(document).ready(function() {
                 digits: 'خطأ'
             }
         },
-
-        submitHandler: function (){
-            $('#rt_errors').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+        submitHandler: function () {
+            var formData = new FormData($('#clinic_data')[0]);
+            $('#rt_errors').html('<img width="25" src="/views/img/AjaxLoader.gif"/>');
             $('#md_errors').html('');
             $('#lt_errors').html('');
             $("html, body").animate({
                 scrollTop: 0
             }, 500);
             $.ajax({
-                url: "/pets/ads/processad", 
-                type: 'POST', 
-                data: $('#ad_data').serialize(), 
+                url: "/clinics/processclinic",
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
                 success: function (data) {
                     console.log(data);
                     $('#rt_errors').html('');
                     $('#md_errors').html('');
                     $('#lt_errors').html('');
                     var new_data = jQuery.parseJSON(data);
-                    if(new_data['operation'] == 2){
-                        $.each(new_data['errors']['rt'],function(index, value){
-                            $('#rt_errors').append(new_data['errors']['rt'][index]+'<br/>');
+                    if (new_data['operation'] == 2) {
+                        $.each(new_data['errors']['rt'], function (index, value) {
+                            $('#rt_errors').append(new_data['errors']['rt'][index] + '<br/>');
                         });
-                        $.each(new_data['errors']['md'],function(index, value){
-                            $('#md_errors').append(new_data['errors']['md'][index]+'<br/>');
+                        $.each(new_data['errors']['md'], function (index, value) {
+                            $('#md_errors').append(new_data['errors']['md'][index] + '<br/>');
                         });
-                        $.each(new_data['errors']['lt'],function(index, value){
-                            $('#lt_errors').append(new_data['errors']['lt'][index]+'<br/>');
+                        $.each(new_data['errors']['lt'], function (index, value) {
+                            $('#lt_errors').append(new_data['errors']['lt'][index] + '<br/>');
                         });
-                    }else if(new_data['operation'] == 1){
-                        if(new_data['type'] == 'add')
-                            $('#rt_errors').html('<span style="color:green;">تم اضافة اعلانك بنجاح</span>');
+                    } else if (new_data['operation'] == 1) {
+                        if (new_data['type'] == 'add')
+                            $('#rt_errors').html('<span style="color:green;">تم اضافة العيادة بنجاح</span>');
                         else
-                            $('#rt_errors').html('<span style="color:green;">تم تعديل اعلانك بنجاح</span>');
-                    //window.location = '/pets/index';
+                            $('#rt_errors').html('<span style="color:green;">تم تعديل العيادة بنجاح</span>');
+                        window.location = '/index';
                     }
                 }
             });

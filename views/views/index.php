@@ -2,14 +2,14 @@
 if (!defined('WEB'))
     exit();
 ?>
-    <? require_once 'head.php'; ?>
+<? require_once 'head.php'; ?>
 <body>
     <? require_once 'header.php'; ?>
 
-<?= $out; ?>
+    <?= $out; ?>
     <div class="row" style="margin-top:36px;">
 
-<? require_once 'side_bar.php'; ?>
+        <? require_once 'side_bar.php'; ?>
 
         <!--main content start-->
         <div class="content">
@@ -17,9 +17,7 @@ if (!defined('WEB'))
             <!--Breadcrumbs start-->
             <div class="row" style="margin:0 0 16px 0;">
                 <ul class="breadcrumbs">
-                    <li><a href="#">كلاب للبيع</a></li>
-                    <li><a href="#">سلالات كبيرة</a></li>
-                    <li class="current"><a href="#">جيرمن شيبرد</a></li>
+                    <li class="current"><a href="<?= READ_ONLY; ?>">الرئيسية</a></li>
                 </ul>
             </div>
             <!--Breadcrumbs end-->
@@ -41,14 +39,14 @@ if (!defined('WEB'))
             <!--ads grid view start-->
             <div class="row" style="margin:0 0 16px 0;">
                 <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-3 ads_view">
-<? echo empty($ads) ? 'لا توجد اعلانات للعرض' : Temp::ad_container_list($ads); ?>
+                    <? echo empty($ads) ? 'لا توجد اعلانات للعرض' : Temp::ad_container_list($ads, $search); ?>
                 </ul>
             </div>
             <!--ads grid view start-->
 
             <!--paginatios start-->
             <div class="row" style="margin:0 0 16px 0; padding:0;">
-<?= empty($ads) ? '' : $pagination; ?>
+                <?= empty($ads) ? '' : $pagination; ?>
             </div>
             <!--paginatios end-->
 

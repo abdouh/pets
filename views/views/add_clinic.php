@@ -25,11 +25,11 @@ if (!defined('WEB'))
 
 
             <!--ad info code start-->
-            <form id="clinic_form">
-
+            <form id="clinic_data" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<?= isset($clinic['id']) ? $clinic['id'] : 'null'; ?>">
                 <!--نوع الاعلان-->
                 <div class=" small-12  meduim-12  large-4 columns" style="border-left:1px solid #ccc;">
-
+                    <div id="rt_errors" style="color:#D20909;"></div>
                     <div class="small-12 columns right">
                         <h5 style="color:#09c; border-bottom:1px solid #60e0f5; padding-bottom:6px; margin-bottom:6px;">معلومات التواصل</h5>
                     </div>
@@ -38,22 +38,22 @@ if (!defined('WEB'))
 
 
                         <label>اسم الدكتور
-                            <input type="text" name="doc_name" >
+                            <input type="text" name="doc_name" value="<?= $clinic['doc_name']; ?>">
                         </label>
 
 
                         <label>رقم التليفون 1
-                            <input type="text" name="phone1" >
+                            <input type="text" name="phone1"value="<?= $clinic['phone1'] ? $clinic['phone1'] : ''; ?>" >
                         </label>
 
 
                         <label>رقم التليفون 2
-                            <input type="text" name="phone2" >
+                            <input type="text" name="phone2" valeu="<?= $clinic['phone2'] ? $clinic['phone2'] : ''; ?>" >
                         </label>
 
 
                         <label>رقم التليفون 3
-                            <input type="text" name="phone3" >
+                            <input type="text" name="phone3" value="<?= $clinic['phone3'] ? $clinic['phone3'] : ''; ?>" >
                         </label>
 
                     </div>
@@ -64,7 +64,7 @@ if (!defined('WEB'))
 
                 <!--معلومات الاعلان-->
                 <div class=" small-12 meduim-2  large-4 columns" style="border-left:1px solid #ccc;">
-
+                    <div id="md_errors" style="color:#D20909;"></div>
                     <div class="small-12 columns right">
                         <h5 style="color:#09c; border-bottom:1px solid #60e0f5; padding-bottom:6px; margin-bottom:6px;">معلومات العيادة</h5>
                     </div>
@@ -72,17 +72,22 @@ if (!defined('WEB'))
                     <div class="small-12 columns right">
 
                         <label>اسم العيادة هنا
-                            <input type="text" name="name" placeholder="" />
+                            <input type="text" name="name" value="<?= $clinic['name']; ?>" placeholder="" />
                         </label>
 
                     </div>
 
                     <div class="small-12 columns right">
 
-                        <label>معلومات العيادة هنا
-                            <textarea name="desc" style="height:200px;"></textarea>
+                        <label>مواعيد عمل العيادة
+                            <textarea name="desc" style="height:200px;"><?= $clinic['desc']; ?></textarea>
                         </label>
 
+                    </div>
+                    <div class="right">
+                        <label>شعار العيادة
+                            <input id="user_img" type="file" name="clinic_img" value="اختار صورة">
+                        </label>
                     </div>
 
                 </div>
@@ -90,7 +95,7 @@ if (!defined('WEB'))
 
                 <!--موقع الاعلان-->
                 <div class=" small-12  meduim-12 large-4 columns">
-
+                    <div id="lt_errors" style="color:#D20909;"></div>
                     <div class="small-12 columns right">
                         <h5 style="color:#09c; border-bottom:1px solid #60e0f5; padding-bottom:6px; margin-bottom:6px;">موقع العيادة</h5>
                     </div>
@@ -98,13 +103,13 @@ if (!defined('WEB'))
                     <div class="small-12 columns right">
 
                         <label>عنوان العيادة
-                            <input name="address" type="text" placeholder="" />
+                            <input name="address" value="<?= $clinic['address']; ?>" type="text" placeholder="" />
                         </label>
 
                         <label>الدولة
                             <select id="country" name="country">
                                 <option value="">اختار الدولة</option>
-                                <?= Temp::load_list_options('ads_countries', $ad['country']); ?>
+                                <?= Temp::load_list_options('ads_countries', $clinic['country']); ?>
                             </select>
                         </label>
 
@@ -116,8 +121,8 @@ if (!defined('WEB'))
                             <select id="city" name="city">
                                 <option value="">اختار المدينة</option>
                                 <?
-                                if (is_array($ad) && !empty($ad))
-                                    echo Temp::load_list_options('ads_cities', $ad['city'], array($ad['country']));
+                                if (is_array($clinic) && !empty($clinic))
+                                    echo Temp::load_list_options('ads_cities', $clinic['city'], array($clinic['country']));
                                 ?>
                             </select>
                         </label>
@@ -130,21 +135,14 @@ if (!defined('WEB'))
                             <select id="region" name="region">
                                 <option value="">اختار المنطقة</option>
                                 <?
-                                if (is_array($ad) && !empty($ad))
-                                    echo Temp::load_list_options('ads_regions', $ad['region'], array($ad['city']));
+                                if (is_array($clinic) && !empty($clinic))
+                                    echo Temp::load_list_options('ads_regions', $clinic['region'], array($clinic['city']));
                                 ?>
                             </select>
                         </label>
 
                     </div>
-
-
-
-
                 </div>  
-
-
-
                 <div class="small-12  meduim-3 large-3 columns right">
                     <input type="submit" class="button expand" value="<?= $button; ?>">
                 </div>

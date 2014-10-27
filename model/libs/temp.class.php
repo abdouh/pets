@@ -33,7 +33,7 @@ HERE;
         else
             $page_pos = 1;
 
-        
+
         $start = ($page_pos * $pages) - $pages + 1;
 
 
@@ -47,16 +47,16 @@ HERE;
             if ($page == $i)
                 $current = ' class="current"';
             $list .= <<<HERE
-<li$current><a href="/pets/?$q">$i</a></li>\n                
+<li$current><a href="/?$q">$i</a></li>\n                
 HERE;
         }
 
         $query['p'] = $page - 1;
         $q = http_build_query($query);
-        $prev_arrow = '<li class="arrow"><a href="/pets/?' . $q . '">&rsaquo;</a></li>';
+        $prev_arrow = '<li class="arrow"><a href="/?' . $q . '">&rsaquo;</a></li>';
         $query['p'] = $page + 1;
         $q = http_build_query($query);
-        $next_arrow = '<li class="arrow"><a href="/pets/?' . $q . '">&lsaquo;</a></li>';
+        $next_arrow = '<li class="arrow"><a href="/?' . $q . '">&lsaquo;</a></li>';
 
         if ($total == $page)
             $next_arrow = '';
@@ -89,7 +89,8 @@ HERE;
         return $output;
     }
 
-    static function ad_container_rows($ads) {
+    static function ad_container_rows($ads, $type = 1) {
+        $name = ($type == 2) ? 'clinics' : 'ads';
         $output = '';
         $status[0] = 'غير مفعل';
         $status[1] = '<span style="color:green;">مفعل</span>';
@@ -97,7 +98,7 @@ HERE;
         foreach ($ads as $ad) {
             $output .= <<<HERE
     <tr>
-      <td><input type="checkbox" name="ads[]" value="{$ad['id']}"></td>
+      <td><input type="checkbox" name="{$name}[]" value="{$ad['id']}"></td>
       <td>{$ad['id']}</td>
       <td>{$ad['title']}</td>
       <td>{$status[$ad['status']]}</td>
@@ -107,23 +108,24 @@ HERE;
         return $output;
     }
 
-    static function ad_container_list($ads) {
+    static function ad_container_list($ads, $type = 1) {
         $output = '';
         foreach ($ads as $ad) {
-            $output .= self::ad_container($ad);
+            $output .= self::ad_container($ad, $type);
         }
         return $output;
     }
 
-    static function ad_container($ad) {
+    static function ad_container($ad, $type = 1) {
+        $folder = ($type == 2) ? 'clinics_img' : 'ads_img';
         $template = TEMPLATE_URL;
-        $view = READ_ONLY . '/ads/view?id';
+        $view = ($type == 2) ? READ_ONLY . '/clinics/view/?id' : READ_ONLY . '/ads/view/?id';
         $output = <<<HERE
         <li><a href="$view={$ad['id']}">
                                     <div class="ad_title_view">
                                         {$ad['title']}
                                     </div>
-                                    <img src="$template/ads_img/{$ad['img']}">
+                                    <img src="$template/$folder/{$ad['img']}">
                                 </a></li>
 HERE;
         return $output;

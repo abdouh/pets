@@ -5,19 +5,16 @@
             <url>views/views/index.php</url>
             <bookmark id="1">
                 <name/>
-                <line>51</line>
+                <line>49</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/pets/controller/indexController.php</file>
-            <file>file:/C:/xampp/htdocs/pets/controller/userController.php</file>
-            <file>file:/C:/xampp/htdocs/pets/views/views/user_info.php</file>
-            <file>file:/C:/xampp/htdocs/pets/controller/clinicsController.php</file>
-            <file>file:/C:/xampp/htdocs/pets/views/js/clinics.js</file>
-            <file>file:/C:/xampp/htdocs/pets/views/views/side_bar.php</file>
+            <file>file:/C:/xampp/htdocs/pets/views/views/view_ad.php</file>
+            <file>file:/C:/xampp/htdocs/pets/views/js/users.js</file>
+            <file>file:/C:/xampp/htdocs/pets/views/js/index.js</file>
         </group>
     </open-files>
 </project-private>

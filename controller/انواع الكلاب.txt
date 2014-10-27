@@ -1,0 +1,330 @@
+Giant dog breeds
+
+Rottweiler
+Saint Bernard
+Caucasian Ovcharka
+Great Dane
+Kangal
+boz shepherd
+Spanish Mastiff
+Pakistani Mastiff
+Komondor
+Kuvasz
+Landseer
+Shiloh Shepherd
+Irish Wolfhound
+Giant Schnauzer
+Leonberger
+Scottish Deerhound
+Greyhound
+Great Pyrenees
+Newfoundland
+---------------------------------------------
+Large dog breeds
+
+
+German Shepherd
+East-European Shepherd
+Golden Retriever
+Alaskan Malamute
+Argentine Dogo
+Dobermann
+Dalmatian
+American Akita
+Cane Corso
+Bullmastiff
+Neapolitan Mastiff
+French Mastiff
+English Mastiff
+Tibetan Mastiff
+American Mastiff
+Tosa
+Boerboel
+Bloodhound
+Olde English Bulldogge
+Anatolian Shepherd
+Czechoslovakian Wolfdog
+Francais Blanc et Noir
+Rajapalyam dog
+Beauceron
+Alano Espanol
+Bernese Mountain Dog
+Spinone Italiano
+Ariege Pointer
+Otterhound
+Afghan Hound
+Pudelpointer
+Irish Setter
+Irish Red and White Setter
+Bouvier des Flanders
+Greater Swiss Mountain
+German Longhaired Pointer
+Sloughi
+Braque du Bourbonnais
+Curly-Coated Retriever
+Black and Tan Coonhound
+Bulgarian Shepherd Dog
+Greenland
+Carpathian Sheepdog
+Bohemian Shepherd
+Bracco Italiano
+English Setter
+Canadian Eskimo Dog
+American Staghound
+Saluki
+German Shorthaired Pointer
+Groenendael
+West Siberian Laika
+Briard
+Picardy Spaniel
+Tornjak
+Black Russian Terrier
+Perro de Presa Canario
+Blue Picardy Spaniel
+Rhodesian Ridgeback
+Chart Polski
+Ibizan Hound
+Large Munsterlander
+Borzoi
+Northern Inuit Dog
+Central Asian Ovtcharka
+Caravan Hound
+Pharaoh Hound
+Dutch Shepherd Dog
+Bukovina Sheepdog
+Flat-Coated Retriever
+South Russian Ovcharka
+Gordon Setter
+Azawakh
+Old English Sheepdog
+Chesapeake Bay Retriever
+----------------------------------------------------
+Medium Dog Breeds
+
+American Pit Bull
+american bully
+Labrador Retriever
+Bulldog
+Samoyed
+Siberian Husky
+Basset Hound
+Chow Chow
+Boxer
+American White Shepherd
+Bull Terrier
+Alaskan Klee Kai
+Bearded Collie
+Australian Cattle Dog
+Pumi
+Australian Stumpy Tail Cattle Dog
+Berger Picard
+Catahoula Leopard Dog
+Polish Hunting Dog
+Welsh Springer Spaniel
+Shetland Sheepdog
+East Siberian Laika
+Norwegian Elkhound
+Staffordshire Bull Terrier
+McNab
+Wetterhoun
+Basenji
+Finnish Lapphund
+Sarplaninac
+Plott Hound
+Barbet
+Hamilton Hound
+Entlebucher Mountain Dog
+Portuguese Podengo
+Carolina Dog
+Mudi
+American Staffordshire Terrier
+Cesky Fousek
+Shar-Pei
+Border Collie
+American Water Spaniel
+Appenzeller Sennenhund
+Koolie
+American Cocker Spaniel
+Briquet Griffon Vendeen
+Austrian Black and Tan Hound
+Catahoula Cur
+Belgian Shepherd Tervuren
+German Wirehaired Pointer
+Finnish Hound
+Aidi
+Vizsla
+Croatian Sheepdog
+Transylvanian Hound
+Belgian Shepherd Laekenois
+Belgian Shepherd Malinois
+Smaland Hound
+Seppala Siberian Sleddog
+Silken Windhound
+Soft-coated Wheaten Terrier
+Bouvier de Ardennes
+Cirneco Dell Etna
+Polish Lowland Sheepdog
+Blue Lacy
+Swedish Lapphund
+Eurasier
+Kromfohrlander
+Tibetan Terrier
+Australian Bulldog
+Icelandic Sheepdog
+Grand Basset Griffon Vendeen
+Jamthund
+Kishu
+Perro de Presa Mallorquin
+Bavarian Mountain Hound
+Dingo
+Karelian Bear Dog
+Wirehaired Pointing Griffon
+New Guinea Singing Dog
+Serbian Hound
+Hovawart
+German Pinscher
+Puli
+Shikoku dog
+Thai Bangkaew Dog
+Lapponian Herder
+English Springer Spaniel
+C?o da Serra de Aires
+Portuguese Water Dog
+Danish-Swedish Farmdog
+Pont-Audemer Spaniel
+Korean Jindo Dog
+Austrian Pinscher
+Catahoula Bulldog
+Deutsche Bracke
+Hokkaido Dog
+French Brittany
+Kerry Blue Terrier
+Boykin Spaniel
+Catalan Sheepdog
+Whippet
+Clumber Spaniel
+Dunker
+Fila Brasileiro
+Drentse Patrijshond
+Kooikerhondje
+Field Spaniel
+Australian Shepherd
+Thai Ridgeback
+Treeing Walker Coonhound
+Africanis
+Small Munsterlander
+Redbone Coonhound
+Spanish Water Dog
+Australian Kelpie
+English Shepherd
+Norwegian Buhund
+Alapaha Blue Blood Bulldog
+Lagotto Romagnolo
+African Wild Dog
+American Eskimo Dog
+French Spaniel
+Blackmouth Cur
+Finnish Spitz
+Bergamasco
+Rough Collie
+Standard Schnauzer
+Norrbottenspets
+Peruvian Inca Orchid
+Pyrenean Shepherd
+Rafeiro do Alentejo
+Schapendoes
+Canaan Dog
+Tolling Retriever
+Sapsali
+Bluetick Coonhound
+Irish Water Spaniel
+Griffon bleu de Gascogne
+Portuguese Pointer
+Ariegeois
+English Coonhound
+Weimaraner
+_______________________________________
+ Small Dog Breeds
+
+Beagle
+Yorkshire Terrier
+Poodle
+Pomeranian
+Chihuahua
+French Bulldog
+Pug
+Pekingese
+Dachshund
+Patterdale Terrier
+Schipperke
+Lancashire Heeler
+Xoloitzcuintle
+Manchester Terrier
+Brussels Griffon
+Sussex Spaniel
+Basset Fauve de Bretagne
+Tibetan Spaniel
+West Highland White Terrier
+Papillon dog
+Russian Toy
+Cavalier King Charles Spaniel
+Lakeland Terrier
+Boston Terrier
+Toy Fox Terrier
+Toy Bulldog
+Coton De Tulear
+Irish Terrier
+Prazsky Krysarik
+Jack Russell Terrier
+Miniature Bull Terrier
+Black Norwegian Elkhound
+Welsh Terrier
+Miniature Schnauzer
+Wire Fox Terrier
+Norwegian Lundehund
+Petit Basset Griffon Vendeen
+Keeshond
+Shih Tzu
+Parson Russell Terrier
+Border Terrier
+Norfolk Terrier
+Swedish Vallhund
+Toy Manchester Terrier
+Havanese
+Affenpinscher
+Chinese Crested
+Japanese Chin
+Drever
+Bedlington Terrier
+Glen of Imaal Terrier
+Plummer Terrier
+Lowchen
+Bichon Frise
+Volpino Italiano
+Rat Terrier
+Dutch Smoushond
+Japanese Spitz
+Australian Silky Terrier
+Cairn Terrier
+Cesky Terrier
+Jagdterrier
+Goldendoodle
+Shiba Inu
+Airedale Terrier
+Scottish Terrier
+Cardigan Welsh Corgi
+Basset Bleu de Gascogne
+Cockapoo
+Russian Spaniel
+Smooth Fox Terrier
+Italian Greyhound
+Maltese Dog
+Sealyham Terrier
+Japanese Terrier
+Australian Terrier
+Norwich Terrier
+Skye Terrier
+Dandie Dinmont Terrier
+Lhasa Apso
+Miniature Pinscher
+Pembroke Welsh Corgi

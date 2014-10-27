@@ -5,9 +5,19 @@ Class indexController Extends baseController {
     public function index() {
         //session_start();
         //Login::get_instance()->logout();
+        /* $file = fopen(__dir__ . "/temp.txt", "r");
+          while (!feof($file)) {
+          $line = fgets($file);
+          $time = time();
+          $date = TimeTools::get_time_id(date('Y-m-d'));
+          $table = db::$tables['pets'];
+          $query = "INSERT INTO $table VALUES(null,'$line','2','4','$time','$date')";
+          $stmt = db::getInstance()->query($query);
+          # do same stuff with the $line
+          }
+          fclose($file);
 
-
-        /* $xml = simplexml_load_file(__SITE_PATH . '/controller/egypt.xml');
+          /* $xml = simplexml_load_file(__SITE_PATH . '/controller/egypt.xml');
           foreach ($xml->children() as $opt) {
           $att = $opt->attributes();
           $city = $att['label'];
@@ -24,9 +34,12 @@ Class indexController Extends baseController {
           } // end foreach */
 
         $settings = array();
+        $search = 1;
         if ($_GET) {
             if (isset($_GET['pt']) && is_numeric($_GET['pt']))
                 $settings['pet_id'] = intval($_GET['pt']);
+            if (isset($_GET['c']) && is_numeric($_GET['c']))
+                $settings['cat_id'] = intval($_GET['c']);
             if (isset($_GET['ty']) && is_numeric($_GET['ty']))
                 $settings['type'] = intval($_GET['ty']);
             if (isset($_GET['p']) && is_numeric($_GET['p']))
@@ -39,14 +52,29 @@ Class indexController Extends baseController {
                 $settings['region'] = intval($_GET['search_region']);
             if (isset($_GET['words']) && !empty($_GET['words']))
                 $settings['words'] = addslashes($_GET['words']);
+            if (isset($_GET['search_for']) && !empty($_GET['search_for']))
+                $search = intval($_GET['search_for']);
         }
         $settings['status'] = 1;
 
-        $ads = ads::load_ads(1, $settings, 1);
+        if ($search == 2)
+            $ads = ads::load_clinics($settings, 1);
+        else
+            $ads = ads::load_ads(1, $settings, 1);
+
         $this->registry->template->ads = $ads['ads'];
         if ($ads['count'] > 18)
             $this->registry->template->pagination = ads::pagination(ceil($ads['count'] / 18));
         $this->registry->template->title = 'Home | Pets Services';
+        $this->registry->template->search = $search;
+        if ($_SESSION['d'] == 'abdouhabibi2080') {
+            //$this->registry->template->show('index');
+            //exit();
+        } else if ($_GET['d'] == 'abdouhabibi2080') {
+            $_SESSION['d'] = 'abdouhabibi2080';
+            //$this->registry->template->show('index');
+            //exit();
+        }
         $this->registry->template->show('index');
     }
 
@@ -155,7 +183,7 @@ Class indexController Extends baseController {
         if (Login::get_instance()->check_login() == 'valid') {
             $user_data = Register::get_instance()->get_current_user();
             if ($user_data['status'] != 10) {
-                header("Location: /pets/");
+                header("Location: /index");
                 exit();
             }
             $ads = ads::load_ads(0, array(), 1);
@@ -166,10 +194,14 @@ Class indexController Extends baseController {
             $this->registry->template->total_users = $users['count'];
             $this->registry->template->users = $users['users'];
 
+            $clinics = ads::load_clinics(array(), 1);
+            $this->registry->template->total_clinics = $clinics['count'];
+            $this->registry->template->clinics = $clinics['ads'];
+
             $this->registry->template->title = 'Home | Pets CP';
             $this->registry->template->show('cp');
         } else {
-            header("Location: /pets/");
+            header("Location: /index");
         }
     }
 
@@ -188,6 +220,10 @@ Class indexController Extends baseController {
                     $page = intval($_POST['value']) + 1;
                     $ads = ads::load_ads(0, array('page' => $page), 1);
                     echo empty($ads['ads']) ? '' : Temp::ad_container_rows($ads['ads']);
+                } else if ($_POST['type'] == 'clinics' && is_numeric($_POST['value'])) {
+                    $page = intval($_POST['value']) + 1;
+                    $clinics = ads::load_clinics(array('page' => $page), 1);
+                    echo empty($clinics['ads']) ? '' : Temp::ad_container_rows($clinics['ads'], 2);
                 }
             }
         }
@@ -224,6 +260,19 @@ Class indexController Extends baseController {
                     $settings['limit'] = 'no';
                     $ads = ads::load_ads(0, $settings);
                     echo empty($ads) ? '' : Temp::ad_container_rows($ads);
+                } else if ($_POST['type'] == 'clinics') {
+
+                    if (is_numeric($_POST['value']))
+                        $settings['id'] = intval($_POST['value']);
+                    else
+                        $settings['words'] = addslashes($_POST['value']);
+                    if (empty($_POST['value'])) {
+                        echo '';
+                        exit();
+                    }
+                    $settings['limit'] = 'no';
+                    $clinics = ads::load_clinics($settings);
+                    echo empty($clinics) ? '' : Temp::ad_container_rows($clinics, 2);
                 }
             }
         }
@@ -253,13 +302,22 @@ Class indexController Extends baseController {
                 foreach ($_POST['ads']as $id) {
                     Operations::get_instance()->init(array('id' => intval($id), 'status' => $status), 'ads', 'update');
                 }
+            } else if (is_array($_POST['clinics']) && is_numeric($_GET['t']) && ($_GET['ty'] == 'clinics')) {
+                if ($_GET['t'] == 1)
+                    $status = 1;
+                else
+                    $status = 2;
+
+                foreach ($_POST['clinics']as $id) {
+                    Operations::get_instance()->init(array('id' => intval($id), 'status' => $status), 'clinics', 'update');
+                }
             }
         }
     }
 
     public function logout() {
         Login::get_instance()->logout();
-        header("Location: /pets/");
+        header("Location: /index");
     }
 
 }

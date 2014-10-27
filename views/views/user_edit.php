@@ -12,7 +12,7 @@ if (!defined('WEB'))
         <!--main content start-->
         <div class="content" style="float:right; padding:0 16px; margin:0;">
 
-            <form id="user_form" enctype="multipart/form-data" method="post" action="/pets/user/update">
+            <form id="user_form" enctype="multipart/form-data" method="post" action="/user/update">
                 <div class="small-12 columns" style="padding:0 !important;">
                     <div class="small-12 meduim-6 large-6 columns" style="padding:0 !important;">
                         <div  style=" height:160px; width:160px; float:right; display:inline-block; border:1px solid #999;">
@@ -60,7 +60,7 @@ if (!defined('WEB'))
                         </label>
 
                         <div class="small-12  meduim-3 large-3 columns " style="padding:0;">
-                            <input onClick="window.location = '/pets/user';return false;" type="submit" class="button expand" value="إالغاء" style="background:gray;">
+                            <input onClick="window.location = '/user';return false;" type="submit" class="button expand" value="إالغاء" style="background:gray;">
                         </div>
 
                         <div class="small-12  meduim-3 large-3 columns" style="padding:0;">

@@ -4,7 +4,7 @@
 //validations contains validation method names and their parameters if they exist
 
 return array(
-    'key' => 'id',
+    'key' => 'clinic_id',
     'fields' => array(
         'id' => array(
             'validations' => array(
@@ -12,32 +12,15 @@ return array(
                 'numeric' => 1,
             ),
         ),
-        'email' => array(
-            'validations' => array(
-                'notEmpty' => 1,
-                'email' => 1,
-            ),
-        ),
-        'username' => array(
-            'validations' => array(
-                'notEmpty' => 1,
-            ),
-        ),
-        'password' => array(
-            'validations' => array(
-                'notEmpty' => 1,
-            ),
-        ),
-        'phone' => array(
+        'clinic_id' => array(
             'validations' => array(
                 'notEmpty' => 1,
                 'numeric' => 1,
             ),
         ),
-        'status' => array(
+        'img_name' => array(
             'validations' => array(
                 'notEmpty' => 1,
-                'numeric' => 1,
             ),
         ),
         'time_added' => array(

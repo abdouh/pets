@@ -9,7 +9,7 @@ Class adsController Extends baseController {
             $this->registry->template->button = 'اضافة الاعلان';
             $this->registry->template->show('add_ad');
         } else {
-            header("Location: /pets/");
+            header("Location: /index");
         }
     }
 
@@ -19,17 +19,17 @@ Class adsController Extends baseController {
                 $ad = ads::load_ads(5, array('id' => intval($_GET['id'])));
                 $user_data = Register::get_instance()->get_current_user();
                 if (($user_data['id'] != $ad[0]['user_id']) && $user_data['status'] != 10) {
-                    header("Location: /pets/");
+                    header("Location: /index");
                 }
                 $this->registry->template->ad = $ad[0];
                 $this->registry->template->button = 'تعديل الاعلان';
                 $this->registry->template->title = 'Pets | Edit | ' . $ad[0]['title'];
                 $this->registry->template->show('add_ad');
             } else {
-                header("Location: /pets/ads");
+                header("Location: /ads");
             }
         } else {
-            header("Location: /pets/");
+            header("Location: /index");
         }
     }
 
@@ -43,7 +43,7 @@ Class adsController Extends baseController {
             $this->registry->template->title = 'Pets | ' . $ad[0]['title'];
             $this->registry->template->show('view_ad');
         } else {
-            header("Location: /pets/");
+            header("Location: /index");
         }
     }
 
@@ -51,7 +51,7 @@ Class adsController Extends baseController {
         if (Login::get_instance()->check_login() == 'valid') {
             $user_data = Register::get_instance()->get_current_user();
             if ($user_data['status'] != 10) {
-                header("Location: /pets/");
+                header("Location: /index");
                 exit();
             }
 
@@ -87,7 +87,7 @@ Class adsController Extends baseController {
             $this->registry->template->title = 'Pets | activate | ' . $ad[0]['title'];
             $this->registry->template->show('view_ad');
         } else {
-            header("Location: /pets/");
+            header("Location: /index");
         }
     }
 
@@ -114,6 +114,7 @@ Class adsController Extends baseController {
         if (Login::get_instance()->check_login() == 'valid' && $_POST) {
             $type = intval($_POST['type']);
             $data = intval($_POST['data']);
+            $ad_type = intval($_POST['ad_type']);
             switch ($type) {
                 case 1:
                     echo '<option value="">اختار المدينة</option>';
@@ -124,8 +125,8 @@ Class adsController Extends baseController {
                     echo Temp::load_list_options('ads_regions', 0, array($data));
                     break;
                 case 3:
-                    echo '<option value="">اختار النوع</option>';
-                    echo Temp::load_list_options('ads_pets', 0, array($data));
+                    echo '<option value="351">الكل</option>';
+                    echo Temp::load_list_options('ads_pets', 0, array($data, $ad_type));
                     break;
             }
         }
@@ -309,4 +310,3 @@ Class adsController Extends baseController {
     }
 
 }
-

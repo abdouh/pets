@@ -28,7 +28,7 @@ if (!defined('WEB'))
                     <h5 style=" color:#fff !important;"><? if ($user_info['phone']) echo $user_info['phone']; ?></h5>
                 </div>
 
-                <a href="/pets/user/edit" class="CloseLightBox" style="color:#fff;">تعديل</a>
+                <a href="/user/edit" class="CloseLightBox" style="color:#fff;">تعديل</a>
 
             </div>
             <!--user ptofile header end-->

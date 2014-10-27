@@ -11,6 +11,8 @@ class db {
         'ads' => '`pets`.`ads`',
         'ads_img' => '`pets`.`ads_img`',
         'cities' => '`pets`.`cities`',
+        'clinics' => '`pets`.`clinics`',
+        'clinics_img' => '`pets`.`clinics_img`',
         'regions' => '`pets`.`regions`',
         'countries' => '`pets`.`countries`',
         'pets' => '`pets`.`pets`',
@@ -24,7 +26,7 @@ class db {
     /**
      * @var array of database information
      */
-    private $db_info = array("host" => "localhost", "dbname" => "pets", "username" => "root", "password" => "123");
+    private $db_info = array("host" => "localhost", "dbname" => "pets", "username" => "pets-services", "password" => "hellbound///123");
 
     /**
      * @var object of mysqli 

@@ -33,42 +33,39 @@ if (!defined('WEB'))
 
 
                 <div class=" small-6 small-centered columns" style="padding-right:0 !important; ">
-                    <img src="img/c6228b6d7ad8104f.png" style="width:100%; border:1px solid #09c;">
+                    <img src="<?= TEMPLATE_URL; ?>/clinics_img/<?= $clinic['img']; ?>" style="width:100%; border:1px solid #09c;">
                 </div>
 
                 <div class="ad_info_element" style="border-top:1px solid #ccc; margin-top:16px;">
-                    <h5>اسم العيادة</h5>
-
-                    <p>
-                        لوريم إيبسوم هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف
-                    </p>
+                    <h5>اسم العيادة : <?= $clinic['name']; ?></h5>
                 </div>
 
 
                 <div class="ad_info_element" >
-                    <span>01003612060</span>
-                    <span>/</span>
-                    <span>01003612060</span>
-                    <span>/</span>
-                    <span>01003612060</span>
+                    <h5>تليفون</h5>
+                    <?= $clinic['phone1'] ? '<span>' . $clinic['phone1'] . '</span>' : ''; ?>
+                    <?= $clinic['phone2'] ? '<span>/</span><span>' . $clinic['phone2'] . '</span>' : ''; ?>
+                    <?= $clinic['phone3'] ? '<span>/</span><span>' . $clinic['phone3'] . '</span>' : ''; ?>
                 </div>
 
 
                 <div class="ad_info_element" >
                     <span>دكتور</span>
                     <span>/</span>
-                    <span>بيتر سامى</span>
+                    <span><?= $clinic['doc_name']; ?></span>
                 </div>
 
 
 
                 <div class="ad_info_element">
                     <span>المكان : </span>
-                    <span>مصر </span>
-                    <span>,</span>
-                    <span>بنى سويف </span>
-                    <span>,</span>
-                    <span>الحميات </span>
+                    <span><?= ads::get_country_name($clinic['country']); ?></span>
+                    <span>, </span>
+                    <span><?= ads::get_city_name($clinic['city']); ?></span>
+                    <span>, </span>
+                    <span><?= ads::get_region_name($clinic['region']); ?></span>
+                    <span>, </span>
+                    <span><?= $clinic['address']; ?></span>
                 </div>
 
 
@@ -82,7 +79,7 @@ if (!defined('WEB'))
                 });
                 var geocoder;
                 var map;
-                var address = "عبدالسلام عارف , بنى سويف<?= $clinic['address']; ?>, <?= $clinic['city']; ?>, <?= $clinic['country']; ?>";
+                var address = "<?= $clinic['address']; ?>, <?= ads::get_region_name($clinic['region']); ?>, <?= ads::get_city_name($clinic['city']); ?>, <?= ads::get_country_name($clinic['country']); ?>";
                     function initialize() {
                         geocoder = new google.maps.Geocoder();
                         var latlng = new google.maps.LatLng(30.04446, 31.235676);
@@ -115,10 +112,10 @@ if (!defined('WEB'))
                                         });
 
                                     } else {
-                                        alert("No results found");
+                                        //alert("No results found");
                                     }
                                 } else {
-                                    alert("Geocode was not successful for the following reason: " + status);
+                                    // alert("Geocode was not successful for the following reason: " + status);
                                 }
                             });
                         }

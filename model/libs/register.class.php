@@ -40,6 +40,7 @@ class Register {
     }
 
     function new_user($data) {
+        $data['status'] = 1;
         $data['time_added'] = time();
         $data['date_added'] = TimeTools::get_time_id(date('Y-m-d'));
         $check = Operations::get_instance()->init($data, 'users');

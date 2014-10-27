@@ -8,7 +8,8 @@ class Lists {
             array('value' => 1, 'text' => ' بيع'),
             array('value' => 2, 'text' => 'ذكور للزواج'),
             array('value' => 3, 'text' => 'تبنى'),
-            array('value' => 4, 'text' => 'مستلزمات'),
+            array('value' => 4, 'text' => 'مفقود'),
+            array('value' => 5, 'text' => 'مستلزمات'),
         );
     }
 
@@ -24,8 +25,10 @@ class Lists {
         return $cats;
     }
 
-    static function ads_pets($cat_id) {
+    static function ads_pets($cat_id, $type) {
         $pets = array();
+        if ($type == 5)
+            return self::ads_acc();
         $table = db::$tables['pets'];
         $query = "SELECT * FROM $table WHERE `pet_cat` = '$cat_id'";
         $stmt = db::getInstance()->query($query);
@@ -34,6 +37,14 @@ class Lists {
             $pets[] = array('value' => $array['id'], 'text' => $array['pet_name']);
         }
         return $pets;
+    }
+
+    static function ads_acc() {
+        return array(
+            array('value' => 1, 'text' => 'اكسسوارات'),
+            array('value' => 2, 'text' => 'أكل'),
+            array('value' => 3, 'text' => 'أدوية بيطرية'),
+        );
     }
 
     static function ads_countries() {

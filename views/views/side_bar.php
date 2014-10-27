@@ -68,9 +68,9 @@ if (!defined('WEB'))
                 <input type="password" name="password">
             </label>
             <div id="captcha_display" style="display:none;float:right;">
-                <a href="#" onclick="document.getElementById('captcha').src = '/pets/index/captcha?' + Math.random();
+                <a href="#" onclick="document.getElementById('captcha').src = '/index/captcha?' + Math.random();
                         return false">كود أخر</a>
-                <img id="captcha" src="/pets/index/captcha" alt="CAPTCHA Image" />
+                <img id="captcha" src="/index/captcha" alt="CAPTCHA Image" />
                 <label style="width:100px;"> أدخل الكود
                     <input type="text" name="captcha_code" width="50" maxlength="6">
                 </label>
@@ -101,7 +101,7 @@ if (!defined('WEB'))
 
         <h3 class="text-center">البحث</h3>
 
-        <form id="search" method="get" action="/pets/">
+        <form id="search" method="get" action="/index">
 
 
             <div class="large-8 small-12 meduim-8 columns">
@@ -110,6 +110,15 @@ if (!defined('WEB'))
 
             <div class="large-4 small-12 meduim-4 columns">
                 <a href="#" onClick="$('#search').submit();" class="button expand" style="margin-top:0;">بحث</a>
+            </div>
+            <div class="small-12 meduim-6 large-4 columns">
+                <label>ابحث فى
+                    <select id="search_country" name="search_for">
+                        <option value="1">اعلانات</option>
+                        <option value="2">عيادات</option>
+                    </select>
+                </label>
+
             </div>
 
             <div class=" small-12 columns" style="padding:0;">
@@ -180,7 +189,7 @@ HERE;
             $click = '';
         }
         ?>
-        <a id="add_ad" href="/pets/ads" class="button success expand" style="padding:0; margin-top:0; line-height:38px;">إضافة إعلان جديد +</a>
+        <a id="add_ad" href="/ads" class="button success expand" style="padding:0; margin-top:0; line-height:38px;">إضافة إعلان جديد +</a>
         <?= $click; ?>
     <? } ?>
 
@@ -206,52 +215,32 @@ HERE;
             <!--second level-->
             <ul class="sub_menu2">
 
-                <li>سلالات كبيرة</li>
+                <li>Giant Dog Breed</li>
 
                 <!--third level-->
                 <ul class="sub_menu3">
-                    <li>نوع 01</li>
-                    <li>نوع 02</li>
-                    <li>نوع 03</li>
-                    <li>نوع 04</li>
-                    <li>نوع 05</li>
-                    <li>نوع 06</li>
-                    <li>نوع 07</li>
-                    <li>نوع 08</li>
-                    <li>نوع 09</li>
-                    <li>نوع 10</li>
+                    <?= menu::load_pets(1, 1, 1); ?>
                 </ul>
 
-                <li>سلالات متوسطة</li>
+                <li>Large Dog Breed</li>
 
                 <!--third level-->
                 <ul class="sub_menu3">
-                    <li>نوع 01</li>
-                    <li>نوع 02</li>
-                    <li>نوع 03</li>
-                    <li>نوع 04</li>
-                    <li>نوع 05</li>
-                    <li>نوع 06</li>
-                    <li>نوع 07</li>
-                    <li>نوع 08</li>
-                    <li>نوع 09</li>
-                    <li>نوع 10</li>
+                    <?= menu::load_pets(1, 2, 1); ?>
                 </ul>
 
-                <li>سلالات صغيرة</li>
+                <li>Medium Dog Breed</li>
 
                 <!--third level-->
                 <ul class="sub_menu3">
-                    <li>نوع 01</li>
-                    <li>نوع 02</li>
-                    <li>نوع 03</li>
-                    <li>نوع 04</li>
-                    <li>نوع 05</li>
-                    <li>نوع 06</li>
-                    <li>نوع 07</li>
-                    <li>نوع 08</li>
-                    <li>نوع 09</li>
-                    <li>نوع 10</li>
+                    <?= menu::load_pets(1, 3, 1); ?>
+                </ul>
+
+                <li>Small Dog Breed</li>
+
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <?= menu::load_pets(1, 4, 1); ?>
                 </ul>
 
             </ul>
@@ -263,76 +252,46 @@ HERE;
             <!--second level-->
             <ul class="sub_menu2">
 
-                <li>سلالات كبيرة</li>
+                <li>Giant Dog Breed</li>
 
                 <!--third level-->
                 <ul class="sub_menu3">
-                    <li>نوع 01</li>
-                    <li>نوع 02</li>
-                    <li>نوع 03</li>
-                    <li>نوع 04</li>
-                    <li>نوع 05</li>
-                    <li>نوع 06</li>
-                    <li>نوع 07</li>
-                    <li>نوع 08</li>
-                    <li>نوع 09</li>
-                    <li>نوع 10</li>
+                    <?= menu::load_pets(1, 1, 2); ?>
                 </ul>
 
-                <li>سلالات متوسطة</li>
+                <li>Large Dog Breed</li>
 
                 <!--third level-->
                 <ul class="sub_menu3">
-                    <li>نوع 01</li>
-                    <li>نوع 02</li>
-                    <li>نوع 03</li>
-                    <li>نوع 04</li>
-                    <li>نوع 05</li>
-                    <li>نوع 06</li>
-                    <li>نوع 07</li>
-                    <li>نوع 08</li>
-                    <li>نوع 09</li>
-                    <li>نوع 10</li>
+                    <?= menu::load_pets(1, 2, 2); ?>
                 </ul>
 
-                <li>سلالات صغيرة</li>
+                <li>Medium Dog Breed</li>
 
                 <!--third level-->
                 <ul class="sub_menu3">
-                    <li>نوع 01</li>
-                    <li>نوع 02</li>
-                    <li>نوع 03</li>
-                    <li>نوع 04</li>
-                    <li>نوع 05</li>
-                    <li>نوع 06</li>
-                    <li>نوع 07</li>
-                    <li>نوع 08</li>
-                    <li>نوع 09</li>
-                    <li>نوع 10</li>
+                    <?= menu::load_pets(1, 3, 2); ?>
+                </ul>
+
+                <li>Small Dog Breed</li>
+
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <?= menu::load_pets(1, 4, 2); ?>
                 </ul>
 
             </ul>
 
 
 
-            <li><a href="">كلاب للتبنى</a></li>
-            <li><a href="">مستلزمات كلاب</a></li>
-
-
-            <li>مقالات</li>
-            <!--second level-->
+            <li><a href="<?= READ_ONLY . '/?c=1&ty=4'; ?>">كلاب مفقودة</a></li>
+            <li><a href="<?= READ_ONLY . '/?c=1&ty=3'; ?>">كلاب للتبنى</a></li>
+            <li>مستلزمات كلاب</li>
             <ul class="sub_menu2">
-
-                <li>تصنيف 01</li>
-                <li>تصنيف 01</li>
-                <li>تصنيف 01</li>
-
+                <li><a href="<?= READ_ONLY . '/?c=1&ty=5&pt=1'; ?>">اكسسورات للكلاب</a></li>
+                <li><a href="<?= READ_ONLY . '/?c=1&ty=5&pt=2'; ?>">اكل للكلاب</a></li>
+                <li><a href="<?= READ_ONLY . '/?c=1&ty=5&pt=3'; ?>">ادوية بيطرية للكلاب</a></li>
             </ul>
-
-
-            <li><a href="">فيديوهات</a></li>
-            <li><a href=""> صور </a></li>
-
         </ul>
 
 
@@ -350,195 +309,169 @@ HERE;
             <!--second level-->
             <ul class="sub_menu2">
 
-                <li>سلالات كبيرة </li>
+                <li>Giant Cat Breed</li>
+
                 <!--third level-->
                 <ul class="sub_menu3">
-                    <li>نوع 01</li>
-                    <li>نوع 02</li>
-                    <li>نوع 03</li>
-                    <li>نوع 04</li>
-                    <li>نوع 05</li>
-                    <li>نوع 06</li>
-                    <li>نوع 07</li>
-                    <li>نوع 08</li>
-                    <li>نوع 09</li>
-                    <li>نوع 10</li>
+                    <?= menu::load_pets(2, 1, 1); ?>
                 </ul>
 
+                <li>Large Cat Breed</li>
 
-                <li>سلالات متوسطة</li>
                 <!--third level-->
                 <ul class="sub_menu3">
-                    <li>نوع 01</li>
-                    <li>نوع 02</li>
-                    <li>نوع 03</li>
-                    <li>نوع 04</li>
-                    <li>نوع 05</li>
-                    <li>نوع 06</li>
-                    <li>نوع 07</li>
-                    <li>نوع 08</li>
-                    <li>نوع 09</li>
-                    <li>نوع 10</li>
+                    <?= menu::load_pets(2, 2, 1); ?>
                 </ul>
 
+                <li>Medium Cat Breed</li>
 
-                <li>سلالات صغيرة</li>
                 <!--third level-->
                 <ul class="sub_menu3">
-                    <li>نوع 01</li>
-                    <li>نوع 02</li>
-                    <li>نوع 03</li>
-                    <li>نوع 04</li>
-                    <li>نوع 05</li>
-                    <li>نوع 06</li>
-                    <li>نوع 07</li>
-                    <li>نوع 08</li>
-                    <li>نوع 09</li>
-                    <li>نوع 10</li>
+                    <?= menu::load_pets(2, 3, 1); ?>
                 </ul>
 
+                <li>Small Cat Breed</li>
+
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <?= menu::load_pets(2, 4, 1); ?>
+                </ul>
 
             </ul>
 
 
 
-            <li>ذكور للزواج </li>
+            <li>ذكور للزواج</li>
 
             <!--second level-->
             <ul class="sub_menu2">
 
-                <li>سلالات كبيرة
-                    <!--third level-->
-                    <ul class="sub_menu3">
-                        <li>نوع 01</li>
-                        <li>نوع 02</li>
-                        <li>نوع 03</li>
-                        <li>نوع 04</li>
-                        <li>نوع 05</li>
-                        <li>نوع 06</li>
-                        <li>نوع 07</li>
-                        <li>نوع 08</li>
-                        <li>نوع 09</li>
-                        <li>نوع 10</li>
-                    </ul>
-                </li>
+                <li>Giant Cat Breed</li>
 
-                <li>سلالات متوسطة
-                    <!--third level-->
-                    <ul class="sub_menu3">
-                        <li>نوع 01</li>
-                        <li>نوع 02</li>
-                        <li>نوع 03</li>
-                        <li>نوع 04</li>
-                        <li>نوع 05</li>
-                        <li>نوع 06</li>
-                        <li>نوع 07</li>
-                        <li>نوع 08</li>
-                        <li>نوع 09</li>
-                        <li>نوع 10</li>
-                    </ul>
-                </li>
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <?= menu::load_pets(2, 1, 2); ?>
+                </ul>
 
-                <li>سلالات صغيرة
-                    <!--third level-->
-                    <ul class="sub_menu3">
-                        <li>نوع 01</li>
-                        <li>نوع 02</li>
-                        <li>نوع 03</li>
-                        <li>نوع 04</li>
-                        <li>نوع 05</li>
-                        <li>نوع 06</li>
-                        <li>نوع 07</li>
-                        <li>نوع 08</li>
-                        <li>نوع 09</li>
-                        <li>نوع 10</li>
-                    </ul>
-                </li>
+                <li>Large Cat Breed</li>
+
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <?= menu::load_pets(2, 2, 2); ?>
+                </ul>
+
+                <li>Medium Cat Breed</li>
+
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <?= menu::load_pets(2, 3, 2); ?>
+                </ul>
+
+                <li>Small Cat Breed</li>
+
+                <!--third level-->
+                <ul class="sub_menu3">
+                    <?= menu::load_pets(2, 4, 2); ?>
+                </ul>
 
             </ul>
 
 
 
-
-            <li><a href="">قطط للتبنى</a></li>
-            <li><a href="">مستلزمات قطط</a></li>
-
-            <li>مقالات</li>
-
-            <!--second level-->
+            <li><a href="<?= READ_ONLY . '/?c=2&ty=4'; ?>">قطط مفقودة</a></li>
+            <li><a href="<?= READ_ONLY . '/?c=2&ty=3'; ?>">قطط للتبنى</a></li>
+            <li>مستلزمات قطط</li>
             <ul class="sub_menu2">
-
-                <li> امراض</li>
-                <!--third level-->
-                <ul class="sub_menu3">
-                    <li><a href="">نوع 01</a></li>
-                    <li><a href="">نوع 01</a></li>
-                    <li><a href="">نوع 01</a></li>
-                </ul>
-
-                <li> رعاية بيطرية</li>
-                <!--third level-->
-                <ul class="sub_menu3">
-                    <li><a href="">نوع 01</a></li>
-                    <li><a href="">نوع 01</a></li>
-                    <li><a href="">نوع 01</a></li>
-                </ul>
-
-                <li>عناية بالقطط</li>
-                <!--third level-->
-                <ul class="sub_menu3">
-                    <li><a href="">نوع 01</a></li>
-                    <li><a href="">نوع 01</a></li>
-                    <li><a href="">نوع 01</a></li>
-                </ul>
-
+                <li><a href="<?= READ_ONLY . '/?c=2&ty=5&pt=1'; ?>">اكسسورات للقطط</a></li>
+                <li><a href="<?= READ_ONLY . '/?c=2&ty=5&pt=2'; ?>">اكل للقطط</a></li>
+                <li><a href="<?= READ_ONLY . '/?c=2&ty=5&pt=3'; ?>">ادوية بيطرية للقطط</a></li>
             </ul>
-
-            <li><a href="">فيديوهات</a></li>
-            <li><a href=""> صور </a></li>
-
         </ul>
 
 
         <li>
             <div class="icon birds"></div>
-            <div class="text">طيور</div>
+            <div class="text">طيور زينة</div>
         </li>
+        <!--first level-->
+        <ul class="sub_menu1">            
+            <!--second level-->
+            <li><a href="<?= READ_ONLY . '/?c=3'; ?>">طيور زينة للبيع</a></li>
+            <li>مستلزمات الطيور الزينة</li>
+            <ul class="sub_menu2">
+                <li><a href="<?= READ_ONLY . '/?c=3&ty=5&pt=1'; ?>">اكسسورات للطيور الزينة</a></li>
+                <li><a href="<?= READ_ONLY . '/?c=3&ty=5&pt=2'; ?>">اكل للطيور الزينة</a></li>
+                <li><a href="<?= READ_ONLY . '/?c=3&ty=5&pt=3'; ?>">ادوية بيطرية للطيور الزينة</a></li>
+            </ul>
+        </ul>
 
         <li>
             <div class="icon fish"></div>
-            <div class="text">اسماك</div>
+            <div class="text">اسماك زينة</div>
         </li>
+        <!--first level-->
+        <ul class="sub_menu1">            
+            <!--second level-->
+            <li><a href="<?= READ_ONLY . '/?c=4'; ?>">أسماك زينة للبيع</a></li>
+            <li>مستلزمات الأسماك الزينة</li>
+            <ul class="sub_menu2">
+                <li><a href="<?= READ_ONLY . '/?c=4&ty=5&pt=1'; ?>">اكسسورات لأسماك الزينة</a></li>
+                <li><a href="<?= READ_ONLY . '/?c=4&ty=5&pt=2'; ?>">اكل لأسماك الزينة</a></li>
+                <li><a href="<?= READ_ONLY . '/?c=4&ty=5&pt=3'; ?>">ادوية بيطرية لأسماك الزينة</a></li>
+            </ul>
+        </ul>
 
         <li>
             <div class="icon turtles"></div>
             <div class="text">زواحف</div>
         </li>
+        <!--first level-->
+        <ul class="sub_menu1">            
+            <!--second level-->
+            <li><a href="<?= READ_ONLY . '/?c=5'; ?>">زواحف للبيع</a></li>
+            <li>مستلزمات زواحف</li>
+            <ul class="sub_menu2">
+                <li><a href="<?= READ_ONLY . '/?c=5&ty=5&pt=1'; ?>">اكسسورات للزواحف</a></li>
+                <li><a href="<?= READ_ONLY . '/?c=5&ty=5&pt=2'; ?>">اكل للزواحف</a></li>
+                <li><a href="<?= READ_ONLY . '/?c=5&ty=5&pt=3'; ?>">ادوية بيطرية للزواحف</a></li>
+            </ul>
+        </ul>
 
         <li>
             <div class="icon horses"></div>
             <div class="text">خيول</div>
         </li>
+        <!--first level-->
+        <ul class="sub_menu1">            
+            <!--second level-->
+            <li><a href="<?= READ_ONLY . '/?c=6'; ?>">خيول للبيع</a></li>
+            <li>مستلزمات الخيول</li>
+            <ul class="sub_menu2">
+                <li><a href="<?= READ_ONLY . '/?c=6&ty=5&pt=1'; ?>">اكسسورات للخيول</a></li>
+                <li><a href="<?= READ_ONLY . '/?c=6&ty=5&pt=2'; ?>">اكل للخيول</a></li>
+                <li><a href="<?= READ_ONLY . '/?c=6&ty=5&pt=3'; ?>">ادوية بيطرية للخيول</a></li>
+            </ul>
+        </ul>
 
         <li>
             <div class="icon vet"></div>
-            <div class="text"> <a href="">العيادات</a></div>
+            <div class="text"> <a href="<?= READ_ONLY . '/?search_for=2'; ?>">العيادات</a></div>
         </li>
 
         <li>
             <div class="icon about"></div>
-            <div class="text"> <a href="">عن الموقع</a></div>
+            <div class="text"> <a href="<?= READ_ONLY . '/about'; ?>">عن الموقع</a></div>
         </li>
 
         <li>
             <div class="icon contact"></div>
-            <div class="text"> <a href="">اتصل بنا</a></div>
+            <div class="text"> <a href="<?= READ_ONLY . '/contactus'; ?>">اتصل بنا</a></div>
         </li>
 
         <? if (Login::get_instance()->check_login() == 'valid') { ?>
             <li>
                 <div class="icon account"></div>
-                <div class="text"><a href="/pets/index/logout">تسجيل خروج</a></div>
+                <div class="text"><a href="/index/logout">تسجيل خروج</a></div>
             </li>
         <? } else { ?>
             <li>

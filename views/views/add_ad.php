@@ -1,9 +1,10 @@
-<? if (!defined('WEB'))
+<?
+if (!defined('WEB'))
     exit();
 ?>
-    <? require_once 'head.php'; ?>
+<? require_once 'head.php'; ?>
 <body>
-<? require_once 'header.php'; ?>
+    <? require_once 'header.php'; ?>
 
     <div class="row" style="margin-top:36px;">
         <?
@@ -40,7 +41,7 @@
                         <label>نوع الحيوان الاليف
                             <select name="cat" id="category">
                                 <option value="">اختار النوع</option>
-<?= Temp::load_list_options('ads_cats', $ad['cat_id']); ?>
+                                <?= Temp::load_list_options('ads_cats', $ad['cat_id']); ?>
                             </select>
                         </label>
 
@@ -49,9 +50,9 @@
                     <div class="small-12 columns right">
 
                         <label>نوع الاعلان
-                            <select name="type">
+                            <select id="ad_type" name="type">
                                 <option value="">اختار النوع</option>
-<?= Temp::load_list_options('ads_types', $ad['type']); ?>
+                                <?= Temp::load_list_options('ads_types', $ad['type']); ?>
                             </select>
                         </label>
 
@@ -61,10 +62,10 @@
 
                         <label>تفاصيل
                             <select id="pet" name="pet">
-                                <option value="">اختار النوع</option>
+                                <option value="351">الكل</option>
                                 <?
                                 if (is_array($ad) && !empty($ad))
-                                    echo Temp::load_list_options('ads_pets', $ad['pet_id'], array($ad['cat_id']));
+                                    echo Temp::load_list_options('ads_pets', $ad['pet_id'], array($ad['cat_id'], $ad['type']));
                                 ?>
                             </select>
                         </label>
@@ -115,7 +116,7 @@
                         <label>الدولة
                             <select id="country" name="country">
                                 <option value="">اختار الدولة</option>
-<?= Temp::load_list_options('ads_countries', $ad['country']); ?>
+                                <?= Temp::load_list_options('ads_countries', $ad['country']); ?>
                             </select>
                         </label>
 
@@ -163,7 +164,7 @@
             <div class=" small-12 medium-12  large-12 columns" style=" margin-top:26px;">
 
                 <div id="dropbox">
-                    <form action="/pets/ads/file_upload"  class="dropzone"></form>
+                    <form action="/ads/file_upload"  class="dropzone"></form>
                 </div>
 
             </div>

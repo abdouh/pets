@@ -12,23 +12,63 @@ return array(
                 'numeric' => 1,
             ),
         ),
-        'email' => array(
+        'user_id' => array(
             'validations' => array(
                 'notEmpty' => 1,
-                'email' => 1,
+                'numeric' => 1,
             ),
         ),
-        'username' => array(
-            'validations' => array(
-                'notEmpty' => 1,
-            ),
-        ),
-        'password' => array(
+        'name' => array(
             'validations' => array(
                 'notEmpty' => 1,
             ),
         ),
-        'phone' => array(
+        'desc' => array(
+            'validations' => array(
+                'notEmpty' => 1,
+            ),
+        ),
+        'doc_name' => array(
+            'validations' => array(
+                'notEmpty' => 1,
+            ),
+        ),
+        'phone1' => array(
+            'validations' => array(
+                'notEmpty' => 1,
+                'numeric' => 1,
+            ),
+        ),
+        'phone2' => array(
+            'validations' => array(
+                'notEmpty' => 1,
+                'numeric' => 1,
+            ),
+        ),
+        'phone3' => array(
+            'validations' => array(
+                'notEmpty' => 1,
+                'numeric' => 1,
+            ),
+        ),
+        'address' => array(
+            'validations' => array(
+                'notEmpty' => 1,
+            ),
+        ),
+        'country' => array(
+            'validations' => array(
+                'notEmpty' => 1,
+                'numeric' => 1,
+            ),
+        ),
+        'city' => array(
+            'validations' => array(
+                'notEmpty' => 1,
+                'numeric' => 1,
+            ),
+        ),
+        'region' => array(
             'validations' => array(
                 'notEmpty' => 1,
                 'numeric' => 1,

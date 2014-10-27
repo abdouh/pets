@@ -10,46 +10,66 @@ $(document).ready(function () {
     });
 
     $('body').on('click', '#search_ads', function () {
-        $('#errors').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+        $('#errors').html('<img width="25" src="/views/img/AjaxLoader.gif"/>');
         $('#ads_button').remove();
         load_search('ads');
 
     });
 
     $('body').on('click', '#search_users', function () {
-        $('#errors').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+        $('#errors').html('<img width="25" src="/views/img/AjaxLoader.gif"/>');
         $('#users_button').remove();
         load_search('users');
 
     });
+    $('body').on('click', '#search_clinics', function () {
+        $('#errors').html('<img width="25" src="/views/img/AjaxLoader.gif"/>');
+        $('#clinics_button').remove();
+        load_search('clinics');
+
+    });
 
     $('body').on('click', '#users_button', function () {
-        $('#users_more').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+        $('#users_more').html('<img width="25" src="/views/img/AjaxLoader.gif"/>');
         load_more('users');
     });
 
     $('body').on('click', '#ads_button', function () {
-        $('#ads_more').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+        $('#ads_more').html('<img width="25" src="/views/img/AjaxLoader.gif"/>');
         load_more('ads');
+    });
+    
+    $('body').on('click', '#clinics_button', function () {
+        $('#clinics_more').html('<img width="25" src="/views/img/AjaxLoader.gif"/>');
+        load_more('clinics');
     });
 
     $('body').on('click', '#activate_users', function () {
-        $('#errors').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+        $('#errors').html('<img width="25" src="/views/img/AjaxLoader.gif"/>');
         handle_groups('users', 1);
     });
 
     $('body').on('click', '#deactivate_users', function () {
-        $('#errors').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+        $('#errors').html('<img width="25" src="/views/img/AjaxLoader.gif"/>');
         handle_groups('users', 2);
     });
 
     $('body').on('click', '#activate_ads', function () {
-        $('#errors').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+        $('#errors').html('<img width="25" src="/views/img/AjaxLoader.gif"/>');
         handle_groups('ads', 1);
     });
     $('body').on('click', '#deactivate_ads', function () {
-        $('#errors').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+        $('#errors').html('<img width="25" src="/views/img/AjaxLoader.gif"/>');
         handle_groups('ads', 2);
+    });
+    
+    $('body').on('click', '#activate_clinics', function () {
+        $('#errors').html('<img width="25" src="/views/img/AjaxLoader.gif"/>');
+        handle_groups('clinics', 1);
+    });
+    $('body').on('click', '#deactivate_clinics', function () {
+        $('#errors').html('<img width="25" src="/views/img/AjaxLoader.gif"/>');
+        handle_groups('clinics', 2);
     });
 });
 
@@ -63,7 +83,7 @@ function handle_groups(type, val) {
     var form = $('#' + type + '_form').serialize();
 
     $.ajax({
-        url: "/pets/index/handle/?t=" + val + "&ty=" + type,
+        url: "/index/handle/?t=" + val + "&ty=" + type,
         type: 'POST',
         data: form,
         success: function (data) {
@@ -81,7 +101,7 @@ function load_search(type) {
         return;
     }
     $.ajax({
-        url: "/pets/index/search_cp",
+        url: "/index/search_cp",
         type: 'POST',
         data: {
             'type': type,
@@ -102,7 +122,7 @@ function load_search(type) {
 function load_more(type) {
     var page = $('input[name="' + type + '_page"]').val();
     $.ajax({
-        url: "/pets/index/load_more",
+        url: "/index/load_more",
         type: 'POST',
         data: {
             'type': type,
@@ -135,7 +155,7 @@ function login() {
         return;
     }
     $.ajax({
-        url: "/pets/index/login",
+        url: "/index/login",
         type: 'POST',
         data: $('#login_form').serialize(),
         success: function (data) {
@@ -145,7 +165,7 @@ function login() {
             if (new_data['operation'] == 2) {
                 if (new_data['status'] == 'blocked')
                     $('#captcha_display').show();
-                document.getElementById('captcha').src = '/pets/index/captcha?' + Math.random();
+                document.getElementById('captcha').src = '/index/captcha?' + Math.random();
                 $('input[name="captcha_code"]').val('');
 
                 $.each(new_data['errors'], function (index, value) {
@@ -162,7 +182,7 @@ function login() {
 function register() {
     $('#register_errors').html('');
     $.ajax({
-        url: "/pets/index/register",
+        url: "/index/register",
         type: 'POST',
         data: $('#register_form').serialize(),
         success: function (data) {
@@ -175,7 +195,7 @@ function register() {
                 });
             } else if (new_data['operation'] == 1) {
                 $('#register_errors').html('<span style="color:green;">تم تسجيل عضويتك بنجاح</span>');
-                window.location = '/pets/index';
+                window.location = '/index';
             }
         }
     });
@@ -190,7 +210,7 @@ function forgot_pass() {
     }
 
     $.ajax({
-        url: "/pets/index/forgotpass",
+        url: "/index/forgotpass",
         type: 'POST',
         data: $('#forgot_form').serialize(),
         success: function (data) {

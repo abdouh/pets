@@ -8,7 +8,7 @@ $(document).ready(function(){
                 required: true,
                 email: true
             },
-            file: {
+            user_img: {
                 accept: "image/jpg,image/jpeg,image/png"
             },
             phone: {
@@ -33,7 +33,7 @@ $(document).ready(function(){
                 required: 'يجب ادخال البريد الالكترونى',
                 email: 'يجب ادخال بريد الكترونى صحيح'
             },
-            file: {
+            user_img: {
                 accept: 'يجب اختيار صورة (JPG , JPEG , PNG)'
             },
             phone: {
@@ -52,7 +52,7 @@ $(document).ready(function(){
         },
 
         submitHandler: function(){
-            $('#errors').html('<img width="25" src="/pets/views/img/AjaxLoader.gif"/>');
+            $('#errors').html('<img width="25" src="/views/img/AjaxLoader.gif"/>');
             $("html, body").animate({
                 scrollTop: 0
             }, 500);
@@ -60,7 +60,7 @@ $(document).ready(function(){
             var form_data = new FormData($('#user_form').get(0));                  
             form_data.append('file', file_data);
             $.ajax({
-                url: '/pets/user/update',
+                url: '/user/update',
                 cache: false,
                 contentType: false,
                 processData: false,
@@ -76,7 +76,7 @@ $(document).ready(function(){
                         });
                     }else if(new_data['operation'] == 1){
                         $('#errors').html('<span style="color:green;">تم تعديل المعلومات بنجاح</span>');
-                        window.location = '/pets/user/edit';
+                        window.location = '/user/edit';
                     }
                 }
             });

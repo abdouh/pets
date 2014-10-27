@@ -16,6 +16,7 @@
                 <dl class="tabs" data-tab style=" display:inline-block; margin:16px 0 !important; ">
                     <dd class="active"><a href="#panel1">العضويات</a></dd>
                     <dd><a href="#panel2">الاعلانات</a></dd>
+                    <dd><a href="#panel3">العيادات</a></dd>
                 </dl>
 
                 <div class="tabs-content" style="padding:0 !important;">
@@ -96,63 +97,39 @@
 
                     <div class="content" id="panel3" style="width:100% !important;">
 
-
-
-
                         <div class="small-12 columns right" style="padding:0 !important;">
-                            <input type="text" placeholder="ادخل البريد او رقم العضوية" style="width:80%; float:right;">
-                            <input type="submit" class="button" value="بحث" style=" height:37px; margin-top:0; width:19%; float:right;">
+                            <input id="clinics_search_box" type="text" placeholder="ادخل اسم أو رقم العيادة" style="width:80%; float:right;">
+                            <input id="search_clinics" type="submit" class="button" value="بحث" style=" height:37px; margin-top:0; width:19%; float:right;">
                         </div>
 
                         <div class="small-12 columns right" style="padding:0 !important;">
-                            <input type="submit" class="button" value="تعطيل" style="background:gray; margin-top:0;">
-                            <input type="submit" class="button" value="تفعيل" style="margin-top:0;">
+                            <input id="deactivate_clinics" type="submit" class="button" value="تعطيل" style="background:gray; margin-top:0;">
+                            <input id="activate_clinics" type="submit" class="button" value="تفعيل" style="margin-top:0;">
                         </div>
-
-                        <table dir="rtl">
-                            <thead>
-                                <tr>
-                                    <th width="40"></th>
-                                    <th width="100">رقم العضوية</th>
-                                    <th width="">البريد الاليكترونى</th>
-                                    <th width="">الحالة</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-
+                        <form id="clinics_form">
+                            <table dir="rtl">
+                                <thead>
+                                    <tr>
+                                        <th width="40"><input type="checkbox" check="clinics" name="all"></th>
+                                        <th width="100">رقم العيادة</th>
+                                        <th width="">اسم العيادة</th>
+                                        <th width="">الحالة</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="clinics_body">
+                                    <?= empty($clinics) ? '<tr><td colspan="4">لا يوجد عيادات للعرض</td></tr>' : Temp::ad_container_rows($clinics,2); ?>
+                                </tbody>
+                            </table>
+                        </form>
+                        <input type="hidden" name="clinics_page" value="1">
+                        <input type="hidden" name="clinics_total" value="<?= $total_clinics; ?>">
+                        <div id="clinics_more">
+                            <? if ($total_clinics > 18) { ?>
+                                <input id="clinics_button" type="submit" value="المزيد">
+                            <? } ?>
+                        </div>
                     </div>
 
-                    <div class="content" id="panel4" style="width:100% !important;">
-
-
-
-
-                        <div class="small-12 columns right" style="padding:0 !important;">
-                            <input type="text" placeholder="ادخل البريد او رقم العضوية" style="width:80%; float:right;">
-                            <input type="submit" class="button" value="بحث" style=" height:37px; margin-top:0; width:19%; float:right;">
-                        </div>
-
-                        <div class="small-12 columns right" style="padding:0 !important;">
-                            <input type="submit" class="button" value="تعطيل" style="background:gray; margin-top:0;">
-                            <input type="submit" class="button" value="تفعيل" style="margin-top:0;">
-                        </div>
-
-                        <table dir="rtl">
-                            <thead>
-                                <tr>
-                                    <th width="40"></th>
-                                    <th width="100">رقم العضوية</th>
-                                    <th width="">البريد الاليكترونى</th>
-                                    <th width="">الحالة</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-
-                    </div>
                 </div>
 
             </div>
