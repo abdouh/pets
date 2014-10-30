@@ -13,18 +13,17 @@
     
     
     <script src="js/vendor/jquery.js"></script>
-    
-    <script src="js/responsive.js"></script>
-    <script src="js/menu.js"></script>
-    <script src="js/accounts.js"></script>
-
     <script src="js/vendor/modernizr.js"></script>
-    <script src="js/foundation/foundation.orbit.js"></script>
+    <script src="js/foundation/foundation.clearing.js"></script>
+    
     <script src="js/vendor/foundation.equalizer.js"></script>
-    <script src="js/foundation/foundation.orbit.js"></script>
+    
+    <script src="js/accounts.js"></script>
+    <script src="js/responsive.js"></script>
     
     
-    
+
+
 
  
   </head>
@@ -62,7 +61,6 @@
   <input type="submit" class="button expand" value="انشاء عضوية جديدة">
   
   <a href="javascript:void(0);" class="GoToLogin">لدى عضوية , تسجيل الدخول</a>
-  
   
   </form>
   
@@ -570,21 +568,6 @@
         </li>
         
         <li>
-        <div class="icon account"></div>
-        <div class="text"> الملف الشخصى</div>
-        </li>
-        
-        <li>
-        <div class="icon signout"></div>
-        <div class="text"> خروج</div>
-        </li>
-        
-        <li>
-        <div class="icon cp"></div>
-        <div class="text"> لوحة التحكم</div>
-        </li>
-        
-        <li>
         <div class="icon search"></div>
         <div class="text">البحث</div>
         </li>
@@ -594,7 +577,45 @@
       </ul>
   <!--menu end-->
   
+  
+  
+  <!--social media start-->
+  <div style="margin-bottom:16px !important;">
+  
+  <div  class="social_home" style="background: #446BC1">
+  <div class="social_media_icon_container" ><a target="_blank" id="facebook"  href="http://www.goo.gl/3dm8Vm"  ></a></div>
+  <span>1234</span>
+  <span  class="mobile_hide">معجب</span>
+  </div>
 
+  <div  class="social_home"  style="background: #EE3532">
+  <div class="social_media_icon_container" ><a target="_blank" id="google"    href="http://www.goo.gl/vE77YD"  ></a></div>
+  <span>12110</span>
+  <span  class="mobile_hide">مشترك</span>
+  </div>
+  
+  <div  class="social_home"  style="background:#0FB0DB">
+  <div class="social_media_icon_container" ><a target="_blank" id="twitter"   href="http://www.goo.gl/balJMf"  ></a></div>
+  <span>12110</span>
+  <span  class="mobile_hide">متابع</span>
+  </div>
+  
+  
+  <div  class="social_home"  style="background:#DB2426">
+  <div class="social_media_icon_container" ><a target="_blank" id="youtube"   href="http://www.goo.gl/nbJpzI"  ></a></div>
+  <span>12110</span>
+  <span  class="mobile_hide">مشترك</span>
+  </div>
+  
+  <div class="social_home" style="background:#6D574C;">
+  <div class="social_media_icon_container"><a target="_blank" id="instagram" href="http://www.goo.gl/SIiwfF" ></a></div>
+  <span>12110</span>
+  <span class="mobile_hide">متابع</span>
+  </div>
+  
+
+  </div>
+  <!--social media end-->
       
   </div>
   <!--menu section end--> 
@@ -613,177 +634,158 @@
   <!--Breadcrumbs end-->
   
 
+
+
   
   <!--ads grid view start-->
   <div class="row" style="margin:0 0 16px 0;">
-  <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-3 ads_view">
+  
+<div class="small-12 columns right">
+  <h5 style="color:#09c; border-bottom:1px solid #60e0f5; padding-bottom:6px; margin-bottom:6px;">نوع المنشورات</h5>
+  </div>
+  
+  <div class="small-12 columns right">
+  
+    
+  <div class="small-12 meduim-6 large-3 columns">
+  
+    
+   <label>القسم
+        <select>
+          <option value="">اختار القسم</option>
+          <option value="مصر">كلاب  </option>
+          <option value="لبنان">عيادات</option>
+          <option value="المفرب">قطط</option>
+          <option value="الامارات">خيول</option>
+   </select>
+   </label>
+  
+  </div>
+  
+  
+  <div class="small-12 meduim-6 large-3 columns">
+  
+    
+   <label>القسم الفرعى
+        <select>
+          <option value="">اختار الفرع</option>
+          <option value="مصر">كلاب للبيع </option>
+          <option value="لبنان">ذكور للزواج</option>
+          <option value="المفرب">كلاب مفقودة</option>
+   </select>
+   </label>
+  
+  </div>
+  
+  
+  <div class="small-12 meduim-6 large-3 columns">
+  
+    
+   <label>النوع
+        <select>
+          <option value="">اختار النوع</option>
+          <option value="مصر">الاكثر مشاهدة</option>
+          <option value="لبنان">الاحدث</option>
+   </select>
+   </label>
+  
+  </div>
+  
+  
+  <div class="small-12 meduim-6 large-3 columns">
+  
+    
+   <label>الوقت
+        <select>
+          <option value="">30 دقيقة</option>
+          <option value="مصر">ساعة</option>
+          <option value="لبنان">ساعة ونصف</option>
+          <option value="لبنان">ساعتين</option>
+          <option value="لبنان">6 ساعات</option>
+   </select>
+   </label>
+  
+  </div>
+  
+  </div>
+  
+  <div class="small-12 columns right" style="margin-top:26px;">
+  
+  
+  <div class="large-9 small-12 meduim-8 columns">
+  <input type="text" placeholder="ادخل الرابط" style="height:44px;">
+  </div>
+  
+  <div class="large-3 small-12 meduim-4 columns">
+  <a href="#" class="button expand" style="margin-top:0;">اضافة</a>
+  </div>
+  
+  </div>
+  
+  
+  
+  <div class="small-12 columns right" style="margin-top:26px;">
+  
+  <table>
 
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
+  <tr>
+  <td>النوع </td>
+  <td>القيم </td>
+  <td>الفرع </td>
+  <td>الوقت</td>
+  <td>الرابط</td>
+  <td>تحكم</td>
+  </tr>
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
+  <tr>
+  <td>الاكثر مشاهدة </td>
+  <td>كلاب </td>
+  <td>كلاب للبيع </td>
+  <td>كل 30 دقيقة</td>
+  <td>www.facebook.com</td>
+  <td><a href="" style="margin-left:10px;">تعديل</a> <a href="">حذف</a></td>
+  </tr>
+  <tr>
+  <td>الاكثر مشاهدة </td>
+  <td>كلاب </td>
+  <td>كلاب للبيع </td>
+  <td>كل 30 دقيقة</td>
+  <td>www.facebook.com</td>
+  <td><a href="" style="margin-left:10px;">تعديل</a> <a href="">حذف</a></td>
+  </tr>
+  <tr>
+  <td>الاكثر مشاهدة </td>
+  <td>كلاب </td>
+  <td>كلاب للبيع </td>
+  <td>كل 30 دقيقة</td>
+  <td>www.facebook.com</td>
+  <td><a href="" style="margin-left:10px;">تعديل</a> <a href="">حذف</a></td>
+  </tr>
+  <tr>
+  <td>الاكثر مشاهدة </td>
+  <td>كلاب </td>
+  <td>كلاب للبيع </td>
+  <td>كل 30 دقيقة</td>
+  <td>www.facebook.com</td>
+  <td><a href="" style="margin-left:10px;">تعديل</a> <a href="">حذف</a></td>
+  </tr>
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
+  </table>
+
   </div>
-  <img src="img/1.jpg">
-  </a></li>
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
-  
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
-  
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
-  
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
-  
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
-  
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
-  
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
-  
-    <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
-  
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
-  
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
-  
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
-  
-    <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
-  
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
-  
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
-  
-</ul>
+
   </div>
   <!--ads grid view start-->
   
-  <!--paginatios start-->
-  <div class="row" style="margin:0 0 16px 0; padding:0;">
-  <ul class="pagination">
-  <li class="arrow unavailable"><a href="">&rsaquo;</a></li>
-  <li class="current"><a href="">1</a></li>
-  <li><a href="">2</a></li>
-  <li><a href="">3</a></li>
-  <li><a href="">4</a></li>
-  <li><a href="">5</a></li>
-  <li><a href="">6</a></li>
-  <li><a href="">7</a></li>
-  <li><a href="">8</a></li>
 
-  <li class="arrow"><a href="">&lsaquo;</a></li>
-  </ul>
-  </div>
-  <!--paginatios start-->
 
   </div>
   <!--main content end-->
   
   <!--ads section start-->
   <div class="ads">
-  
-    <!--social media start-->
-    
-  <div class="social_media_icon_container" ><a target="_blank" id="facebook"  href="http://www.goo.gl/iLuDpE"  ></a></div>
-  
-  <div class="social_media_icon_container" ><a target="_blank" id="twitter"   href="http://www.goo.gl/e8w2KG"  ></a></div>
-
-  <div class="social_media_icon_container" ><a target="_blank" id="google"    href="http://www.goo.gl/dkoy5T"  ></a></div>
-    
-  <div class="social_media_icon_container" ><a target="_blank" id="youtube"   href="http://www.goo.gl/LyuBfI"  style="margin:0;" ></a></div>
-  
-  <!--social media end-->
-  
   <div style="width:300px; height:250px; background:#ccc; margin:12px 0; float:right; margin-top:0px;"></div>
   <div style="width:300px; height:600px; background:#ccc; margin:12px 0; float:right;"></div>
   <div style="width:300px; height:250px; background:#ccc; margin:12px 0; float:right;"></div>

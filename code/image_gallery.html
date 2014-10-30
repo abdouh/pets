@@ -13,18 +13,25 @@
     
     
     <script src="js/vendor/jquery.js"></script>
-    
-    <script src="js/responsive.js"></script>
-    <script src="js/menu.js"></script>
-    <script src="js/accounts.js"></script>
-
     <script src="js/vendor/modernizr.js"></script>
-    <script src="js/foundation/foundation.orbit.js"></script>
     <script src="js/vendor/foundation.equalizer.js"></script>
-    <script src="js/foundation/foundation.orbit.js"></script>
     
+    <script src="js/foundation/foundation.js"></script>
+	<script src="js/foundation/foundation.clearing.js"></script>
     
+
     
+    <script src="js/accounts.js"></script>
+    <script src="js/responsive.js"></script>
+    
+    <script>
+	
+	$(document).ready(function() {
+		$(document).foundation();
+    });
+	</script>
+
+
 
  
   </head>
@@ -62,7 +69,6 @@
   <input type="submit" class="button expand" value="انشاء عضوية جديدة">
   
   <a href="javascript:void(0);" class="GoToLogin">لدى عضوية , تسجيل الدخول</a>
-  
   
   </form>
   
@@ -570,21 +576,6 @@
         </li>
         
         <li>
-        <div class="icon account"></div>
-        <div class="text"> الملف الشخصى</div>
-        </li>
-        
-        <li>
-        <div class="icon signout"></div>
-        <div class="text"> خروج</div>
-        </li>
-        
-        <li>
-        <div class="icon cp"></div>
-        <div class="text"> لوحة التحكم</div>
-        </li>
-        
-        <li>
         <div class="icon search"></div>
         <div class="text">البحث</div>
         </li>
@@ -594,7 +585,45 @@
       </ul>
   <!--menu end-->
   
+  
+  
+  <!--social media start-->
+  <div style="margin-bottom:16px !important;">
+  
+  <div  class="social_home" style="background: #446BC1">
+  <div class="social_media_icon_container" ><a target="_blank" id="facebook"  href="http://www.goo.gl/3dm8Vm"  ></a></div>
+  <span>1234</span>
+  <span  class="mobile_hide">معجب</span>
+  </div>
 
+  <div  class="social_home"  style="background: #EE3532">
+  <div class="social_media_icon_container" ><a target="_blank" id="google"    href="http://www.goo.gl/vE77YD"  ></a></div>
+  <span>12110</span>
+  <span  class="mobile_hide">مشترك</span>
+  </div>
+  
+  <div  class="social_home"  style="background:#0FB0DB">
+  <div class="social_media_icon_container" ><a target="_blank" id="twitter"   href="http://www.goo.gl/balJMf"  ></a></div>
+  <span>12110</span>
+  <span  class="mobile_hide">متابع</span>
+  </div>
+  
+  
+  <div  class="social_home"  style="background:#DB2426">
+  <div class="social_media_icon_container" ><a target="_blank" id="youtube"   href="http://www.goo.gl/nbJpzI"  ></a></div>
+  <span>12110</span>
+  <span  class="mobile_hide">مشترك</span>
+  </div>
+  
+  <div class="social_home" style="background:#6D574C;">
+  <div class="social_media_icon_container"><a target="_blank" id="instagram" href="http://www.goo.gl/SIiwfF" ></a></div>
+  <span>12110</span>
+  <span class="mobile_hide">متابع</span>
+  </div>
+  
+
+  </div>
+  <!--social media end-->
       
   </div>
   <!--menu section end--> 
@@ -613,177 +642,169 @@
   <!--Breadcrumbs end-->
   
 
+
+
   
   <!--ads grid view start-->
   <div class="row" style="margin:0 0 16px 0;">
-  <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-3 ads_view">
+  
 
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
+  <div class="small-12 columns ">
+  <h5 style="color:#09c; border-bottom:1px solid #60e0f5; padding-bottom:6px; margin-bottom:6px;">اضافة البوم صور</h5>
   </div>
-  <img src="img/1.jpg">
-  </a></li>
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
+  <div class=" small-12 columns">
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
+  <div class="small-12 meduim-6 large-4 columns">
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
+    
+   <label>الدولة
+        <select>
+          <option value="">القسم</option>
+          <option value="مصر">مصر</option>
+          <option value="لبنان">لبنان</option>
+          <option value="المفرب">المفرب</option>
+          <option value="الامارات">الامارات</option>
+   </select>
+   </label>
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
   </div>
-  <img src="img/1.jpg">
-  </a></li>
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
+  <div class="small-12 meduim-6 large-4 columns">
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
+   <label>المحافظة
+        <select>
+          <option value="">القيم الفرعى</option>
+          <option value="بنى سويف">بنى سويف</option>
+          <option value="المنيا">المنيا</option>
+          <option value="اسيوط">اسيوط</option>
+          <option value="سوهاج">سوهاج</option>
+   </select>
+   </label>
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
   </div>
-  <img src="img/1.jpg">
-  </a></li>
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
+  <div class="small-12 meduim-6 large-4 columns">
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
+   <label>المدينة
+        <select>
+          <option value="">النوع</option>
+          <option value="بنى سويف">بنى سويف</option>
+          <option value="المنيا">المنيا</option>
+          <option value="اسيوط">اسيوط</option>
+          <option value="سوهاج">سوهاج</option>
+   </select>
+   </label>
   
-    <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
   </div>
-  <img src="img/1.jpg">
-  </a></li>
+
+  </div>
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
+    <div class=" small-12 columns" style="margin-top:26px;">
+    
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
+  <div class="large-9 columns">
+  <input type="url" class="" value="اسم الالبوم">
   </div>
-  <img src="img/1.jpg">
-  </a></li>
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
+  <div class="large-3 columns">
+<a href="#" class="button success expand add_video" style="padding:0; margin:0; line-height:38px;">إضافة  +</a>
+</div>
+
+</div>
+
+  <div class="large-12 columns">
+  drop zone plugin  here 
   </div>
-  <img src="img/1.jpg">
-  </a></li>
+
+
+  <div class="large-12 columns">
   
-    <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
   </div>
-  <img src="img/1.jpg">
-  </a></li>
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
+
+  <div class="row" style="margin:0 0 16px 0;">
   
-  <li><a href="">
-  <div class="ad_title_view">
-  عنوان الاعلان بيتكتب هنا
-  </div>
-  <img src="img/1.jpg">
-  </a></li>
+  <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-3 ads_view clearing-thumbs" data-clearing>
+
+  <li>
+  <a href="img/2.jpg">
+  <img src="img/1.jpg" class="th">
+  </a>
+  </li>
+  
+  
+  <li>
+  <a href="img/2.jpg">
+  <img src="img/1.jpg" class="th">
+  </a>
+  </li>
+  
+  
+   <li>
+  <a href="img/2.jpg">
+  <img src="img/1.jpg" class="th">
+  </a>
+  </li>
+  
+  
+  
+   <li>
+  <a href="img/2.jpg">
+  <img src="img/1.jpg" class="th">
+  </a>
+  </li>
+  
+  
+  
+   <li>
+  <a href="img/2.jpg">
+  <img src="img/1.jpg" class="th">
+  </a>
+  </li>
+  
+  
+  
+   <li>
+  <a href="img/2.jpg">
+  <img src="img/1.jpg" class="th">
+  </a>
+  </li>
+  
+
   
 </ul>
   </div>
+  
+
+
+
+  
+
+
+  <!--<ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-2 ads_view">
+  <li>
+  <div class="flex-video widescreen vimeo">
+  <iframe src="http://www.youtube.com/v/XGSy3_Czz8k" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+  </div>
+  </li>
+  
+  
+
+</ul>-->
+
+
+  </div>
   <!--ads grid view start-->
   
-  <!--paginatios start-->
-  <div class="row" style="margin:0 0 16px 0; padding:0;">
-  <ul class="pagination">
-  <li class="arrow unavailable"><a href="">&rsaquo;</a></li>
-  <li class="current"><a href="">1</a></li>
-  <li><a href="">2</a></li>
-  <li><a href="">3</a></li>
-  <li><a href="">4</a></li>
-  <li><a href="">5</a></li>
-  <li><a href="">6</a></li>
-  <li><a href="">7</a></li>
-  <li><a href="">8</a></li>
 
-  <li class="arrow"><a href="">&lsaquo;</a></li>
-  </ul>
-  </div>
-  <!--paginatios start-->
 
   </div>
   <!--main content end-->
   
   <!--ads section start-->
   <div class="ads">
-  
-    <!--social media start-->
-    
-  <div class="social_media_icon_container" ><a target="_blank" id="facebook"  href="http://www.goo.gl/iLuDpE"  ></a></div>
-  
-  <div class="social_media_icon_container" ><a target="_blank" id="twitter"   href="http://www.goo.gl/e8w2KG"  ></a></div>
-
-  <div class="social_media_icon_container" ><a target="_blank" id="google"    href="http://www.goo.gl/dkoy5T"  ></a></div>
-    
-  <div class="social_media_icon_container" ><a target="_blank" id="youtube"   href="http://www.goo.gl/LyuBfI"  style="margin:0;" ></a></div>
-  
-  <!--social media end-->
-  
   <div style="width:300px; height:250px; background:#ccc; margin:12px 0; float:right; margin-top:0px;"></div>
   <div style="width:300px; height:600px; background:#ccc; margin:12px 0; float:right;"></div>
   <div style="width:300px; height:250px; background:#ccc; margin:12px 0; float:right;"></div>

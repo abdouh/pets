@@ -75,7 +75,7 @@ body.welcome_body{
 
 .social_media_icon_container a{
 	width:60px;
-	height:60px;
+	height:40px;
 	float:right;
 	margin-left:20px;
 	margin-bottom:20px;
@@ -222,3 +222,15 @@ welcome_page_list{
 .login , .signup , .forgetPass{display:none;}
 .ad_img_thumb{ cursor:pointer;}
 .current_image {border:1px solid #60e0f5;}
+
+table{border-left:none; border-right:none; border-bottom:none; border-top:solid 1px #dddddd; direction:rtl;}
+table tr{ border-bottom:solid 1px #dddddd;}
+
+/*fix clearing box style*/
+.visible-img img {
+  margin: auto !important;  /* !important to overwrite negative margin-left and margin-top foundation js gives for images in clearing*/
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
