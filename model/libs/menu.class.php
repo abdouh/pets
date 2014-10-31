@@ -9,7 +9,7 @@ class menu {
         $result = db::getInstance()->fetchAll($stmt);
         $output = '';
         foreach ($result as $index => $array) {
-            $link = READ_ONLY . "/?pt={$array['id']}&ty=$type";
+            $link = READ_ONLY . "/?c={$array['pet_cat']}&pt={$array['id']}&ty=$type";
             $output .= "<li><a href='$link'>{$array['pet_name']}</a></li>\n";
         }
         return $output;

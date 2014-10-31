@@ -73,24 +73,14 @@ body.welcome_body{
 	text-align:center;
 }
 
-
-.social_media_icon_container{
-	display:inline-block;
-	width:20%;
-	float:left;
-}
-
-
-
-
 .social_media_icon_container a{
-	width:40px;
-	height:40px;
-	float:left;
+	width:60px;
+	height:60px;
+	float:right;
+	margin-left:20px;
+	margin-bottom:20px;
 	display:inline-block;
 }
-
-
 
 
 a#google    {background: url(../img/g+.svg) no-repeat right;}

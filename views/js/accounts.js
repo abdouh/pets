@@ -10,6 +10,7 @@ $(document).ready(function() {
     /*open search light box*/
     $(".search").parent("li").click(function(){
         $(".lighbox_container.searching").show();
+        $("#search").show();
     })
 	
     /*close light box*/

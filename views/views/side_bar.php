@@ -113,7 +113,7 @@ if (!defined('WEB'))
             </div>
             <div class="small-12 meduim-6 large-4 columns">
                 <label>ابحث فى
-                    <select id="search_country" name="search_for">
+                    <select name="search_for">
                         <option value="1">اعلانات</option>
                         <option value="2">عيادات</option>
                     </select>
@@ -460,7 +460,7 @@ HERE;
 
         <li>
             <div class="icon about"></div>
-            <div class="text"> <a href="<?= READ_ONLY . '/about'; ?>">عن الموقع</a></div>
+            <div class="text"> <a href="<?= READ_ONLY . '/aboutus'; ?>">عن الموقع</a></div>
         </li>
 
         <li>
@@ -489,46 +489,6 @@ HERE;
 
     </ul>
     <!--menu end-->
-
-
-
-    <!--social media start-->
-    <div style="margin-bottom:16px !important; float:right;">
-
-        <div  class="social_home" style="background: #446BC1">
-            <div class="social_media_icon_container" ><a target="_blank" id="facebook"  href="http://www.goo.gl/3dm8Vm"  ></a></div>
-            <span>1234</span>
-            <span  class="mobile_hide">معجب</span>
-        </div>
-
-        <div  class="social_home"  style="background: #EE3532">
-            <div class="social_media_icon_container" ><a target="_blank" id="google"    href="http://www.goo.gl/vE77YD"  ></a></div>
-            <span>12110</span>
-            <span  class="mobile_hide">مشترك</span>
-        </div>
-
-        <div  class="social_home"  style="background:#0FB0DB">
-            <div class="social_media_icon_container" ><a target="_blank" id="twitter"   href="http://www.goo.gl/balJMf"  ></a></div>
-            <span>12110</span>
-            <span  class="mobile_hide">متابع</span>
-        </div>
-
-
-        <div  class="social_home"  style="background:#DB2426">
-            <div class="social_media_icon_container" ><a target="_blank" id="youtube"   href="http://www.goo.gl/nbJpzI"  ></a></div>
-            <span>12110</span>
-            <span  class="mobile_hide">مشترك</span>
-        </div>
-
-        <div class="social_home" style="background:#6D574C;">
-            <div class="social_media_icon_container"><a target="_blank" id="instagram" href="http://www.goo.gl/SIiwfF" ></a></div>
-            <span>12110</span>
-            <span class="mobile_hide">متابع</span>
-        </div>
-
-
-    </div>
-    <!--social media end-->
 
 </div>
 <!--menu section end--> 

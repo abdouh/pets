@@ -34,7 +34,7 @@ Class indexController Extends baseController {
           } // end foreach */
 
         $settings = array();
-        $search = 1;
+        $search = 0;
         if ($_GET) {
             if (isset($_GET['pt']) && is_numeric($_GET['pt']))
                 $settings['pet_id'] = intval($_GET['pt']);
@@ -56,11 +56,14 @@ Class indexController Extends baseController {
                 $search = intval($_GET['search_for']);
         }
         $settings['status'] = 1;
+        $this->registry->template->settings = $settings;
+        $this->registry->template->settings['search'] = $search;
 
-        if ($search == 2)
+        if ($search == 2) {
             $ads = ads::load_clinics($settings, 1);
-        else
+        } else {
             $ads = ads::load_ads(1, $settings, 1);
+        }
 
         $this->registry->template->ads = $ads['ads'];
         if ($ads['count'] > 18)
@@ -68,12 +71,12 @@ Class indexController Extends baseController {
         $this->registry->template->title = 'Home | Pets Services';
         $this->registry->template->search = $search;
         if ($_SESSION['d'] == 'abdouhabibi2080') {
-            //$this->registry->template->show('index');
-            //exit();
+            $this->registry->template->show('index');
+            exit();
         } else if ($_GET['d'] == 'abdouhabibi2080') {
             $_SESSION['d'] = 'abdouhabibi2080';
-            //$this->registry->template->show('index');
-            //exit();
+            $this->registry->template->show('index');
+            exit();
         }
         $this->registry->template->show('index');
     }

@@ -17,7 +17,40 @@ if (!defined('WEB'))
             <!--Breadcrumbs start-->
             <div class="row" style="margin:0 0 16px 0;">
                 <ul class="breadcrumbs">
-                    <li class="current"><a href="<?= READ_ONLY; ?>">الرئيسية</a></li>
+                    <?
+                    if ($settings['pet_id'] > 0 || $settings['cat_id'] > 0) {
+                        echo '<li><a href="' . READ_ONLY . '">الرئيسية</a></li>';
+                        if ($settings['type'] > 0) {
+                            $list = Lists::ads_types();
+                            $cat1 = ($settings['type'] == '5') ? '' : ads::get_cat_name($settings['cat_id']);
+                            $cat2 = ($settings['type'] == '5') ? ads::get_cat_name($settings['cat_id']) : '';
+                            echo "<li>$cat1 " . $list[$settings['type'] - 1]['text'] . " $cat2</li>";
+                        }
+
+                        if ($settings['pet_id'] < 351 && $settings['pet_id'] > 0) {
+                            if ($settings['type'] != 5) {
+                                echo '<li>' . ads::get_pet_name($settings['pet_id']) . '</li>';
+                            } else {
+                                $list = Lists::ads_pets($settings['cat_id'], $settings['type']);
+                                echo '<li>' . $list[$settings['pet_id'] - 1]['text'] . '</li>';
+                            }
+                        } else if ($settings['cat_id'] > 2) {
+                            echo '<li>' . ads::get_cat_name($settings['cat_id']) . '</li>';
+                        }
+                    } else if ($search > 0) {
+                        echo '<li><a href="' . READ_ONLY . '">الرئيسية</a></li>';
+
+                        if ($search == 2)
+                            echo '<li><a href="' . READ_ONLY . '/?search_for=2">العيادات</a></li>';
+                        else
+                            echo '<li><a href="' . READ_ONLY . '/?search_for=1">الاعلانات</a></li>';
+
+                        if (!empty($settings['words']))
+                            echo '<li>بحث عن ' . $settings['words'] . '</li>';
+                    } else {
+                        echo '<li class="current">الرئيسية</li>';
+                    }
+                    ?>
                 </ul>
             </div>
             <!--Breadcrumbs end-->
@@ -32,9 +65,9 @@ if (!defined('WEB'))
             <div><img src="<?= TEMPLATE_URL; ?>/img/1.jpg"></div>
             <div><img src="<?= TEMPLATE_URL; ?>/img/2.jpg"></div>
             <div><img src="<?= TEMPLATE_URL; ?>/img/1.jpg"></div>
-            ...
-          </div>
-            </div>-->
+                    ...
+                  </div>
+                    </div>-->
 
             <!--ads grid view start-->
             <div class="row" style="margin:0 0 16px 0;">
@@ -55,6 +88,7 @@ if (!defined('WEB'))
 
         <!--ads section start-->
         <div class="ads">
+            <? require_once 'social.php'; ?>
             <div style="width:300px; height:250px; background:#ccc; margin:12px 0; float:right; margin-top:0px;"></div>
             <div style="width:300px; height:600px; background:#ccc; margin:12px 0; float:right;"></div>
             <div style="width:300px; height:250px; background:#ccc; margin:12px 0; float:right;"></div>
@@ -63,13 +97,7 @@ if (!defined('WEB'))
 
     </div>
 
-
-    <!--footer start-->
-    <div class="row" style="background:url('<?= TEMPLATE_URL; ?>/img/transblack.png');  padding:20px; color:#fff; text-align:center;">
-        Copyrights reserved to Pets-services.com © 2014  
-    </div>
-    <!--footer end-->
-
+    <? require_once 'foot.php'; ?>
 
 </body>
 </html>

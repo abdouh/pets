@@ -65,7 +65,22 @@ class Register {
     }
 
     function forgot_pass($email) {
-        
+        $table = db::$tables['users_emails'];
+        $query = "INSERT INTO $table VALUES (NULL,'{$this->user_data['id']}',1,UNIX_TIMESTAMP(NOW()))
+            ON DUPLICATE KEY UPDATE `attempts` = `attempts` + 1 , `time` = UNIX_TIMESTAMP(NOW())";
+        $stmt = db::getInstance()->query($query);
+    }
+
+    function check_user_email($email) {
+        $user = $this->get_user(array('email' => $email));
+        $table = db::$tables['users_emails'];
+        $query = "SELECT * FROM $table WHERE `user_id` = '{$user[0]['id']}'";
+        $stmt = db::getInstance()->query($query);
+        $result = db::getInstance()->fetchAll($stmt);
+        if (($result[0]['sent'] < 3) || ($result[0]['time_added'] < 3))
+            return true;
+        else
+            return false;
     }
 
     function load_users($page = 1) {

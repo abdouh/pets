@@ -20,9 +20,9 @@ if (!defined('WEB'))
             <!--Breadcrumbs start-->
             <div class="row" style="margin:0 0 16px 0;">
                 <ul class="breadcrumbs">
-                    <li><a href="#">كلاب للبيع</a></li>
-                    <li><a href="#">سلالات كبيرة</a></li>
-                    <li class="current"><a href="#">جيرمن شيبرد</a></li>
+                    <li><a href="<?= READ_ONLY; ?>">الرئيسية</a></li>
+                    <li><a href="<?= READ_ONLY; ?>/?search_for=2">العيادات</a></li>
+                    <li class="current"> <?= $clinic['name']; ?></li>
                 </ul>
             </div>
             <!--Breadcrumbs end-->
@@ -37,9 +37,13 @@ if (!defined('WEB'))
                 </div>
 
                 <div class="ad_info_element" style="border-top:1px solid #ccc; margin-top:16px;">
-                    <h5>اسم العيادة : <?= $clinic['name']; ?></h5>
+                    <h5>اسم العيادة</h5>
+                    <span><?= $clinic['name']; ?></span>
                 </div>
-
+                <div class="ad_info_element">
+                    <h5>مواعيد العمل </h5>
+                    <span><?= $clinic['desc']; ?></span>
+                </div>
 
                 <div class="ad_info_element" >
                     <h5>تليفون</h5>
@@ -134,6 +138,7 @@ if (!defined('WEB'))
 
         <!--ads section start-->
         <div class="ads" style="  float:left; display:inline-block; left:0;">
+            <? require_once 'social.php'; ?>
             <div style="width:300px; height:250px; background:#ccc; margin:12px 0; float:right;  margin-top:0px;"></div>
             <div style="width:300px; height:600px; background:#ccc; margin:12px 0; float:right;"></div>
             <div style="width:300px; height:250px; background:#ccc; margin:12px 0; float:right;"></div>
@@ -144,5 +149,6 @@ if (!defined('WEB'))
 
 
     </div>
+    <? require_once 'foot.php'; ?>
 </body>
 </html>

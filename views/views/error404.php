@@ -16,7 +16,8 @@ if (!defined('WEB'))
             <!--Breadcrumbs start-->
             <div class="row" style="margin:0 0 16px 0;">
                 <ul class="breadcrumbs">
-                    <li class="current"><a href="<?= READ_ONLY; ?>">الرئيسية</a></li>
+                    <li><a href="<?= READ_ONLY; ?>">الرئيسية</a></li>
+                    <li class="current">صفحة غير موجودة</li>
                 </ul>
             </div>
             <!--Breadcrumbs end-->
@@ -27,6 +28,7 @@ if (!defined('WEB'))
 
         <!--ads section start-->
         <div class="ads">
+            <? require_once 'social.php'; ?>
             <div style="width:300px; height:250px; background:#ccc; margin:12px 0; float:right; margin-top:0px;"></div>
             <div style="width:300px; height:600px; background:#ccc; margin:12px 0; float:right;"></div>
             <div style="width:300px; height:250px; background:#ccc; margin:12px 0; float:right;"></div>
@@ -36,11 +38,7 @@ if (!defined('WEB'))
     </div>
 
 
-    <!--footer start-->
-    <div class="row" style="background:url('<?= TEMPLATE_URL; ?>/img/transblack.png');  padding:20px; color:#fff; text-align:center;">
-        Copyrights reserved to Pets-services.com © 2014  
-    </div>
-    <!--footer end-->
+    <? require_once 'foot.php'; ?>
 
 
 </body>

@@ -78,6 +78,7 @@ if (!defined('WEB'))
 
         <!--ads section start-->
         <div class="ads" style="  float:left; display:inline-block; left:0;">
+            <? require_once 'social.php'; ?>
             <div style="width:300px; height:250px; background:#ccc; margin:12px 0; float:right;  margin-top:0px;"></div>
             <div style="width:300px; height:600px; background:#ccc; margin:12px 0; float:right;"></div>
             <div style="width:300px; height:250px; background:#ccc; margin:12px 0; float:right;"></div>
@@ -94,5 +95,7 @@ if (!defined('WEB'))
     <script>
         $(document).foundation();
     </script>
+
+    <? require_once 'foot.php'; ?>
 </body>
 </html>

@@ -171,4 +171,19 @@ class ads {
         return $result[0]['name'];
     }
 
+    static function get_pet_name($pet_id) {
+        $table = db::$tables['pets'];
+        $query = "SELECT * FROM $table WHERE `id` = '$pet_id' LIMIT 1";
+        $stmt = db::getInstance()->query($query);
+        $result = db::getInstance()->fetchAll($stmt);
+        return $result[0]['pet_name'];
+    }
+    static function get_cat_name($cat_id) {
+        $table = db::$tables['pets_categories'];
+        $query = "SELECT * FROM $table WHERE `id` = '$cat_id' LIMIT 1";
+        $stmt = db::getInstance()->query($query);
+        $result = db::getInstance()->fetchAll($stmt);
+        return $result[0]['cat_name'];
+    }
+
 }

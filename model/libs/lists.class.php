@@ -5,10 +5,10 @@ class Lists {
 
     static function ads_types() {
         return array(
-            array('value' => 1, 'text' => ' بيع'),
+            array('value' => 1, 'text' => 'بيع'),
             array('value' => 2, 'text' => 'ذكور للزواج'),
             array('value' => 3, 'text' => 'تبنى'),
-            array('value' => 4, 'text' => 'مفقود'),
+            array('value' => 4, 'text' => 'مفقوده'),
             array('value' => 5, 'text' => 'مستلزمات'),
         );
     }

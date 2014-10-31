@@ -17,9 +17,8 @@ if (!defined('WEB'))
             <!--Breadcrumbs start-->
             <div class="row" style="margin:0 0 16px 0;">
                 <ul class="breadcrumbs">
-                    <li><a href="#">كلاب للبيع</a></li>
-                    <li><a href="#">سلالات كبيرة</a></li>
-                    <li class="current"><a href="#">جيرمن شيبرد</a></li>
+                    <li><a href="<?= READ_ONLY; ?>">الرئيسية</a></li>
+                    <li class="current">اضافة اعلان</li>
                 </ul>
             </div>
             <!--Breadcrumbs end-->
@@ -174,6 +173,7 @@ if (!defined('WEB'))
 
         <!--ads section start-->
         <div class="ads" style="  float:left; display:inline-block; left:0;">
+            <? require_once 'social.php'; ?>
             <div style="width:300px; height:250px; background:#ccc; margin:12px 0; float:right;  margin-top:0px;"></div>
             <div style="width:300px; height:600px; background:#ccc; margin:12px 0; float:right;"></div>
             <div style="width:300px; height:250px; background:#ccc; margin:12px 0; float:right;"></div>
@@ -181,9 +181,8 @@ if (!defined('WEB'))
         </div>
         <!--ads section start-->
 
-
-
     </div>
+    <? require_once 'foot.php'; ?>
 </body>
 </html>
 

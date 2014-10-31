@@ -6,7 +6,7 @@ class Temp {
 //fully static class
 
 
-    static function breadcrumb($page_name = '') {
+    static function breadcrumb($pet = 0, $type = 0, $cat = 0) {
         $output = <<<HERE
 <ul class = "breadcrumb">
     <li>
@@ -35,9 +35,10 @@ HERE;
 
 
         $start = ($page_pos * $pages) - $pages + 1;
+        $end = $page_pos * $pages;
 
 
-        for ($i = $start; $i <= ($page_pos * $pages); $i++) {
+        for ($i = $start; $i <= $end; $i++) {
             if ($i > $total)
                 break;
 
@@ -53,15 +54,17 @@ HERE;
 
         $query['p'] = $page - 1;
         $q = http_build_query($query);
-        $prev_arrow = '<li class="arrow"><a href="/?' . $q . '">&rsaquo;</a></li>';
+        if (($page - 1) < 1)
+            $prev_arrow = '<li class="arrow unavailable"><a href="#">&rsaquo;</a></li>';
+        else
+            $prev_arrow = '<li class="arrow"><a href="/?' . $q . '">&rsaquo;</a></li>';
+
         $query['p'] = $page + 1;
         $q = http_build_query($query);
-        $next_arrow = '<li class="arrow"><a href="/?' . $q . '">&lsaquo;</a></li>';
-
-        if ($total == $page)
-            $next_arrow = '';
-        if ($page == 1)
-            $prev_arrow = '';
+        if (($page + 1) > $total)
+            $next_arrow = '<li class="arrow unavailable"><a href="#">&lsaquo;</a></li>';
+        else
+            $next_arrow = '<li class="arrow"><a href="/?' . $q . '">&lsaquo;</a></li>';
 
         $output .= '<ul class="pagination">';
         $output .=$prev_arrow;
