@@ -47,35 +47,41 @@ if (!defined('WEB'))
             <div class="row" style="margin:0 0 16px 0;">
                 <ul class="breadcrumbs">
                     <li><a href="<?= READ_ONLY; ?>">الرئيسية</a></li>
-                    <? if (!empty($ad) && $ad['pet_id'] < '351') { ?>
-                        <li><?
-                            $list = Lists::ads_types();
-                            $cat1 = ($ad['type'] == '5') ? '' : ads::get_cat_name($ad['cat_id']);
-                            $cat2 = ($ad['type'] == '5') ? ads::get_cat_name($ad['cat_id']) : '';
-                            echo "$cat1 " . $list[$ad['type'] - 1]['text'] . " $cat2";
-                            ?></li>
-                        <li><a href="<?= READ_ONLY; ?>/?pt=<?= $ad['pet_id']; ?>&ty=<?= $ad['type']; ?>&c=<?= $ad['cat_id']; ?>"><?
-                                if ($ad['type'] != 5) {
-                                    echo ads::get_pet_name($ad['pet_id']);
-                                } else {
-                                    $list = Lists::ads_pets($ad['cat_id'], $ad['type']);
-                                    echo $list[$ad['pet_id'] - 1]['text'];
-                                }
-                                ?></a></li>
+                    <? if (!empty($ad)) { ?>
+                        <? if ($ad['pet_id'] != '351') { ?>
+                            <li><?
+                                $list = Lists::ads_types();
+                                $cat1 = ($ad['type'] == '5') ? '' : ads::get_cat_name($ad['cat_id']);
+                                $cat2 = ($ad['type'] == '5') ? ads::get_cat_name($ad['cat_id']) : '';
+                                echo "$cat1 " . $list[$ad['type'] - 1]['text'] . " $cat2";
+                                ?></li>
+                            <li><a href="<?= READ_ONLY; ?>/?pt=<?= $ad['pet_id']; ?>&ty=<?= $ad['type']; ?>&c=<?= $ad['cat_id']; ?>"><?
+                                    if ($ad['type'] != 5) {
+                                        echo ads::get_pet_name($ad['pet_id']);
+                                    } else {
+                                        $list = Lists::ads_pets($ad['cat_id'], $ad['type']);
+                                        echo $list[$ad['pet_id'] - 1]['text'];
+                                    }
+                                    ?></a></li>
+                        <? } else { ?>
+                            <li><a href="<?= READ_ONLY; ?>/?c=<?= $ad['cat_id']; ?>"><?= ads::get_cat_name($ad['cat_id']); ?></a></li>        
+                        <? } ?>
                         <li class="current"><?= $ad['title']; ?></li>
                     <? } ?>
+
                 </ul>
             </div>
             <!--Breadcrumbs end-->
 
             <? if (!empty($ad)) { ?>
                 <!--ad image code start-->
+                <input type="hidden" name="ad_id" value="<?= $ad['id']; ?>">
                 <div class=" small-12 medium-12  large-7  columns left" style="padding:0 !important;">
 
-                    <!-- <div class="price">
-                         <span class="price_number">7000</span>
-                         <span class="price_currency">جنيه مصرى</span>
-                     </div>-->
+                    <div class="price">
+                        <span class="price_number"><?= $ad['price']; ?></span>
+                        <span class="price_currency"><?= ads::get_currency_name($ad['currency']); ?></span>
+                    </div>
 
 
                     <script>
@@ -121,7 +127,11 @@ if (!defined('WEB'))
 
                 <!--ad info code start-->
                 <div class=" small-12  large-5 columns  right" style="padding-right:0 !important;">
-
+                    <? if ($edit) { ?>
+                        <div class="ad_info_element">
+                            <h5><a href="/ads/edit/?id=<?= $ad['id']; ?>">تعديل الاعلان</a></h5>
+                        </div>
+                    <? } ?>
                     <div class="ad_info_element">
                         <h5>وصف الاعلان</h5>
 
@@ -132,7 +142,8 @@ if (!defined('WEB'))
 
                     <div class="ad_info_element">
                         <span>للإتصال : </span>
-                        <span>+<?= $phone; ?></span>
+                        <span id="show_number"><a href="#">اظهر الرقم</a></span>
+                        <span id="number"></span>
                     </div>
 
                     <div class="ad_info_element">

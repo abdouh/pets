@@ -5,7 +5,7 @@
             <url>views/views/index.php</url>
             <bookmark id="1">
                 <name/>
-                <line>82</line>
+                <line>83</line>
                 <key/>
             </bookmark>
         </file>
@@ -13,11 +13,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/pets/controller/indexController.php</file>
-            <file>file:/C:/xampp/htdocs/pets/controller/userController.php</file>
-            <file>file:/C:/xampp/htdocs/pets/model/libs/db.class.php</file>
-            <file>file:/C:/xampp/htdocs/pets/views/views/user_info.php</file>
+            <file>file:/C:/xampp/htdocs/pets/views/views/view_ad.php</file>
+            <file>file:/C:/xampp/htdocs/pets/controller/adsController.php</file>
+            <file>file:/C:/xampp/htdocs/pets/index.php</file>
             <file>file:/C:/xampp/htdocs/pets/controller/clinicsController.php</file>
-            <file>file:/C:/xampp/htdocs/pets/views/js/clinics.js</file>
+            <file>file:/C:/xampp/htdocs/pets/views/views/view_clinic.php</file>
+            <file>file:/C:/xampp/htdocs/pets/model/libs/temp.class.php</file>
             <file>file:/C:/xampp/htdocs/pets/views/views/side_bar.php</file>
         </group>
     </open-files>

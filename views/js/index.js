@@ -195,7 +195,7 @@ function register() {
                 });
             } else if (new_data['operation'] == 1) {
                 $('#register_errors').html('<span style="color:green;">تم تسجيل عضويتك بنجاح</span>');
-                window.location = '/index';
+                //window.location = '/index';
             }
         }
     });

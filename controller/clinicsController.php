@@ -46,9 +46,19 @@ Class clinicsController Extends baseController {
     public function view() {
         if ($_GET['id'] && is_numeric($_GET['id'])) {
             $clinic = ads::load_clinics(array('id' => intval($_GET['id'])));
-            $this->registry->template->clinic = $clinic[0];
-            $this->registry->template->title = 'Pets | ' . $clinic[0]['name'];
-            $this->registry->template->show('view_clinic');
+            $user_data = Register::get_instance()->get_current_user();
+            if (($clinic[0]['status'] == 1) || ($clinic[0]['user_id'] == $user_data['id']) || ($user_data['status'] == 10)) {
+                if (($clinic[0]['user_id'] == $user_data['id']) || ($user_data['status'] == 10))
+                    $this->registry->template->edit = 1;
+                else
+                    $this->registry->template->edit = 0;
+
+                $this->registry->template->clinic = $clinic[0];
+                $this->registry->template->title = 'Pets | ' . $clinic[0]['name'];
+                $this->registry->template->show('view_clinic');
+            } else {
+                header("Location: /index");
+            }
         } else {
             header("Location: /index");
         }
@@ -148,7 +158,6 @@ Class clinicsController Extends baseController {
                     $clinic_id = Operations::get_instance()->init($clinic_data, 'clinics');
                     Operations::get_instance()->init(
                             array(
-                        'img_name' => '.jpeg',
                         'clinic_id' => $clinic_id,
                         'time_added' => time(),
                         'date_added' => TimeTools::get_time_id(date('Y-m-d')),

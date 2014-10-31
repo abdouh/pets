@@ -71,6 +71,15 @@ if (!defined('WEB'))
 
                     </div>
 
+                    <div class="small-12 columns right">
+
+                        <label>اسم الاعلان هنا
+                            <input type="text" name="title" value="<?= $ad['title']; ?>" placeholder="" />
+                        </label>
+
+                    </div>
+
+
                 </div>
 
 
@@ -82,18 +91,29 @@ if (!defined('WEB'))
                         <h5 style="color:#09c; border-bottom:1px solid #60e0f5; padding-bottom:6px; margin-bottom:6px;">معلومات الاعلان</h5>
                     </div>
 
+
                     <div class="small-12 columns right">
 
-                        <label>اسم الاعلان هنا
-                            <input type="text" name="title" value="<?= $ad['title']; ?>" placeholder="" />
+                        <label>معلومات الاعلان هنا
+                            <textarea name="desc" style="height:120px;"><?= $ad['desc']; ?></textarea>
                         </label>
 
                     </div>
 
                     <div class="small-12 columns right">
 
-                        <label>معلومات الاعلان هنا
-                            <textarea name="desc" style="height:120px;"><?= $ad['desc']; ?></textarea>
+                        <label>السعر
+                            <input type="text" name="price" value="<?= $ad['price']; ?>" placeholder="" />
+                        </label>
+
+                    </div>
+                    <div class="small-12 columns right">
+
+                        <label>العملة
+                            <select  name="currency">
+                                <option value="">اختر العملة</option>
+                                <? echo Temp::load_list_options('ads_currencies', $ad['currency']); ?>
+                            </select>
                         </label>
 
                     </div>

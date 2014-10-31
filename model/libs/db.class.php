@@ -10,6 +10,7 @@ class db {
         //
         'ads' => '`pets`.`ads`',
         'ads_img' => '`pets`.`ads_img`',
+        'currencies' => '`pets`.`currencies`',
         'cities' => '`pets`.`cities`',
         'clinics' => '`pets`.`clinics`',
         'clinics_img' => '`pets`.`clinics_img`',
@@ -230,4 +231,3 @@ class db {
     }
 
 }
-

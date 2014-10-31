@@ -14,6 +14,14 @@ $(document).ready(function () {
                 required: true,
                 digits: true
             },
+            price: {
+                required: true,
+                number: true
+            },
+            currency: {
+                required: true,
+                digits: true
+            },
             title: {
                 required: true,
                 minlength: 3
@@ -48,6 +56,14 @@ $(document).ready(function () {
             pet: {
                 required: 'يجب اختيار الفصيلة',
                 digits: 'خطأ'
+            },
+            price: {
+                required: 'يجب ادخال سعر',
+                number: 'يجب ادخال سعر صحيح'
+            },
+            currency: {
+                required: 'يجب اختيار عملة',
+                digits: 'اختيار خاطىء'
             },
             title: {
                 required: 'يجب كتابة عنوان للاعلان',
@@ -161,6 +177,23 @@ $(document).ready(function () {
                 console.log(data);
                 $('#errors').html('تم الغاء الاعلان');
                 window.location = '/ads/activate';
+            }
+        });
+    });
+
+    $('#show_number').click(function (event) {
+        event.preventDefault();
+        $.ajax({
+            url: "/ads/ad_phone",
+            type: 'POST',
+            data: {
+                'ad_id' : $('input[name="ad_id"]').val()
+                
+            },
+            success: function (data) {
+                console.log(data);
+                $('#show_number').remove();
+                $('#number').html('+' + data);
             }
         });
     });

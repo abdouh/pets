@@ -46,7 +46,7 @@ class Register {
         $check = Operations::get_instance()->init($data, 'users');
         Operations::get_instance()->init(
                 array(
-            'img_name' => '',
+            //'img_name' => '.jpg',
             'user_id' => $check,
             'time_added' => time(),
             'date_added' => TimeTools::get_time_id(date('Y-m-d')),

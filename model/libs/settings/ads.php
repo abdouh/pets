@@ -40,6 +40,18 @@ return array(
                 'numeric' => 1,
             ),
         ),
+        'price' => array(
+            'validations' => array(
+                'notEmpty' => 1,
+                'decimal' => 1,
+            ),
+        ),
+        'currency' => array(
+            'validations' => array(
+                'notEmpty' => 1,
+                'numeric' => 1,
+            ),
+        ),
         'country' => array(
             'validations' => array(
                 'notEmpty' => 1,

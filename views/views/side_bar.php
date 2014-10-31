@@ -471,8 +471,26 @@ HERE;
         <? if (Login::get_instance()->check_login() == 'valid') { ?>
             <li>
                 <div class="icon account"></div>
-                <div class="text"><a href="/index/logout">تسجيل خروج</a></div>
+                <div class="text"><a href="/user"> الملف الشخصى</a></div>
+            </li>    
+            <li>
+                <div class="icon signout"></div>
+                <div class="text"><a href="/index/logout"> خروج</a></div>
             </li>
+            <?
+            $user = Register::get_instance()->get_current_user();
+            if ($user['status'] == 10) {
+                ?>
+                <li>
+                    <div class="icon cp"></div>
+                    <div class="text"><a href="/index/petscp"> لوحة التحكم</a></div>
+                </li>
+                <li>
+                    <div class="icon vet"></div>
+                    <div class="text"> <a href="<?= READ_ONLY . '/clinics/add'; ?>">اضافة عيادة</a></div>
+                </li>
+            <? } ?>
+
         <? } else { ?>
             <li>
                 <div id="account" class="icon account"></div>

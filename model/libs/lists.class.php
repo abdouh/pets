@@ -25,6 +25,18 @@ class Lists {
         return $cats;
     }
 
+    static function ads_currencies() {
+        $currencies = array();
+        $table = db::$tables['currencies'];
+        $query = "SELECT * FROM $table";
+        $stmt = db::getInstance()->query($query);
+        $result = db::getInstance()->fetchAll($stmt);
+        foreach ($result as $index => $array) {
+            $currencies[] = array('value' => $array['id'], 'text' => $array['name']);
+        }
+        return $currencies;
+    }
+
     static function ads_pets($cat_id, $type) {
         $pets = array();
         if ($type == 5)

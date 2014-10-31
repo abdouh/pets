@@ -36,12 +36,24 @@ Class adsController Extends baseController {
     public function view() {
         if ($_GET['id'] && is_numeric($_GET['id'])) {
             $ad = ads::load_ads(5, array('id' => intval($_GET['id'])));
-            $this->registry->template->activate = 0;
-            $this->registry->template->ad = $ad[0];
-            $user = Register::get_instance()->get_user(array('id' => $ad[0]['user_id']));
-            $this->registry->template->phone = $user[0]['phone'];
-            $this->registry->template->title = 'Pets | ' . $ad[0]['title'];
-            $this->registry->template->show('view_ad');
+            $user_data = Register::get_instance()->get_current_user();
+            if (($ad[0]['status'] == 1) || ($ad[0]['user_id'] == $user_data['id']) || ($user_data['status'] == 10)) {
+
+                if (($ad[0]['user_id'] == $user_data['id']) || ($user_data['status'] == 10))
+                    $this->registry->template->edit = 1;
+                else
+                    $this->registry->template->edit = 0;
+
+                $this->registry->template->activate = 0;
+                $this->registry->template->ad = $ad[0];
+                $user = Register::get_instance()->get_user(array('id' => $ad[0]['user_id']));
+                $this->registry->template->phone = $user[0]['phone'];
+                $this->registry->template->title = 'Pets | ' . $ad[
+                        0]['title'];
+                $this->registry->template->show('view_ad');
+            } else {
+                header("Location: /index");
+            }
         } else {
             header("Location: /index");
         }
@@ -54,10 +66,10 @@ Class adsController Extends baseController {
                 header("Location: /index");
                 exit();
             }
-
             if (is_numeric($_POST['count']) && is_numeric($_POST['type'])) {
-                if ($_POST['type'] == 1)
-                    $offset = intval($_POST['count']) + 1;
+                if ($_POST[
+                        'type'] == 1)
+                    $offset = intval($_POST ['count']) + 1;
                 else if ($_POST['type'] == 2)
                     $offset = intval($_POST['count']) - 1;
 
@@ -84,7 +96,7 @@ Class adsController Extends baseController {
                 $this->registry->template->activate = 1;
             }
             $this->registry->template->offset = $offset;
-            $this->registry->template->title = 'Pets | activate | ' . $ad[0]['title'];
+            $this->registry->template->title = 'Pets | activate | ' . $ad [0]['title'];
             $this->registry->template->show('view_ad');
         } else {
             header("Location: /index");
@@ -94,6 +106,7 @@ Class adsController Extends baseController {
     public function activate_ad() {
         if (Login::get_instance()->check_login() == 'valid') {
             $user_data = Register::get_instance()->get_current_user();
+
             if ($user_data['status'] != 10) {
                 exit();
             }
@@ -102,6 +115,7 @@ Class adsController Extends baseController {
                     $status = 1;
                 else
                     $status = 2;
+
                 Operations::get_instance()->init(array(
                     'id' => intval($_POST['ad_id']),
                     'status' => $status
@@ -110,25 +124,35 @@ Class adsController Extends baseController {
         }
     }
 
-    public function jsload() {
-        if (Login::get_instance()->check_login() == 'valid' && $_POST) {
-            $type = intval($_POST['type']);
-            $data = intval($_POST['data']);
-            $ad_type = intval($_POST['ad_type']);
-            switch ($type) {
-                case 1:
-                    echo '<option value="">اختار المدينة</option>';
-                    echo Temp::load_list_options('ads_cities', 0, array($data));
-                    break;
-                case 2:
-                    echo '<option value="">اختار المنطقة</option>';
-                    echo Temp::load_list_options('ads_regions', 0, array($data));
-                    break;
-                case 3:
-                    echo '<option value="351">الكل</option>';
-                    echo Temp::load_list_options('ads_pets', 0, array($data, $ad_type));
-                    break;
+    public function ad_phone() {
+        if (is_numeric($_POST['ad_id'])) {
+            $ad = ads::load_ads(1, array('id' => intval($_POST['ad_id'])));
+            $user_data = Register::get_instance()->get_current_user();
+            if (($ad[0]['status'] == 1) || ($ad[0]['user_id'] == $user_data['id']) || ($user_data['status'] == 10)) {
+                $user = Register::get_instance()->get_user(array('id' => $ad[0]['user_id']));
+                echo $user[0]['phone'];
             }
+        }
+    }
+
+    public function jsload() {
+        $type = intval($_POST['type']);
+        $data = intval($_POST['data']);
+        $ad_type = intval($_POST['ad_type']);
+        switch ($type) {
+            case 1:
+                echo '<option value="">اختار المدينة</option>';
+                echo Temp:: load_list_options('ads_cities', 0, array($data));
+                break;
+            case 2:
+                echo '<option value="">اختار المنطقة</option>';
+                echo Temp::load_list_options('ads_regions', 0, array($data));
+                break;
+
+            case 3:
+                echo '<option value="351">الكل</option>';
+                echo Temp::load_list_options('ads_pets', 0, array($data, $ad_type));
+                break;
         }
     }
 
@@ -153,6 +177,7 @@ Class adsController Extends baseController {
                 $foo->image_y = 768;
                 $foo->image_ratio_crop = true;
                 //$foo->image_ratio_y = true;
+
                 $foo->Process($targetPath);
                 if ($foo->processed) {
                     echo $targetName;
@@ -167,7 +192,8 @@ Class adsController Extends baseController {
             $ds = DIRECTORY_SEPARATOR;
             $user_data = Register::get_instance()->get_current_user();
             $storeFolder = '..' . $ds . 'views' . $ds . 'temp_img';
-            $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
+            $targetPath = dirname(__FILE__) . $ds .
+                    $storeFolder . $ds;
             $pattern = "/^(" . $user_data['id'] . "_)(.)*/";
             if (preg_match($pattern, $_POST['f'])) {
                 unlink($targetPath . $_POST['f'] . '.jpeg');
@@ -178,31 +204,46 @@ Class adsController Extends baseController {
     public function processad() {
         if (Login::get_instance()->check_login() == 'valid' && $_POST) {
             $errors['rt'] = array();
-            $errors['md'] = array();
+            $errors['md'] = array()
+            ;
             $errors['lt'] = array();
 
             $ad_data = array();
             $user_data = Register::get_instance()->get_current_user();
 
-            if (!empty($_POST['type']))
+            if (!empty($_POST['type']) && is_numeric($_POST[
+                            'type']))
                 $ad_data['type'] = intval($_POST['type']);
             else
                 $errors['rt'][] = 'يجب اختيار نوع الاعلان';
 
-            if (!empty($_POST['pet']))
+            if (!empty($_POST['pet']) && is_numeric($_POST['type'
+                    ]))
                 $ad_data['pet_id'] = intval($_POST['pet']);
             else
                 $errors['rt'][] = 'يجب اختيار نوع الحيوان';
 
-            if (!empty($_POST['title']) && trim($_POST['title']) != '')
+            if (!empty($_POST ['title']) && trim($_POST ['title']) != '')
                 $ad_data['title'] = addslashes($_POST['title']);
             else
-                $errors['md'][] = 'يجب ادخال عنوان للاعلان';
+                $errors['rt'][] = 'يجب ادخال عنوان للاعلان';
 
-            if (!empty($_POST['desc']) && trim($_POST['desc']) != '')
+            if (!empty($_POST ['desc']) && trim($_POST['desc']) != '')
                 $ad_data['desc'] = addslashes($_POST['desc']);
             else
                 $errors['md'][] = 'يجب ادخال معلومات الاعلان';
+
+            if (!empty($_POST['price']) && is_numeric(
+                            $_POST['price']))
+                $ad_data['price'] = $_POST['price'];
+            else
+                $errors['md'][] = 'يجب كتابة سعر';
+
+            if (!empty($_POST['currency']) &&
+                    is_numeric($_POST['currency']))
+                $ad_data['currency'] = intval($_POST['currency']);
+            else
+                $errors['md'][] = 'يجب اختيار العملة';
 
             if (!empty($_POST['country']))
                 $ad_data['country'] = intval($_POST['country']);
@@ -222,28 +263,34 @@ Class adsController Extends baseController {
             else
                 $errors['lt'] = 'يجب اختيار المنطقة';
 
-            $ad_data['cat_id'] = intval($_POST['cat']);
-            $ad_data['user_id'] = $user_data['id'];
+            $ad_data['cat_id'] = intval($_POST ['cat']);
+            $ad_data['user_id'] = $user_data ['id'];
             $ad_data['time_added'] = time();
             $ad_data['date_added'] = TimeTools::get_time_id(date('Y-m-d'));
 
             a:
+
+
             if ($_POST['id'] != 'null') {
-                $ad_data['status'] = 0;
+                if ($user_data['status'
+                        ] != 10)
+                    $ad_data['status'] = 0;
                 $op = 'update';
                 if (is_numeric($_POST['id']))
                     $ad_data['id'] = intval($_POST['id']);
                 else
                     $errors['rt'][] = 'خطأ فى اضافة الاعلان';
-
                 $img_check = $this->check_img($ad_data['user_id'], $ad_data['id']);
                 $type = 'edit';
             }else {
+
+
                 $op = 'insert';
                 $img_check = $this->check_img($ad_data['user_id'], 'null');
                 $type = 'add';
             }
-            if (($img_check !== true) && empty($errors['rt']))
+            if ((
+                    $img_check !== true) && empty($errors['rt']))
                 $errors['rt'][] = $img_check;
 
 
@@ -255,7 +302,8 @@ Class adsController Extends baseController {
                     Operations::get_instance()->init($ad_data, 'ads', 'update');
                 }
 
-                $this->procces_img($ad_data['user_id'], $ad_id);
+                $this->procces_img($ad_data[
+                        'user_id'], $ad_id);
                 echo json_encode(array('operation' => 1, 'type' => $type));
             } else {
                 echo json_encode(array('operation' => 2, 'errors' => $errors));
@@ -268,8 +316,10 @@ Class adsController Extends baseController {
             $ds = DIRECTORY_SEPARATOR;
             $storeFolder = '..' . $ds . 'views' . $ds . 'temp_img';
             $newFolder = '..' . $ds . 'views' . $ds . 'ads_img';
-            $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
-            $newPath = dirname(__FILE__) . $ds . $newFolder . $ds;
+            $targetPath = dirname(__FILE__) . $ds . $storeFolder .
+                    $ds;
+            $newPath = dirname(__FILE__) . $ds
+                    . $newFolder . $ds;
             $images = glob($targetPath . $user_id . "_*.jpeg");
             if ($ad_id == 'null') {
                 if (!empty($images))
@@ -277,8 +327,10 @@ Class adsController Extends baseController {
                 else
                     return 'يجب وضع صورة واحدة على الأقل';
             }else {
-                $images2 = glob($newPath . $ad_id . "_*.jpeg");
+                $images2 = glob($newPath .
+                        $ad_id . "_*.jpeg");
                 $count = count($images) + count($images2);
+
                 if ($count == 0)
                     return 'يجب وضع صورة واحدة على الأقل';
                 else if ($count > 5)

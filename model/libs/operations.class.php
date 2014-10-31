@@ -109,7 +109,7 @@ class Operations {
         }
         $query = "INSERT INTO " . db::$tables[$this->table_name]
                 . " (\n" . join(",\n", $columns) . "\n) VALUES (\n" . join(",\n", $values) . "\n)";
-        $result = db::getInstance()->fetchRows($query);
+        $result = db::getInstance()->query($query);
 
         return db::getInstance()->insertId();
     }
@@ -122,13 +122,13 @@ class Operations {
 
         $query = "UPDATE " . db::$tables[$this->table_name]
                 . " \nSET " . join(",\n", $updates) . "\n" . $this->clause;
-        $result = db::getInstance()->fetchRows($query);
+        $result = db::getInstance()->query($query);
     }
 
     function delete() {
         $query = "DELETE FROM " . db::$tables[$this->table_name]
                 . "\n" . $this->clause;
-        $result = db::getInstance()->fetchRows($query);
+        $result = db::getInstance()->query($query);
     }
 
     function generate_errors() {

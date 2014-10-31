@@ -103,7 +103,7 @@ HERE;
     <tr>
       <td><input type="checkbox" name="{$name}[]" value="{$ad['id']}"></td>
       <td>{$ad['id']}</td>
-      <td>{$ad['title']}</td>
+      <td><a href="/$name/view/?id={$ad['id']}">{$ad['title']}</a></td>
       <td>{$status[$ad['status']]}</td>
     </tr>
 HERE;

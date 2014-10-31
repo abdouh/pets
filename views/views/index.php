@@ -46,7 +46,7 @@ if (!defined('WEB'))
                             echo '<li><a href="' . READ_ONLY . '/?search_for=1">الاعلانات</a></li>';
 
                         if (!empty($settings['words']))
-                            echo '<li>بحث عن ' . $settings['words'] . '</li>';
+                            echo '<li><span dir="rtl">بحث عن "' . $settings['words'] . '"</span></li>';
                     } else {
                         echo '<li class="current">الرئيسية</li>';
                     }
@@ -72,7 +72,8 @@ if (!defined('WEB'))
             <!--ads grid view start-->
             <div class="row" style="margin:0 0 16px 0;">
                 <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-3 ads_view">
-                    <? echo empty($ads) ? 'لا توجد اعلانات للعرض' : Temp::ad_container_list($ads, $search); ?>
+                    <? $msg = ($search == 2) ? 'لا توجد عيادات للعرض' : 'لا توجد اعلانات للعرض'; ?>
+                    <? echo empty($ads) ? $msg : Temp::ad_container_list($ads, $search); ?>
                 </ul>
             </div>
             <!--ads grid view start-->
