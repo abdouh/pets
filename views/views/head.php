@@ -5,7 +5,10 @@ if (!defined('WEB'))
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
-        <meta charset="utf-8" />
+        <meta charset="UTF-8">
+        <meta name="description" content="استخدم بيتس سيرفيس لبيع و شراء حيواناتك الأليفة المفضلة">
+        <meta name="keywords" content="pets,dogs,cats,horses,birds,reptiles,حيوانات أليفة,كلاب,قطط,خيول,طيور,زواحف,عيادات بيطرية">
+        <meta name="author" content="بيتس سيرفيس - Pets Services">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title><?= $title; ?></title>
         <link rel="stylesheet" href="<?= TEMPLATE_URL; ?>/css/foundation.css" />

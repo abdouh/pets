@@ -12,14 +12,12 @@ $(document).ready(function () {
 
             },
             phone2: {
-                minlength: 10,
-                digits: true
-
+                digits: true,
+                minlength: 10
             },
             phone3: {
-                minlength: 10,
-                digits: true
-
+                digits: true,
+                minlength: 10
             },
             name: {
                 required: true,

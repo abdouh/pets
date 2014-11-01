@@ -31,6 +31,11 @@ Class clinicsController Extends baseController {
                     header("Location: /index");
                     exit();
                 }
+
+                $clinic[0]['phone1'] = substr($clinic[0]['phone1'], 1);
+                $clinic[0]['phone2'] = substr($clinic[0]['phone2'], 1);
+                $clinic[0]['phone3'] = substr($clinic[0]['phone3'], 1);
+
                 $this->registry->template->clinic = $clinic[0];
                 $this->registry->template->button = 'تعديل العيادة';
                 $this->registry->template->title = 'Pets | Edit | ' . $clinic[0]['name'];
@@ -53,6 +58,9 @@ Class clinicsController Extends baseController {
                 else
                     $this->registry->template->edit = 0;
 
+                $clinic[0]['phone1'] = substr($clinic[0]['phone1'], 1);
+                $clinic[0]['phone2'] = substr($clinic[0]['phone2'], 1);
+                $clinic[0]['phone3'] = substr($clinic[0]['phone3'], 1);
                 $this->registry->template->clinic = $clinic[0];
                 $this->registry->template->title = 'Pets | ' . $clinic[0]['name'];
                 $this->registry->template->show('view_clinic');
@@ -83,7 +91,7 @@ Class clinicsController Extends baseController {
                 $errors['rt'][] = 'يجب ادخال اسم الدكتور';
 
             if (!empty($_POST['phone1']) && is_numeric($_POST['phone1']))
-                $clinic_data['phone1'] = $_POST['phone1'];
+                $clinic_data['phone1'] = '1' . $_POST['phone1'];
             else
                 $errors['rt'][] = 'يجب ادخال رقم التليفون  1بشكل صحيح';
 
@@ -91,14 +99,14 @@ Class clinicsController Extends baseController {
                 if (!is_numeric($_POST['phone2']))
                     $errors['rt'][] = 'يجب ادخال رقم التليفون 2 بشكل صحيح';
                 else
-                    $clinic_data['phone2'] = $_POST['phone2'];
+                    $clinic_data['phone2'] = '1' . $_POST['phone2'];
             }
 
             if (!empty($_POST['phone3'])) {
                 if (!is_numeric($_POST['phone3']))
                     $errors['rt'][] = 'يجب ادخال رقم التليفون 3 بشكل صحيح';
                 else
-                    $clinic_data['phone3'] = $_POST['phone3'];
+                    $clinic_data['phone3'] = '1' . $_POST['phone3'];
             }
 
             if (!empty($_POST['name']) && trim($_POST['name']) != '')

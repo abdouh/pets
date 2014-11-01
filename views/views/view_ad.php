@@ -161,6 +161,14 @@ if (!defined('WEB'))
 
                     </div>
 
+                    <div class="ad_info_element">
+                        <div style="right:20%;" class="fb-like" data-href="<?= READ_ONLY; ?>/ads/view/?id=<?= $ad['id']; ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                        <br/><br/>
+                        <div class="g-plusone"></div>
+                        
+                        <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="PetsServicesAw">Tweet</a>
+                    </div>
+
                 </div>
                 <!--ad info code end-->
             <? } else { ?>
@@ -190,5 +198,20 @@ if (!defined('WEB'))
 
     </div>
     <? require_once 'foot.php'; ?>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <div id="fb-root"></div>
+    <div id="fb-root"></div>
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id))
+                            return;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=209140192629174&version=v2.0";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
+    </script>
 </body>
 </html>

@@ -48,7 +48,7 @@ if (!defined('WEB'))
 
 
                         <label>رقم التليفون 2
-                            <input type="text" name="phone2" valeu="<?= $clinic['phone2'] ? $clinic['phone2'] : ''; ?>" >
+                            <input type="text" name="phone2"value="<?= $clinic['phone2'] ? $clinic['phone2'] : ''; ?>" >
                         </label>
 
 
@@ -80,7 +80,7 @@ if (!defined('WEB'))
                     <div class="small-12 columns right">
 
                         <label>مواعيد عمل العيادة
-                            <textarea name="desc" style="height:200px;"><?= $clinic['desc']; ?></textarea>
+                            <textarea dir="rtl" name="desc" style="height:200px;"><?= $clinic['desc']; ?></textarea>
                         </label>
 
                     </div>

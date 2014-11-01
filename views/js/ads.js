@@ -193,7 +193,7 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
                 $('#show_number').remove();
-                $('#number').html('+' + data);
+                $('#number').html(data);
             }
         });
     });

@@ -5,6 +5,7 @@ Class userController Extends baseController {
     public function index() {
         if (Login::get_instance()->check_login() == 'valid') {
             $user_data = Register::get_instance()->get_current_user(1);
+            $user_data['phone'] = substr($user_data['phone'], 1);
             $this->registry->template->user_info = $user_data;
             $this->registry->template->title = 'User | Info';
 
@@ -49,7 +50,9 @@ Class userController Extends baseController {
 
     public function edit() {
         if (Login::get_instance()->check_login() == 'valid') {
-            $this->registry->template->user_info = Register::get_instance()->get_current_user(1);
+            $user_info = Register::get_instance()->get_current_user(1);
+            $user_info['phone'] = substr($user_info['phone'], 1);
+            $this->registry->template->user_info = $user_info;
             $this->registry->template->title = 'User | Edit';
             $this->registry->template->show('user_edit');
         }
@@ -64,7 +67,7 @@ Class userController Extends baseController {
                 $user_info['id'] = $user_data['id'];
                 $user_info['username'] = addslashes($_POST['username']);
                 $user_info['email'] = addslashes($_POST['email']);
-                $user_info['phone'] = $_POST['phone'];
+                $user_info['phone'] = '1' . $_POST['phone'];
                 if (!empty($_POST['new_pass']))
                     $user_info['password'] = md5($_POST['new_pass']);
 

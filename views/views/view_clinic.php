@@ -38,7 +38,7 @@ if (!defined('WEB'))
 
 
                 <div class=" small-6 small-centered columns" style="padding-right:0 !important; ">
-                    <img src="<?= TEMPLATE_URL; ?>/clinics_img/<?= $clinic['img']; ?>" style="width:100%; border:1px solid #09c;">
+                    <img src="<?= TEMPLATE_URL; ?>/clinics_img/<?= empty($clinic['img']) ? 'default.jpg' : $clinic['img']; ?>" style="width:100%; border:1px solid #09c;">
                 </div>
                 <? if ($edit) { ?>
                     <div class="ad_info_element" style="border-top:1px solid #ccc; margin-top:16px;">
@@ -51,9 +51,11 @@ if (!defined('WEB'))
                         <h5>اسم العيادة</h5>
                         <span><?= $clinic['name']; ?></span>
                     </div>
-                    <div class="ad_info_element">
-                        <h5>مواعيد العمل </h5>
-                        <span><?= $clinic['desc']; ?></span>
+
+                    <div class="ad_info_element" >
+                        <span>دكتور</span>
+                        <span>/</span>
+                        <span><?= $clinic['doc_name']; ?></span>
                     </div>
 
                     <div class="ad_info_element" >
@@ -63,17 +65,13 @@ if (!defined('WEB'))
                         <?= $clinic['phone3'] ? '<span>/</span><span>' . $clinic['phone3'] . '</span>' : ''; ?>
                     </div>
 
-
-                    <div class="ad_info_element" >
-                        <span>دكتور</span>
-                        <span>/</span>
-                        <span><?= $clinic['doc_name']; ?></span>
+                    <div class="ad_info_element">
+                        <h5>مواعيد العمل </h5>
+                        <span dir="rtl"><?= $clinic['desc']; ?></span>
                     </div>
 
-
-
                     <div class="ad_info_element">
-                        <span>المكان : </span>
+                        <span>العنوان : </span>
                         <span><?= ads::get_country_name($clinic['country']); ?></span>
                         <span>, </span>
                         <span><?= ads::get_city_name($clinic['city']); ?></span>

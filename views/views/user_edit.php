@@ -44,8 +44,8 @@ if (!defined('WEB'))
                             <input type="text" name="email" value="<?= $user_info['email']; ?>">
                         </label>
 
-                        <label> تغيير رقم الهاتف<small style="font-family: arial;"> (كود الدولة ثم الرقم) مثال : <b>002</b>01000000000</small>
-                            <input type="text" name="phone" value="<?= empty($user_info['phone']) ? '' : '00' . $user_info['phone']; ?>">
+                        <label> تغيير رقم الهاتف
+                            <input type="text" name="phone" value="<?= $user_info['phone']; ?>">
                         </label>
 
 

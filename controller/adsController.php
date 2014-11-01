@@ -130,7 +130,7 @@ Class adsController Extends baseController {
             $user_data = Register::get_instance()->get_current_user();
             if (($ad[0]['status'] == 1) || ($ad[0]['user_id'] == $user_data['id']) || ($user_data['status'] == 10)) {
                 $user = Register::get_instance()->get_user(array('id' => $ad[0]['user_id']));
-                echo $user[0]['phone'];
+                echo substr($user[0]['phone'], 1);
             }
         }
     }

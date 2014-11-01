@@ -15,13 +15,10 @@ class Login {
         $status = $this->check_login($user_data, $block_bypass);
         if ($status == 'valid') {
             $this->valid_attempt();
-            if (isset($user_data['remember_me']))
-                $expire = time() + (30 * 24 * 60 * 60);
-            else
-                $expire = time() + (2 * 60 * 60);
+            $expire = time() + (7 * 24 * 60 * 60);
             $_SESSION['user_info'] = array('email' => $user_data['email'], 'password' => $user_data['password']);
-            setcookie('site_id', session_id(), $expire, '/pets/');
-        }else if ($status == 'invalid') {
+            setcookie('site_id', session_id(), $expire, '/');
+        } else if ($status == 'invalid') {
             $this->invalid_attempt();
         } else if ($status == 'empty') {
             $status = 'invalid';
@@ -52,7 +49,6 @@ class Login {
 
         else if ($this->user_data['password'] == $password)
             return 'valid';
-
         else
             return 'invalid';
     }
