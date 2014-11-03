@@ -17,6 +17,20 @@
     
     <script src="js/menu.js"></script>
     <script src="js/responsive.js"></script>
+    
+    
+    <!--rating plugin imports-->
+    <link rel="stylesheet" href="raty-2.7.0/lib/jquery.raty.css" />
+    <script src="raty-2.7.0/lib/jquery.raty.js"></script>
+    <script>
+	$(document).ready(function() {
+        $('.raty').raty({
+			  path: 'raty-2.7.0/lib/images/',
+		});
+    });
+	</script>
+    <!--rating plugin imports-->
+    
   </head>
   
   
@@ -512,6 +526,35 @@
   <span>تاريخ الاضافة : </span>
   <span>20 يناير 2013 </span>
   </div>
+  
+  <div class="ad_info_element">
+  <span class="raty"></span>
+  <span>تقييمك للعيادة </span>
+  </div>
+  
+
+
+  <div class="ad_info_element" style="display:inline-block; border:none;">
+
+
+  <a href=""><div class="share_fb">
+  share on
+  </div></a>
+  
+  <a href=""><div class="share_tw">
+  tweet on
+  </div></a>
+  
+  <a href=""><div class="share_go">
+  share on
+  </div></a>
+  
+  </div>    
+
+    
+
+
+  
   
   </div>
   <!--ad info code end-->

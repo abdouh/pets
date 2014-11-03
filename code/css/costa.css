@@ -198,7 +198,7 @@ welcome_page_list{
 	background:#fff;
 	position:relative;
 	z-index:101;
-	top:15%;
+	top:5%;
 	padding:46px;
 	
 	-webkit-box-shadow: 0px 5px 10px 0px rgba(50, 50, 50, 0.6);
@@ -220,7 +220,7 @@ welcome_page_list{
 
 
 .login , .signup , .forgetPass{display:none;}
-.ad_img_thumb{ cursor:pointer;}
+.ad_img_thumb{ cursor:pointer;  margin:2% 0 2% 2.5% !important;}
 .current_image {border:1px solid #60e0f5;}
 
 table{border-left:none; border-right:none; border-bottom:none; border-top:solid 1px #dddddd; direction:rtl;}
@@ -234,3 +234,32 @@ table tr{ border-bottom:solid 1px #dddddd;}
     bottom: 0;
     right: 0;
 }
+
+
+.share_fb{
+	background: url(../img/fb.svg) right no-repeat #446BC1;
+	color:#fff;
+	padding:6px 40px 6px 0px;
+	float:right;
+	margin:6px 0 0 6px;
+	width:110px;
+}
+
+.share_tw{
+	background: url(../img/tw.svg) right no-repeat #0FB0DB;
+	color:#fff;
+	padding:6px 36px 6px 0px;
+	float:right;
+	margin:6px 0 0 6px;
+	width:110px;
+}
+
+.share_go{
+	background: url(../img/yt.svg) right no-repeat #DB2426;
+	color:#fff;
+	padding:6px 40px 6px 0px;
+	float:right;
+	margin:6px 0 0 6px;
+	width:110px;
+}
+	

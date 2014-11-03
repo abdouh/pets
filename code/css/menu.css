@@ -31,18 +31,22 @@
   ul.main_menu li{
 
 	  clear:both;
-	  min-height:36px !important;
+	  line-height:36px !important;
 	  color:#fff;
 	  cursor:pointer;
 	  border-bottom:1px solid #5cd4e8;
 	  
   }
   
-    ul.sub_menu1 li{ padding-right:16px;}
-	ul.sub_menu2 li{ padding-right:32px;}
-	ul.sub_menu3 li{ padding-right:48px;}
+    ul.sub_menu1 li{ padding-right:12px;}
+	ul.sub_menu2 li{ padding-left:12px;}
+	ul.sub_menu3 li{ padding-left:22px;}
+	
+	
+	ul.sub_menu1 li ,ul.sub_menu1 li a{ color:#446BC1;}
+	ul.sub_menu2 li ,ul.sub_menu2 li a{ color:#39b54a; text-align:left;}
+	ul.sub_menu3 li ,ul.sub_menu3 li a{ color:#ff4f4f; text-align:left;}
   
-
 
   ul.main_menu li div.icon{
 	  width:36px;
