@@ -3227,7 +3227,9 @@ ul.pagination {
   padding: 1.25rem;
   border: solid 1px #666666;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  padding: 1.875rem; }
+  padding: 1.875rem;
+
+  }
   @media only screen and (max-width: 40em) {
     .reveal-modal, dialog {
       min-height: 100vh; } }
@@ -3537,10 +3539,12 @@ dialog::backdrop {
       z-index: 999;
       height: 100%;
       position: relative;
-      float: none; }
+	  width:inherit !important;
+      float: right !important;
+	  }
       .clearing-assembled .clearing-container .carousel > ul li {
         display: block;
-        width: 120px;
+        width: 20% !important ;
         min-height: inherit;
         float: right;
         overflow: hidden;
@@ -3551,7 +3555,7 @@ dialog::backdrop {
         opacity: 0.4;
         clear: none; }
         .clearing-assembled .clearing-container .carousel > ul li.fix-height img {
-          height: 100%;
+          height: 120px !important;
           max-width: none; }
         .clearing-assembled .clearing-container .carousel > ul li a.th {
           border: none;
@@ -3559,7 +3563,7 @@ dialog::backdrop {
           display: block; }
         .clearing-assembled .clearing-container .carousel > ul li img {
           cursor: pointer !important;
-          width: 100% !important; }
+          width: 120px !important; }
         .clearing-assembled .clearing-container .carousel > ul li.visible {
           opacity: 1; }
         .clearing-assembled .clearing-container .carousel > ul li:hover {

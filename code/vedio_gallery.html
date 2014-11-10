@@ -14,15 +14,22 @@
     
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/modernizr.js"></script>
-    <script src="js/foundation/foundation.orbit.js"></script>
     <script src="js/vendor/foundation.equalizer.js"></script>
-    <script src="js/foundation/foundation.orbit.js"></script>
     
-    <script src="js/menu.js"></script>
+    <script src="js/foundation/foundation.js"></script>
+	<script src="js/foundation/foundation.clearing.js"></script>
+    <script src="js/foundation/foundation.reveal.js"></script>
+    
+    
     <script src="js/accounts.js"></script>
     <script src="js/responsive.js"></script>
     
-    
+    <script>
+	
+	$(document).ready(function() {
+		$(document).foundation();
+    });
+	</script>
 
 
 
@@ -636,88 +643,6 @@
   <!--Breadcrumbs end-->
   
 
-
-  <!--search lightbox start-->
-  <div class="lighbox_container searching">
-  
-  <div class="lighbox  small-10 small-offset-1 meduim-8 meduim-offset-2 large-6 large-offset-3 columns">
-  
-  <a class="CloseLightBox">X</a>
-  
-  <h3 class="text-center">البحث</h3>
-  
-  <form>
-  
-  
-  <div class="large-8 small-12 meduim-8 columns">
-  <input type="text" placeholder="ادخل كلمات البحث" style="height:44px;">
-  </div>
-  
-  <div class="large-4 small-12 meduim-4 columns">
-  <a href="#" class="button expand" style="margin-top:0;">بحث</a>
-  </div>
-  
-  <div class=" small-12 columns" style="padding:0;">
-  
-  <div class="small-12 columns right">
-  <h5 style="color:#09c; border-bottom:1px solid #60e0f5; padding-bottom:6px; margin-bottom:6px;">فلترة البحث</h5>
-  </div>
-  
-  <div class="small-12 meduim-6 large-4 columns">
-  
-    
-   <label>الدولة
-        <select>
-          <option value="">اختار الدولة</option>
-          <option value="مصر">مصر</option>
-          <option value="لبنان">لبنان</option>
-          <option value="المفرب">المفرب</option>
-          <option value="الامارات">الامارات</option>
-   </select>
-   </label>
-  
-  </div>
-  
-  <div class="small-12 meduim-6 large-4 columns">
-  
-   <label>المحافظة
-        <select>
-          <option value="">اختار المحافظة</option>
-          <option value="بنى سويف">بنى سويف</option>
-          <option value="المنيا">المنيا</option>
-          <option value="اسيوط">اسيوط</option>
-          <option value="سوهاج">سوهاج</option>
-   </select>
-   </label>
-  
-  </div>
-  
-  <div class="small-12 meduim-6 large-4 columns">
-  
-   <label>المدينة
-        <select>
-          <option value="">اختار المدينة</option>
-          <option value="بنى سويف">بنى سويف</option>
-          <option value="المنيا">المنيا</option>
-          <option value="اسيوط">اسيوط</option>
-          <option value="سوهاج">سوهاج</option>
-   </select>
-   </label>
-  
-  </div>
-
-  </div>
-
-  
-  </form>
-  
-  
-  </div>
-
-  
-  </div>
-  <!--search lightbox end-->
-
   
   <!--ads grid view start-->
   <div class="row" style="margin:0 0 16px 0;">
@@ -735,42 +660,66 @@
 </div>
 
 
-<script>
-
-
-$(document).ready(function() {
-	
-$(".add_video").click(function(){
-var l01 = '<li><div class="flex-video widescreen vimeo"><embed src="';
-var l02 = '" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></div></li>';
-var l03 = $(".video_link").val();
-
-alert( l01 + l03 + l02 )
-
-$('ul.ads_view').prepend(l01+l03+l02);
-	
-	})
-
-
-});
-
-
-
-</script>
+  
+  
   
 
-<img src="http://img.youtube.com/vi/6o5TpKpZsxY/hqdefault.jpg">
 
-  <!--<ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-2 ads_view">
-  <li>
-  <div class="flex-video widescreen vimeo">
-  <iframe src="http://www.youtube.com/v/XGSy3_Czz8k" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+<ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-3 ads_view " >
+
+
+
+  
+<li>
+<!--the <a> data-reval-id and the container <div> must be the same to work-->
+<a href="#" data-reveal-id="videoModal_01">
+<!--jsut change the youtube video id at the link-->
+<img src="http://img.youtube.com/vi/XjTSpgAm8QM/hqdefault.jpg">
+</a>
+
+<div id="videoModal_01" class="reveal-modal large" data-reveal="" >
+  <div class="flex-video widescreen vimeo" style="display: block;"> 
+    <!--jsut put the youtube video id at the last of the link-->
+    <iframe width="1280" height="720" src="http://www.youtube.com/embed/XjTSpgAm8QM" frameborder="0" allowfullscreen="" ></iframe>
   </div>
-  </li>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+</li>
   
-  
+<li>
+<!--the <a> data-reval-id and the container <div> must be the same to work-->
+<a href="#" data-reveal-id="videoModal_02">
+<!--jsut change the youtube video id at the link-->
+<img src="http://img.youtube.com/vi/XjTSpgAm8QM/hqdefault.jpg">
+</a>
 
-</ul>-->
+<div id="videoModal_02" class="reveal-modal large" data-reveal="" >
+  <div class="flex-video widescreen vimeo" style="display: block;"> 
+    <!--jsut put the youtube video id at the last of the link-->
+    <iframe width="1280" height="720" src="http://www.youtube.com/embed/XjTSpgAm8QM" frameborder="0" allowfullscreen="" ></iframe>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+</li>
+
+<li>
+<!--the <a> data-reval-id and the container <div> must be the same to work-->
+<a href="#" data-reveal-id="videoModal_03">
+<!--jsut change the youtube video id at the link-->
+<img src="http://img.youtube.com/vi/XjTSpgAm8QM/hqdefault.jpg">
+</a>
+
+<div id="videoModal_03" class="reveal-modal large" data-reveal="" >
+  <div class="flex-video widescreen vimeo" style="display: block;"> 
+    <!--jsut put the youtube video id at the last of the link-->
+    <iframe width="1280" height="720" src="http://www.youtube.com/embed/XjTSpgAm8QM" frameborder="0" allowfullscreen="" ></iframe>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+</li>
+  
+</ul>
 
 
   </div>
