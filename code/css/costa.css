@@ -318,4 +318,20 @@ table tr{ border-bottom:solid 1px #dddddd;}
 	margin:6px 0 0 6px;
 	width:110px;
 }
-	
+
+.auther_pic{
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	border:2px solid #c5e8f3;
+	height:120px;
+	width:120px;
+	float:right !important;
+	overflow:hidden;
+	margin-left:26px;
+}
+
+.dogcard{
+	width:250%;
+	position: relative;
+}

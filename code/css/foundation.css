@@ -38,6 +38,7 @@ html,
 body {
   font-size: 100%; }
 
+html,
 body {
   padding: 0;
   margin: 0;
@@ -5033,10 +5034,20 @@ label.error {
   .small-block-grid-2 > li {
     width: 50%;
     list-style: none; }
+	
+	/*heighLight add*/
+	.small-block-grid-2 > li.heighLight {
+    width: 100% !important;
+    list-style: none; }
+	/*heighLight add*/
+	
+	
+	/*
     .small-block-grid-2 > li:nth-of-type(1n) {
       clear: none; }
     .small-block-grid-2 > li:nth-of-type(2n+1) {
       clear: both; }
+	  */
 
   .small-block-grid-3 > li {
     width: 33.33333%;
@@ -5137,6 +5148,14 @@ label.error {
   .medium-block-grid-3 > li {
     width: 33.33333%;
     list-style: none; }
+	
+	/*heighLight add*/
+  .medium-block-grid-3 > li.heighLight {
+    width: 66.66% !important;
+    list-style: none; 
+	clear: none;}
+	/*heighLight add*/
+
     .medium-block-grid-3 > li:nth-of-type(1n) {
       clear: none; }
     .medium-block-grid-3 > li:nth-of-type(3n+1) {
@@ -5233,6 +5252,13 @@ label.error {
   .large-block-grid-3 > li {
     width: 33.33333%;
     list-style: none; }
+	
+	/*heighLight add*/
+	 .large-block-grid-3 > li.heighLight {
+		 width:66.66% !important;
+	 }
+	 /*heighLight add*/
+	
     .large-block-grid-3 > li:nth-of-type(1n) {
       clear: none; }
     .large-block-grid-3 > li:nth-of-type(3n+1) {

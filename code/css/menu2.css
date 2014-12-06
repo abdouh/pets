@@ -1,0 +1,168 @@
+
+  
+  ul{list-style:none; padding:0; margin:0;}
+  /*ul.sub_menu1 , ul.sub_menu2 , ul.sub_menu3{display:none;}*/
+  
+  
+  ul.sub_menu1 li , ul.sub_menu2 li ,
+  ul.sub_menu3 li , ul.main_menu li ,
+  
+  ul.sub_menu1 li a , ul.sub_menu2 li a ,
+  ul.sub_menu3 li a , ul.main_menu li a ,
+  
+  
+  ul.sub_menu1 li , ul.sub_menu2 li ,
+  ul.sub_menu3 li , ul.main_menu li .text {color:#fff;}
+  
+  
+  ul.sub_menu1>li:hover {background:#6ce4f8;}
+   
+  
+
+  
+  ul.main_menu{
+	  width:100%;
+	  display:inline-block;
+	  background:#60e0f5;
+	  margin-bottom:16px;
+  }
+  
+  ul.main_menu>li{
+
+	  clear:both;
+	  line-height:36px !important;
+	  color:#fff;
+	  cursor:pointer;
+	  border-bottom:1px solid #5cd4e8;
+	  
+  }
+  
+    ul.sub_menu1>li{ padding-right:12px;}
+
+	
+	ul.sub_menu1 li ,ul.sub_menu1 li a{ color:#446BC1;}
+	ul.sub_menu2 li ,ul.sub_menu2 li a{ color:#39b54a; text-align:center;}
+	ul.sub_menu3 li ,ul.sub_menu3 li a{ color:#ff4f4f; text-align:center;}
+  
+
+  ul.main_menu li div.icon{
+	  width:36px;
+	  height:36px;
+	  float:right;
+	  display:inline-block;
+  }
+  
+  ul.main_menu li div.icon.menu    {background: url(../img/menu.png) no-repeat #666 center center; }
+  ul.main_menu li div.icon.dogs    {background: url(../img/dog.png) no-repeat  #09f center center;  }
+  ul.main_menu li div.icon.cats    {background: url(../img/cat.png) no-repeat  orange center center; }
+  ul.main_menu li div.icon.vet 	   {background: url(../img/vet.png) no-repeat  #68d81e center center;  }
+  ul.main_menu li div.icon.about   {background: url(../img/about.png) no-repeat  #02c8f2 center center; }
+  ul.main_menu li div.icon.contact {background: url(../img/contact.png) no-repeat  #e404b7 center center; }
+  ul.main_menu li div.icon.search  {background: url(../img/search.png) no-repeat  #979797 center center; }
+  ul.main_menu li div.icon.account {background: url(../img/account.png) no-repeat  #e4d0c5 center center; }
+  ul.main_menu li div.icon.birds   {background: url(../img/birds.png) no-repeat  #39b54a center center; }
+  ul.main_menu li div.icon.fish    {background: url(../img/fish.png) no-repeat  #09f center center; }
+  ul.main_menu li div.icon.turtles {background: url(../img/turtle.png) no-repeat  #8c6239 center center; }
+  ul.main_menu li div.icon.horses  {background: url(../img/horse.png) no-repeat  #603913 center center; }
+  ul.main_menu li div.icon.signout {background: url(../img/signout.png) no-repeat  #ff4f4f center center; }
+  ul.main_menu li div.icon.cp      {background: url(../img/cp.png) no-repeat  #ccc center center; }
+	  
+	  
+  
+  ul.main_menu li div.text{
+	  height:36px;
+	  float:left;
+	  line-height:36px;
+  	  margin-right:16px !important;
+	  width:120px;
+  }
+  
+ 
+ ul.sub_menu2{
+	 position:absolute;
+	 z-index:99;
+	 right:196px;
+	 background:#60e0f5;
+	 padding:0 0 16px 0 !important;
+ }
+ 
+  ul.sub_menu2>li{
+	  float:right !important;
+	  padding:10px;
+	  color:#fff;
+	  text-align:center;
+	  margin-bottom:6px;
+	  border-bottom:1px solid #87e6f5;
+  }
+  
+  ul.sub_menu2>li:hover{
+	  background:#72e2f4;
+  }
+  
+  ul.sub_menu2>li.selected{
+	  background:#87e6f5;
+  }
+	  
+  .breedIcon{
+	  width:50px;
+	  height:50px;
+	  float:right;
+	  background:#fff;
+	  -webkit-border-radius: 50%;
+	  -moz-border-radius: 50%;
+	  border-radius: 50%;
+  }
+  
+  ul.sub_menu2>li>span{
+	  float:right; padding:10px;
+  }
+  
+   ul.sub_menu3{
+	 float:right;
+	 padding:0 !important;
+	 background:#60e0f5;
+	 position: absolute;
+	 
+	 top:50px;
+	 border:1px dashed #000;
+ }
+ 
+    ul.sub_menu3>li{
+		margin-top:80px;
+	}
+
+ 
+
+ 
+  ul.sub_menu3>li>a{
+	  float:right !important;
+	  width:20%;
+	  height:80px;
+	  overflow:hidden;
+  }
+
+  ul.sub_menu3>li>a>img{
+	  width:100%;
+	  position:relative;
+	  top:-60% !important;
+	  z-index:-1;
+  }
+
+  ul.sub_menu3>li>a>span{
+	  color:#09c !important;
+	  background:url(../img/transblack.png);
+	  float:right;
+	  position: relative;
+	  padding:0 8px;
+	  bottom:0px;
+	  width:100%;
+  }
+  
+@media only screen and (max-width: 1025px) {
+	 ul.sub_menu2{
+	 position:inline-block;
+	 z-index:1;
+	 right:auto;
+	 }
+	
+}
